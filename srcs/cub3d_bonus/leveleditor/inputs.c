@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 00:53:10 by dfeve             #+#    #+#             */
-/*   Updated: 2025/09/01 18:02:58 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/09/08 14:59:52 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	_input(int keycode, void *void_mlx)
 	return (1);
 }
 
-int	_input_mouse(int keycode, int x, int y, t_mlx *mlx)
+int	_input_mouse(int x, int y, t_mlx *mlx)
 {
 	t_vector2	pos;
 
@@ -33,11 +33,11 @@ int	_input_mouse(int keycode, int x, int y, t_mlx *mlx)
 	pos.y = y;
 	mlx->mouse_pos.x = x;
 	mlx->mouse_pos.y = y;
-	if (keycode == M_CLK_L)
+	if (mlx->is_clicking)
 	{
 		check_if_obj_clicked(pos, mlx->obj_list);
 		del_images(mlx);
-		new_image(mlx, vec2(300, 300), vec2(0, 0));
+		new_image(mlx, mlx->screen_size, vec2(0, 0));
 		put_imgs(mlx);
 		draw_object_list(mlx, mlx->obj_list);
 	}
@@ -95,6 +95,34 @@ int	_input_mouse_click_down(int keycode, int x, int y, void *void_mlx)
 		draw_board(mlx, 0xFFFFFF, mlx->board, mlx->board_size);
 		put_imgs(mlx);
 		draw_object_list(mlx, mlx->obj_list);
+	}
+	return (1);
+}
+
+int	_input_mouse_click_down_ex(int keycode, int x, int y, t_mlx *mlx)
+{
+	mlx->mouse_pos.x = x;
+	mlx->mouse_pos.y = y;
+	if (keycode == M_CLK_L)
+	{
+		mlx->is_clicking = TRUE;
+		check_if_obj_clicked(mlx->mouse_pos, mlx->obj_list);
+		del_images(mlx);
+		new_image(mlx, mlx->screen_size, vec2(0, 0));
+		put_imgs(mlx);
+		draw_object_list(mlx, mlx->obj_list);
+	}
+	return (1);
+}
+
+int	_input_mouse_click_up_ex(int keycode, int x, int y, t_mlx *mlx)
+{
+	(void)x;
+	(void)y;
+	if (keycode == M_CLK_L)
+	{
+		if (mlx)
+			mlx->is_clicking = FALSE;
 	}
 	return (1);
 }

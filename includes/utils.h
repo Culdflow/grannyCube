@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 20:33:25 by dfeve             #+#    #+#             */
-/*   Updated: 2025/09/01 18:24:23 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/09/08 14:54:57 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ typedef struct s_object
 	t_vector2		size;
 	char			*tag;
 	int				value;
+	int				max_value;
 	int				color;
 	void			(*clickFunc)(void *, int);
 	void			*victim;

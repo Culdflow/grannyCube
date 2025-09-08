@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 20:16:16 by dfeve             #+#    #+#             */
-/*   Updated: 2025/09/01 18:31:33 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/09/08 14:58:16 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,7 +192,7 @@ void	draw_object(t_mlx *mlx, t_object *obj)
 	}
 	else if (obj->type == SLIDER)
 	{
-		draw_line(&mlx->imgs[0], obj->pos, add_vec2(obj->pos, vec2(obj->size.x, 0)), obj->color);
+		draw_line(&mlx->imgs[0], obj->pos, add_vec2(obj->pos, vec2(obj->size.x - 10, 0)), obj->color);
 		draw_rectangle(&mlx->imgs[0], add_vec2(obj->pos, vec2(obj->value - 2, -5)), add_vec2(obj->pos, vec2(obj->value + 2, 5)), obj->color);
 		mlx_string_put(mlx->mlx, mlx->win, obj->pos.x + (obj->size.x / 2), obj->pos.y - 10, 0xFF0000, obj->tag);
 	}

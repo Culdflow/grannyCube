@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 19:30:05 by dfeve             #+#    #+#             */
-/*   Updated: 2025/08/28 18:26:57 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/09/03 02:23:58 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	hud_char(t_mlx *mlx)
 	result_state_2->loop = TRUE;
 	add_animation(mlx->HUD_CHAR, result_state_2);
 	char	*anim_state_3[] = {"textures/HUD/HUD_char_state3_neutral.xpm", "textures/HUD/HUD_char_state3_neutral.xpm", "textures/HUD/HUD_char_state3_left.xpm", "textures/HUD/HUD_char_state3_right.xpm", 0};
-	result_state_3 = new_anim("state_3", anim_state_3, 2, vec2(0, 0), mlx);
+	result_state_3 = new_anim("state_3", anim_state_3, 4, vec2(0, 0), mlx);
 	result_state_3->loop = TRUE;
 	add_animation(mlx->HUD_CHAR, result_state_3);
 }

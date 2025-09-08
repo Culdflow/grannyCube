@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 00:26:35 by dfeve             #+#    #+#             */
-/*   Updated: 2025/07/31 01:24:30 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/09/08 16:20:55 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,12 @@ char	*file_name_prompt()
 
 char	**color_prompt()
 {
-	char	**colors;
+	char			**colors;
+	unsigned int	*colors_int;
 
 	colors = malloc(sizeof(char *) * 3);
-	printf("color is inputed this way: red value, green value, blue value (example: 255, 12, 35)\n");
+	colors_int = color_choose_window();
+	printf("color red = %d\n", colors_int[0]);
 	colors[0] = readline("floor color: ");
 	colors[1] = readline("ceiling color: ");
 	colors[2] = 0;

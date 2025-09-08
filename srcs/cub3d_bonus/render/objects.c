@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 20:10:15 by dfeve             #+#    #+#             */
-/*   Updated: 2025/09/01 18:34:47 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/09/08 16:16:07 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_object	*create_obj(int type, void (*onClick)(void *, int), int value, t_vector
 	result->value = value;
 	result->color = color;
 	result->victim = victim;
+	result->max_value = 0;
 	return (result);
 }
 
@@ -134,19 +135,21 @@ void	slider_on_click(void *obj, int u)
 	(void)u;
 	object = obj;
 	mlx = object->victim;
-	object->value = mlx->mouse_pos.x - object->pos.x;
-	printf("slider value = %d\n", object->value);
+	object->value = (mlx->mouse_pos.x - object->pos.x) / (object->size.x / object->max_value);
+	if (object->value > object->max_value)
+		object->value = object->max_value;
 }
 
-t_object	*new_slider(t_vector2 pos, int size, int color, t_mlx *mlx)
+t_object	*new_slider(t_vector2 pos, int max_value, int color, t_mlx *mlx)
 {
 	t_object	*result;
 
 	result = ft_calloc(1, sizeof(t_object));
 	result->pos = pos;
 	result->tag = "slider";
-	result->size = vec2(size + 10, 10);
+	result->size = vec2(265, 20);
 	result->value = 0;
+	result->max_value = max_value;
 	result->type = SLIDER;
 	result->color = color;
 	result->victim = mlx;

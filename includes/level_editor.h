@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 20:07:34 by dfeve             #+#    #+#             */
-/*   Updated: 2025/09/01 18:01:37 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/09/08 16:14:52 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,13 +101,16 @@ int				fun_exit(t_mlx *mlx);
 
 t_vector2		map_size_window(void);
 t_mlx			*editor_window(t_vector2 board_size);
+unsigned int	*color_choose_window();
 
 ////////////////////---INPUTS---////////////////////////////
 
 int				_input(int keycode, void *void_mlx);
-int				_input_mouse(int keycode, int x, int y, t_mlx *mlx);
+int				_input_mouse(int x, int y, t_mlx *mlx);
 int				_input_mouse_board(int keycode, int x, t_mlx *mlx);
 int				_input_mouse_click_down(int keycode, int x, int y, void *void_mlx);
 int				_input_mouse_click_up(int keycode, int x, int y, void *void_mlx);
+int				_input_mouse_click_up_ex(int keycode, int x, int y, t_mlx *mlx);
+int				_input_mouse_click_down_ex(int keycode, int x, int y, t_mlx *mlx);
 
 #endif
