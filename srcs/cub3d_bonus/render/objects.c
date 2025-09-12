@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 20:10:15 by dfeve             #+#    #+#             */
-/*   Updated: 2025/09/08 16:16:07 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/09/12 02:48:49 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ t_object	*new_slider(t_vector2 pos, int max_value, int color, t_mlx *mlx)
 	result = ft_calloc(1, sizeof(t_object));
 	result->pos = pos;
 	result->tag = "slider";
-	result->size = vec2(265, 20);
+	result->size = vec2(265, 40);
 	result->value = 0;
 	result->max_value = max_value;
 	result->type = SLIDER;
@@ -155,4 +155,18 @@ t_object	*new_slider(t_vector2 pos, int max_value, int color, t_mlx *mlx)
 	result->victim = mlx;
 	result->clickFunc = slider_on_click;
 	return (result);
+}
+
+t_object	*get_object_from_tag(t_object_list *lst, char *tag)
+{
+	t_object_list	*cursor;
+	
+	cursor = lst;
+	while (cursor)
+	{
+		if (ft_strncmp(cursor->object->tag, tag, ft_strlen(tag)) == 0)
+			return (cursor->object);
+		cursor = cursor->next;
+	}
+	return (cursor->object);
 }

@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 20:33:25 by dfeve             #+#    #+#             */
-/*   Updated: 2025/09/08 14:54:57 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/09/12 02:15:56 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,7 @@ void			add_obj_to_list(t_object_list **lst, t_object *obj);
 t_object		*create_obj(int type, void (*onClick)(void *, int), int value,
 					t_vector2 pos, t_vector2 size, int color, char *tag,
 					void *victim);
+t_object		*get_object_from_tag(t_object_list *lst, char *tag);
 t_object_list	*get_last_object(t_object_list *start);
 void			free_object_list(t_object_list *start);
 void			board_clicked(t_vector2 mouse_pos, t_vector2 board_size,
@@ -165,6 +166,7 @@ float			ft_fabsf(float nb);
 float			ft_fmodulf(float nb, float modul);
 float			ft_fclampf(float *nb, float min, float max);
 int				rgb_to_hex(char *rgb);
+char			*rgb_to_str(unsigned int r, unsigned int g, unsigned int b);
 
 //////////////////--DEBUG--////////////////////////////
 

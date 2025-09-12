@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 23:23:41 by dfeve             #+#    #+#             */
-/*   Updated: 2025/09/03 02:10:07 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/09/12 04:21:08 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_mlx	*setup_mlx(char *name, t_vector2 minimap_size)
 	mlx->debug_lst = NULL;
 	hud_char(mlx);
 	mlx->HUD = hud(mlx);
-	mlx->dov = 5;
+	mlx->dov = 3;
 	return (mlx);
 }
 

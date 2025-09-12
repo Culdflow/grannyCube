@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 05:44:21 by dfeve             #+#    #+#             */
-/*   Updated: 2025/09/03 01:37:54 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/09/12 04:19:55 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ void	draw_3d_view(t_data *data, t_vector2 screen_size)
 		if (ca > 2 * M_PI)						//supposed to fix fisheye but doesnt work
 			ca -= 2 * M_PI;
 		cursor->length = cursor->length * cos(ca);
+		if (cursor->wall_hit_dir == FOG_EAST_WEST || cursor->wall_hit_dir == FOG_NORTH_SOUTH)
+			cursor->length = data->mlx->dov * 100;
 		line_height = (100 * screen_size.y) / cursor->length;
 		line_start_pos.y = (screen_size.y / 2) - (line_height / 2);
 		draw_3d_line(data, line_height, line_start_pos, cursor);

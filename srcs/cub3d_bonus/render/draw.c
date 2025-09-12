@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 20:16:16 by dfeve             #+#    #+#             */
-/*   Updated: 2025/09/08 14:58:16 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/09/12 02:49:36 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,8 @@ void	draw_line(t_img *data, t_vector2 start, t_vector2 end, int color)
 	oy = 0;
 	i = 0;
 	calculate_offset(start, end, &ox, &oy);
-	// printf("\n----------------\n");
-	// printf("start = (%d, %d)\n", start.x, start.y);
-	// printf("end = (%d, %d)\n", end.x, end.y);
-	// printf("offset = (%f, %f)\n", ox, oy);
-	// printf("----------------\n\n");
 	while (i <= abs(sub_vec2(end, start).x) || i <= abs(sub_vec2(end, start).y))
 	{
-		// printf("putting pixel at (%f, %f)\n", x, y);
 		my_mlx_pixel_put(data, (int)x, (int)y, color);
 		x += ox;
 		y += oy;
@@ -194,7 +188,6 @@ void	draw_object(t_mlx *mlx, t_object *obj)
 	{
 		draw_line(&mlx->imgs[0], obj->pos, add_vec2(obj->pos, vec2(obj->size.x - 10, 0)), obj->color);
 		draw_rectangle(&mlx->imgs[0], add_vec2(obj->pos, vec2(obj->value - 2, -5)), add_vec2(obj->pos, vec2(obj->value + 2, 5)), obj->color);
-		mlx_string_put(mlx->mlx, mlx->win, obj->pos.x + (obj->size.x / 2), obj->pos.y - 10, 0xFF0000, obj->tag);
 	}
 }
 

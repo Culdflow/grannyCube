@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 00:50:21 by dfeve             #+#    #+#             */
-/*   Updated: 2025/09/08 16:21:09 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/09/12 02:52:42 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ t_vector2	map_size_window()
 	mlx_hook(mlx->win, ON_DESTROY, 0, fun_exit, mlx->mlx);
 	mlx_hook(mlx->win, ON_MOUSEDOWN, 1L << 2, _input_mouse_click_down_ex, mlx);
 	mlx_hook(mlx->win, ON_MOUSEUP, 1L << 3, _input_mouse_click_up_ex, mlx);
-	mlx_hook(mlx->win, ON_MOUSEMOVE, 1L << 6, _input_mouse, mlx);
+	mlx_hook(mlx->win, ON_MOUSEMOVE, 1L << 6, _input_mouse_ex, mlx);
 	put_imgs(mlx);
 	draw_object_list(mlx, mlx->obj_list);
 	mlx_loop(mlx->mlx);
@@ -111,15 +111,38 @@ void	on_done_button_click(void *vd_mlx, int idk)
 	mlx_loop_end(mlx->mlx);
 }
 
-unsigned int	*color_choose_window()
+char	*rgb_to_str(unsigned int r, unsigned int g, unsigned int b)
+{
+	char	*result;
+	char	*str_r;
+	char	*str_g;
+	char	*str_b;
+
+	str_r = ft_itoa(r);
+	str_g = ft_itoa(g);
+	str_b = ft_itoa(b);
+	printf("int r = %d int g = %d int b = %d\n", r, g, b);
+	result = ft_strjoin(str_r, ", ");
+	result = ft_strjoin(result, str_g);
+	result = ft_strjoin(result, ", ");
+	result = ft_strjoin(result, str_b);
+	printf("color str = %s\n", result);
+	free(str_r);
+	free(str_g);
+	free(str_b);
+	return (result);
+}
+
+char	**color_choose_window()
 {
 	t_mlx			*mlx;
 	t_object		**sliders;
 	t_object		*done_button;
-	unsigned int	*result;
+	char			*rgb;
+	char			**result;
 
 	mlx = setup_mlx("COLOR CHOOSE", vec2(0, 0));
-	result = calloc(6, sizeof(unsigned int));
+	result = calloc(6, sizeof(char *));
 	sliders = calloc(6, sizeof(t_object *));
 	sliders[0] = new_slider(vec2(20, 100), 255, 0xFF0000, mlx);
 	sliders[1] = new_slider(vec2(20, 150), 255, 0x00FF00, mlx);
@@ -127,7 +150,22 @@ unsigned int	*color_choose_window()
 	sliders[3] = new_slider(vec2(500, 100), 255, 0xFF0000, mlx);
 	sliders[4] = new_slider(vec2(500, 150), 255, 0x00FF00, mlx);
 	sliders[5] = new_slider(vec2(500, 200), 255, 0x0000FF, mlx);
+	sliders[0]->tag = "red_1";
+	sliders[1]->tag = "green_1";
+	sliders[2]->tag = "blue_1";
+	sliders[3]->tag = "red_2";
+	sliders[4]->tag = "green_2";
+	sliders[5]->tag = "blue_2";
 	done_button = create_obj(BUTTON, on_done_button_click, 0, vec2(270, 500), vec2(25, 15), 0xFFFFFF, "DONE", mlx);
+	new_image(mlx, mlx->screen_size, vec2(0, 0));
+	rgb = rgb_to_str(sliders[0]->value, sliders[1]->value, sliders[2]->value);
+	draw_rectangle_no_fill(&mlx->imgs[0], vec2(9, 229), vec2(31, 251), 0xffffff);
+	draw_rectangle(&mlx->imgs[0], vec2(10, 230), vec2(30, 250), rgb_to_hex(rgb));
+	free(rgb);
+	rgb = rgb_to_str(sliders[3]->value, sliders[4]->value, sliders[5]->value);
+	draw_rectangle_no_fill(&mlx->imgs[0], vec2(489, 229), vec2(511, 251), 0xffffff);
+	draw_rectangle(&mlx->imgs[0], vec2(490, 230), vec2(510, 250), rgb_to_hex(rgb));
+	free(rgb);
 	add_obj_to_list(&mlx->obj_list, sliders[0]);
 	add_obj_to_list(&mlx->obj_list, sliders[1]);
 	add_obj_to_list(&mlx->obj_list, sliders[2]);
@@ -135,21 +173,21 @@ unsigned int	*color_choose_window()
 	add_obj_to_list(&mlx->obj_list, sliders[4]);
 	add_obj_to_list(&mlx->obj_list, sliders[5]);
 	add_obj_to_list(&mlx->obj_list, done_button);
-	new_image(mlx, mlx->screen_size, vec2(0, 0));
 	draw_object_list(mlx, mlx->obj_list);
 	put_imgs(mlx);
+	draw_object_list(mlx, mlx->obj_list);
 	mlx_hook(mlx->win, ON_KEYDOWN, 1L << 0, _input, mlx);
 	mlx_hook(mlx->win, ON_DESTROY, 0, fun_exit, mlx->mlx);
 	mlx_hook(mlx->win, ON_MOUSEDOWN, 1L << 2, _input_mouse_click_down_ex, mlx);
 	mlx_hook(mlx->win, ON_MOUSEUP, 1L << 3, _input_mouse_click_up_ex, mlx);
 	mlx_hook(mlx->win, ON_MOUSEMOVE, 1L << 6, _input_mouse, mlx);
 	mlx_loop(mlx->mlx);
-	result[0] = sliders[0]->value;
-	result[1] = sliders[1]->value;
-	result[2] = sliders[2]->value;
-	result[3] = sliders[3]->value;
-	result[4] = sliders[4]->value;
-	result[5] = sliders[5]->value;
+	result[0] = ft_itoa(sliders[0]->value);
+	result[1] = ft_itoa(sliders[1]->value);
+	result[2] = ft_itoa(sliders[2]->value);
+	result[3] = ft_itoa(sliders[3]->value);
+	result[4] = ft_itoa(sliders[4]->value);
+	result[5] = ft_itoa(sliders[5]->value);
 	free_mlx(mlx);
 	return (result);
 }

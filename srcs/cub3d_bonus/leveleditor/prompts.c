@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 00:26:35 by dfeve             #+#    #+#             */
-/*   Updated: 2025/09/08 16:20:55 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/09/11 19:08:53 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,8 @@ char	*file_name_prompt()
 char	**color_prompt()
 {
 	char			**colors;
-	unsigned int	*colors_int;
 
-	colors = malloc(sizeof(char *) * 3);
-	colors_int = color_choose_window();
-	printf("color red = %d\n", colors_int[0]);
-	colors[0] = readline("floor color: ");
-	colors[1] = readline("ceiling color: ");
-	colors[2] = 0;
+	colors = color_choose_window();
 	return (colors);
 }
 
@@ -72,9 +66,17 @@ void	write_colors_and_textures(int fd, char **colors, char **textures)
 	ft_putstr_fd("\n", fd);
 	ft_putstr_fd("F ", fd);
 	ft_putstr_fd(colors[0], fd);
+	ft_putstr_fd(", ", fd);
+	ft_putstr_fd(colors[1], fd);
+	ft_putstr_fd(", ", fd);
+	ft_putstr_fd(colors[2], fd);
 	ft_putstr_fd("\n", fd);
 	ft_putstr_fd("C ", fd);
-	ft_putstr_fd(colors[1], fd);
+	ft_putstr_fd(colors[3], fd);
+	ft_putstr_fd(", ", fd);
+	ft_putstr_fd(colors[4], fd);
+	ft_putstr_fd(", ", fd);
+	ft_putstr_fd(colors[5], fd);
 	ft_putstr_fd("\n", fd);
 	ft_putstr_fd("\n", fd);
 }

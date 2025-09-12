@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 01:26:04 by mabdessm          #+#    #+#             */
-/*   Updated: 2025/09/08 15:03:59 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/09/12 03:59:01 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,7 +170,7 @@ int	draw_textures(t_data *data)
 	check_keys(data);
 	mouse_pos(data);
 	new_image(data->mlx, data->mlx->screen_size, vec2(0, 0));
-	data->ray_list = new_ray_list(150, data->player->angle, vec2((int)data->player->x, (int)data->player->y), data->mlx);
+	data->ray_list = new_ray_list(60, data->player->angle, vec2((int)data->player->x, (int)data->player->y), data->mlx);
 	draw_floor_ceiling(data, data->mlx->screen_size, data->textures);
 	draw_3d_view(data, data->mlx->screen_size);
 	draw_minimap(data);
