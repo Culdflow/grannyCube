@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 23:56:16 by dfeve             #+#    #+#             */
-/*   Updated: 2025/09/12 02:43:10 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/09/14 23:17:11 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,11 @@ int	rgb_to_hex(char *rgb)
 	int	g;
 	int	b;
 
-	printf("color = %s\n", rgb);
 	tab = ft_split(rgb, ',');
 	r = ft_atoi(tab[0]) / 16;
 	g = ft_atoi(tab[1]) / 16;
 	b = ft_atoi(tab[2]);
-	printf("red = %d green = %d blue = %d\n", r, g, b);
 	ft_free_tab(tab);
 	return ((r * rec_pwr(16, 4)) + (g * rec_pwr(16, 2)) + b);
 }
+

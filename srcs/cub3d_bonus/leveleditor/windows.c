@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 00:50:21 by dfeve             #+#    #+#             */
-/*   Updated: 2025/09/12 02:52:42 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/09/12 16:43:10 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,16 +117,21 @@ char	*rgb_to_str(unsigned int r, unsigned int g, unsigned int b)
 	char	*str_r;
 	char	*str_g;
 	char	*str_b;
+	char	*tmp;
 
 	str_r = ft_itoa(r);
 	str_g = ft_itoa(g);
 	str_b = ft_itoa(b);
-	printf("int r = %d int g = %d int b = %d\n", r, g, b);
 	result = ft_strjoin(str_r, ", ");
+	tmp = result;
 	result = ft_strjoin(result, str_g);
+	free(tmp);
+	tmp = result;
 	result = ft_strjoin(result, ", ");
+	free(tmp);
+	tmp = result;
 	result = ft_strjoin(result, str_b);
-	printf("color str = %s\n", result);
+	free(tmp);
 	free(str_r);
 	free(str_g);
 	free(str_b);

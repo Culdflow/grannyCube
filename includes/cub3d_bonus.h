@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 05:34:38 by mabdessm          #+#    #+#             */
-/*   Updated: 2025/09/01 18:24:34 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/09/14 23:25:34 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,13 @@ typedef struct	s_entity
 	int			hp;
 	t_img		sprite;
 }	t_entity;
+
+typedef struct s_billboard
+{
+	t_animation_player	*player;
+	t_vector2			pos;
+}	t_billboard;
+
 
 typedef struct s_data
 {
@@ -230,6 +237,11 @@ void			free_textures(t_textures **textures, t_mlx *mlx);
 
 void			draw_debug(t_debug_obj *lst, t_mlx *mlx);
 
+//////////////////--BILLBOARD--////////////////////////
+
+int				trig_get_angle(int adj, int hyp);
+int				check_is_angle_in_player_view(int angle, int fov, int player_angle);
+float			get_percent_billboard_from_view(int angle, int fov, int player_angle);
 
 t_object		*new_slider(t_vector2 pos, int size, int color, t_mlx *mlx);
 #endif
