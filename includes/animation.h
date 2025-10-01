@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 16:55:30 by dfeve             #+#    #+#             */
-/*   Updated: 2025/08/28 17:49:33 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/09/30 17:39:57 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "level_editor.h"
 
 typedef struct s_mlx t_mlx;
+typedef struct s_img t_img;
 
 typedef struct	s_frame
 {
@@ -59,6 +60,9 @@ void				switch_anim(t_animation_player *player, char *tag);
 t_animation			*hud(t_mlx *mlx);
 void				add_animation(t_animation_player *player, t_animation *anim);
 
+//////////////--ANIMATION_FILE--///////////////////
+
+char				**file_load_frames(char *file);
 //////////////--DEBUG--//////////////////////////////
 
 

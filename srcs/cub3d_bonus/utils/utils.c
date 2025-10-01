@@ -6,11 +6,20 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 23:56:16 by dfeve             #+#    #+#             */
-/*   Updated: 2025/09/14 23:17:11 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/09/24 17:53:58 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/cub3d_bonus.h"
+
+void	draw_tab(char **map)
+{
+	int	i;
+
+	i = -1;
+	while (map && map[++i])
+		printf("%s\n", map[i]);
+}
 
 float	ft_fabsf(float nb)
 {

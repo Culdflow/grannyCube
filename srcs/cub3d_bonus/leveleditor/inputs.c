@@ -6,11 +6,49 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 00:53:10 by dfeve             #+#    #+#             */
-/*   Updated: 2025/09/12 02:52:06 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/10/01 19:53:55 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/cub3d_bonus.h"
+
+int	_input_file(int keycode, t_mlx *mlx)
+{
+	t_dir_files	*cursor;
+
+	cursor = mlx->files;
+	while (cursor)
+	{
+		if (cursor->on_cursor == TRUE)
+		{
+			if (keycode == K_AR_D && cursor->next)
+			{
+				printf("down\n");
+				cursor->on_cursor = FALSE;
+				cursor->next->on_cursor = TRUE;
+				break ;
+			}
+			if (keycode == K_AR_U && cursor->prev)
+			{
+				printf("up\n");
+				cursor->on_cursor = FALSE;
+				cursor->prev->on_cursor = TRUE;
+			}
+			if (keycode == K_SP)
+			{
+				if (cursor->status != SELECTED)
+					cursor->status = SELECTED;
+				else
+					cursor->status = NOT_SELECTED;
+			}
+		}
+		cursor = cursor->next;
+	}
+	del_images(mlx);
+	new_image(mlx, mlx->screen_size, vec2(0, 0));
+	draw_files_window(mlx->files, mlx);
+	return (0);
+}
 
 int	_input(int keycode, void *void_mlx)
 {
@@ -21,7 +59,15 @@ int	_input(int keycode, void *void_mlx)
 	if (keycode == K_ESC)
 		exit(0);
 	if (keycode == K_X)
+	{
 		mlx->turning_to = 'N';
+		del_images(mlx);
+		board_clicked(mlx->mouse_pos, mlx->board_size, mlx->board, mlx->turning_to);
+		new_image(mlx, mlx->screen_size, vec2(0, 0));
+		draw_board(mlx, 0xFFFFFF, mlx->board, mlx->board_size);
+		put_imgs(mlx);
+		draw_object_list(mlx, mlx->obj_list);
+	}
 	return (1);
 }
 
@@ -81,6 +127,7 @@ int	_input_mouse_board(int keycode, int x, t_mlx *mlx)
 
 	pos.y = x;
 	pos.x = keycode;
+	mlx->mouse_pos = pos;
 	if (mlx->is_clicking == TRUE)
 	{
 		del_images(mlx);
@@ -89,16 +136,6 @@ int	_input_mouse_board(int keycode, int x, t_mlx *mlx)
 		draw_board(mlx, 0xFFFFFF, mlx->board, mlx->board_size);
 		put_imgs(mlx);
 		draw_object_list(mlx, mlx->obj_list);
-	}
-	else if(mlx->turning_to == 'N')
-	{
-		del_images(mlx);
-		board_clicked(pos, mlx->board_size, mlx->board, mlx->turning_to);
-		new_image(mlx, mlx->screen_size, vec2(0, 0));
-		draw_board(mlx, 0xFFFFFF, mlx->board, mlx->board_size);
-		put_imgs(mlx);
-		draw_object_list(mlx, mlx->obj_list);
-		mlx->turning_to = '1';
 	}
 	return (1);
 }
@@ -116,7 +153,7 @@ int	_input_mouse_click_down(int keycode, int x, int y, void *void_mlx)
 		check_if_obj_clicked(pos, mlx->obj_list);
 		el = get_el_from_board(pos, mlx->board_size, mlx->board);
 		mlx->is_clicking = TRUE;
-		if (el == '1')
+		if (el != '0')
 			mlx->turning_to = '0';
 		else
 			mlx->turning_to = '1';

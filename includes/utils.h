@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 20:33:25 by dfeve             #+#    #+#             */
-/*   Updated: 2025/09/12 02:15:56 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/09/24 17:54:35 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,6 +167,7 @@ float			ft_fmodulf(float nb, float modul);
 float			ft_fclampf(float *nb, float min, float max);
 int				rgb_to_hex(char *rgb);
 char			*rgb_to_str(unsigned int r, unsigned int g, unsigned int b);
+void			draw_tab(char **map);
 
 //////////////////--DEBUG--////////////////////////////
 

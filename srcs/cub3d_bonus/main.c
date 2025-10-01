@@ -6,21 +6,13 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 01:26:04 by mabdessm          #+#    #+#             */
-/*   Updated: 2025/09/12 03:59:01 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/10/01 19:19:59 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d_bonus.h"
 
 //for testing
-void	draw_map(char **map)
-{
-	int	i;
-
-	i = -1;
-	while (map && map[++i])
-		printf("%s\n", map[i]);
-}
 
 int	init_data(t_data *data, char *file)
 {
@@ -174,7 +166,7 @@ int	draw_textures(t_data *data)
 	draw_floor_ceiling(data, data->mlx->screen_size, data->textures);
 	draw_3d_view(data, data->mlx->screen_size);
 	draw_minimap(data);
-	draw_ray_list(data->ray_list, div_vec2(data->mlx->minimap_size, vec2(2, 2)), data->mlx);
+	//draw_ray_list(data->ray_list, div_vec2(data->mlx->minimap_size, vec2(2, 2)), data->mlx);
 	draw_player(data->player, data->mlx);
 	draw_frame(data->mlx->HUD, data->mlx, frame);
 	draw_frame(data->mlx->HUD_CHAR->current_anim, data->mlx, frame);
@@ -219,6 +211,7 @@ int	main(int argc, char **argv)
 	//char	*tmp;
 	char		*name;
 
+	choose_texture_window();
 	setup_data(&data);
 	if (argc == 1) //for the mandatory part use this main but remove this condition
 	{

@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 05:34:38 by mabdessm          #+#    #+#             */
-/*   Updated: 2025/09/14 23:25:34 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/09/30 17:50:39 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@
 # include <sys/time.h>
 # include <math.h>
 # include "level_editor.h"
+# include "directories.h"
 # include "utils.h"
 # include "animation.h"
+# include "entities.h"
 # define M_2PI M_PI / 2
 # define M_3PI 3 * M_PI / 2
 # define FOG_TEXT "textures/fog_texture.xpm"
@@ -100,19 +102,6 @@ typedef struct s_textures
 	t_img			*west_texture;
 	t_img			*fog_texture;
 }	t_textures;
-
-typedef struct	s_entity
-{
-	t_vector2	pos;
-	int			hp;
-	t_img		sprite;
-}	t_entity;
-
-typedef struct s_billboard
-{
-	t_animation_player	*player;
-	t_vector2			pos;
-}	t_billboard;
 
 
 typedef struct s_data
@@ -242,6 +231,7 @@ void			draw_debug(t_debug_obj *lst, t_mlx *mlx);
 int				trig_get_angle(int adj, int hyp);
 int				check_is_angle_in_player_view(int angle, int fov, int player_angle);
 float			get_percent_billboard_from_view(int angle, int fov, int player_angle);
+void			draw_billboard_sprite(int length, int percent, t_entity *billboard, t_mlx *mlx);
 
 t_object		*new_slider(t_vector2 pos, int size, int color, t_mlx *mlx);
 #endif

@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 20:07:34 by dfeve             #+#    #+#             */
-/*   Updated: 2025/09/12 02:52:31 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/10/01 19:35:53 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@
 # include <math.h>
 # include <fcntl.h>
 # include "utils.h"
+# include "entities.h"
 # include "../lib/libft/libft.h"
 typedef struct s_animation t_animation;
 typedef struct s_animation_player t_animation_player;
+typedef struct s_directory_file t_dir_files;
 
 typedef struct s_img
 {
@@ -52,8 +54,10 @@ typedef struct s_mlx
 	t_debug_obj			*debug_lst;
 	t_animation			*HUD;
 	t_animation_player	*HUD_CHAR;
+	t_entity			*entities_on_screen;
 	t_vector2			mouse_pos;
 	int					dov;
+	t_dir_files			*files;
 }	t_mlx;
 
 ////////////////////////---RENDER---//////////////////////////////////////////
@@ -113,5 +117,6 @@ int				_input_mouse_click_down(int keycode, int x, int y, void *void_mlx);
 int				_input_mouse_click_up(int keycode, int x, int y, void *void_mlx);
 int				_input_mouse_click_up_ex(int keycode, int x, int y, t_mlx *mlx);
 int				_input_mouse_click_down_ex(int keycode, int x, int y, t_mlx *mlx);
+int				_input_file(int keycode, t_mlx *mlx);
 
 #endif

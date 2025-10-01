@@ -6,7 +6,7 @@
 #    By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/04 14:55:29 by mabdessm          #+#    #+#              #
-#    Updated: 2025/09/01 18:28:35 by dfeve            ###   ########.fr        #
+#    Updated: 2025/10/01 19:19:41 by dfeve            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,6 +62,10 @@ BONUS_SRCS = srcs/cub3d_bonus/main.c \
 \
 		srcs/cub3d_bonus/animation/animation_player.c \
 		srcs/cub3d_bonus/animation/animation.c \
+		srcs/cub3d_bonus/animation/animation_file.c \
+\
+		srcs/cub3d_bonus/directories/directories.c \
+		srcs/cub3d_bonus/directories/directories_window.c \
 
 OBJS = $(SRCS:.c=.o)
 

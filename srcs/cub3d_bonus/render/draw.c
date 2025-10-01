@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 20:16:16 by dfeve             #+#    #+#             */
-/*   Updated: 2025/09/12 02:49:36 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/10/01 19:22:34 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,10 +179,10 @@ void	draw_object(t_mlx *mlx, t_object *obj)
 	}
 	else if (obj->type == LABEL)
 	{
-		string = ft_itoa(obj->value);
+		// string = ft_itoa(obj->value);
 		mlx_string_put(mlx->mlx, mlx->win, obj->pos.x , obj->pos.y, obj->color, obj->tag);
-		mlx_string_put(mlx->mlx, mlx->win, obj->pos.x + 10 , obj->pos.y + 15, obj->color, string);
-		free(string);
+		// mlx_string_put(mlx->mlx, mlx->win, obj->pos.x + 10 , obj->pos.y + 15, obj->color, string);
+		// free(string);
 	}
 	else if (obj->type == SLIDER)
 	{

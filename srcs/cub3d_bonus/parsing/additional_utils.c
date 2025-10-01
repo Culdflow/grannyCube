@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 15:33:44 by mabdessm          #+#    #+#             */
-/*   Updated: 2025/07/30 00:16:39 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/09/24 16:27:08 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_free_tab(char **str)
 int	invalid_character(char c)
 {
 	if (c != '0' && c != '1' && c != 'N' && c != 'S' && c != 'E' && c != '\n'
-		&& c != 'W' && c != ' ')
+		&& c != 'W' && c != ' ' && c != 'G')
 		return (1);
 	return (0);
 }

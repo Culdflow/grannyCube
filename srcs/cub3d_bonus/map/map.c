@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 02:40:08 by dfeve             #+#    #+#             */
-/*   Updated: 2025/08/25 16:45:57 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/09/24 16:32:42 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,10 @@ void	draw_pixel_minimap(t_vector2 map_pos, t_vector2 pos, t_data *data)
 			my_mlx_pixel_put(&data->mlx->imgs[0], pos.x, pos.y, 0xFFFFFF);
 		else if (data->mlx->board[map_pos.y / 100][map_pos.x / 100] == ' ')
 			my_mlx_pixel_put(&data->mlx->imgs[0], pos.x, pos.y, 0x00FFFF);
+		else if (data->mlx->board[map_pos.y / 100][map_pos.x / 100] == 'G')
+			my_mlx_pixel_put(&data->mlx->imgs[0], pos.x, pos.y, 0xF05050);
 		else
-			my_mlx_pixel_put(&data->mlx->imgs[0], pos.x, pos.y, 0xFF0000);
+			my_mlx_pixel_put(&data->mlx->imgs[0], pos.x, pos.y, 0xF0F0F0);
 	}
 }
 

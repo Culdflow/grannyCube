@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_filler.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabdessm <mabdessm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 18:42:13 by mabdessm          #+#    #+#             */
-/*   Updated: 2025/06/03 16:54:01 by mabdessm         ###   ########.fr       */
+/*   Updated: 2025/09/24 17:56:05 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,15 +65,15 @@ char	**close_map(char **map)
 	char	**new_map;
 
 	printf("og map\n"); //test
-	draw_map(map); //test
+	draw_tab(map); //test
 	new_map = ft_calloc(sizeof(char *), ft_strstrlen(map) + 3);
 	fill_map(new_map, map);
 	printf("new map with the surrounding spaces without the replacement\n"); //test
-	draw_map(new_map); //test
+	draw_tab(new_map); //test
 	replace_the_spaces(new_map);
 	replace_the_spaces_backwards(new_map);
 	printf("final map\n"); //test
-	draw_map(new_map); //test
+	draw_tab(new_map); //test
 	return (new_map);
 }
 

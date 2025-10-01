@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 19:30:05 by dfeve             #+#    #+#             */
-/*   Updated: 2025/09/03 02:23:58 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/09/24 18:22:08 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,12 @@ void	switch_anim(t_animation_player *player, char *tag)
 t_animation	*hud(t_mlx *mlx)
 {
 	t_animation	*result;
+	char		**anim;
 
-	char *test[] = {"textures/HUD/HUD.xpm", 0};
-	result = new_anim("HUD_TEST", test, 4, vec2(0, 0), mlx);
+	anim = file_load_frames("textures/anim/HUD/HUD.an");
+	result = new_anim("HUD", anim, 4, vec2(0, 0), mlx);
 	result->loop = TRUE;
+	free(anim);
 	return (result);
 }
 void	hud_char(t_mlx *mlx)
@@ -57,17 +59,21 @@ void	hud_char(t_mlx *mlx)
 	t_animation	*result;
 	t_animation	*result_state_2;
 	t_animation	*result_state_3;
+	char		**anim;
 
-	char	*anim[] = {"textures/HUD/HUD_char_state1_neutral.xpm", "textures/HUD/HUD_char_state1_neutral.xpm", "textures/HUD/HUD_char_state1_left.xpm", "textures/HUD/HUD_char_state1_right.xpm", 0};
+	anim = file_load_frames("textures/anim/HUD/HUD_state_1.an");
 	result = new_anim("state_1", anim, 1, vec2(0, 0), mlx);
 	result->loop = TRUE;
+	free(anim);
 	mlx->HUD_CHAR = new_animation_player(result, vec2(0, 0));
-	char	*anim_state_2[] = {"textures/HUD/HUD_char_state2_neutral.xpm", "textures/HUD/HUD_char_state2_neutral.xpm", "textures/HUD/HUD_char_state2_frown.xpm", 0};
-	result_state_2 = new_anim("state_2", anim_state_2, 1, vec2(0, 0), mlx);
+	anim = file_load_frames("textures/anim/HUD/HUD_state_2.an");
+	result_state_2 = new_anim("state_2", anim, 1, vec2(0, 0), mlx);
 	result_state_2->loop = TRUE;
+	free(anim);
 	add_animation(mlx->HUD_CHAR, result_state_2);
-	char	*anim_state_3[] = {"textures/HUD/HUD_char_state3_neutral.xpm", "textures/HUD/HUD_char_state3_neutral.xpm", "textures/HUD/HUD_char_state3_left.xpm", "textures/HUD/HUD_char_state3_right.xpm", 0};
-	result_state_3 = new_anim("state_3", anim_state_3, 4, vec2(0, 0), mlx);
+	anim = file_load_frames("textures/anim/HUD/HUD_state_3.an");
+	result_state_3 = new_anim("state_3", anim, 4, vec2(0, 0), mlx);
 	result_state_3->loop = TRUE;
+	free(anim);
 	add_animation(mlx->HUD_CHAR, result_state_3);
 }
