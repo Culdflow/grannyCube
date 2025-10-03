@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 20:07:34 by dfeve             #+#    #+#             */
-/*   Updated: 2025/10/01 19:35:53 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/10/03 01:59:29 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ typedef struct s_mlx
 	t_vector2			mouse_pos;
 	int					dov;
 	t_dir_files			*files;
+	char				*cur_dir;
+	char				*prompt;
 }	t_mlx;
 
 ////////////////////////---RENDER---//////////////////////////////////////////

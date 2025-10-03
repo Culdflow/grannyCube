@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 00:26:35 by dfeve             #+#    #+#             */
-/*   Updated: 2025/09/11 19:08:53 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/10/03 02:15:13 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ char	**texture_prompt()
 
 	textures = malloc(sizeof(char *) * 5);
 	printf("textures are inputed this way: path_to_texture (example: ./textures/north_texture.xpm)\n");
-	textures[0] = readline("north texture path: ");
-	textures[1] = readline("south texture path: ");
-	textures[2] = readline("east texture path: ");
-	textures[3] = readline("west texture path: ");
+	textures[0] = choose_texture_window("choose north texture");
+	textures[1] = choose_texture_window("choose south texture");
+	textures[2] = choose_texture_window("choose east texture");
+	textures[3] = choose_texture_window("choose west texture");
 	textures[4] = 0;
 	return (textures);
 }

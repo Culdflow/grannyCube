@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 16:54:51 by dfeve             #+#    #+#             */
-/*   Updated: 2025/09/24 18:00:11 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/10/03 02:13:16 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ void	draw_frame(t_animation *animation, t_mlx *mlx, int frame)
 {
 	t_frame	*frame_temp;
 
-	printf("%s\n", animation->anim_tag);
 	add_image(mlx, *animation->frames->current_frame->frame);
 	frame_temp = get_frame(animation->frames, animation->frames->current_frame->frame_nb + 1);
 	if (frame == animation->next_frame || animation->next_frame == -1)

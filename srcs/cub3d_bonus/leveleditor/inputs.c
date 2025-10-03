@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 00:53:10 by dfeve             #+#    #+#             */
-/*   Updated: 2025/10/01 19:53:55 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/10/03 02:08:30 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@
 int	_input_file(int keycode, t_mlx *mlx)
 {
 	t_dir_files	*cursor;
+	char		*tmp;
+	char		*dir;
 
 	cursor = mlx->files;
+	dir = NULL;
 	while (cursor)
 	{
 		if (cursor->on_cursor == TRUE)
@@ -36,10 +39,27 @@ int	_input_file(int keycode, t_mlx *mlx)
 			}
 			if (keycode == K_SP)
 			{
-				if (cursor->status != SELECTED)
-					cursor->status = SELECTED;
+				if (cursor->type == T_DIRECTORY)
+				{
+					tmp = ft_strjoin(mlx->cur_dir, "/");
+					dir = ft_strjoin(tmp, cursor->name);
+					free(tmp);
+					free(mlx->cur_dir);
+					mlx->cur_dir = dir;
+					free_dir_files(mlx->files);
+					mlx->files = get_files_from_dir(dir);
+					free_object_list(mlx->obj_list);
+					mlx->obj_list = NULL;
+					break ;
+				}
 				else
-					cursor->status = NOT_SELECTED;
+				{
+					if (cursor->status != SELECTED)
+						cursor->status = SELECTED;
+					else
+						cursor->status = NOT_SELECTED;
+					mlx_loop_end(mlx->mlx);
+				}
 			}
 		}
 		cursor = cursor->next;

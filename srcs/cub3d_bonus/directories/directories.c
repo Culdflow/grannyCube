@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:50:57 by dfeve             #+#    #+#             */
-/*   Updated: 2025/10/01 19:25:54 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/10/03 01:49:48 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,18 @@ t_dir_files	*get_files_from_dir(char *dir)
 			add_to_dir_list(&result, T_DIRECTORY, entry->d_name);
 	}
 	return (result);
+}
+
+void	free_dir_files(t_dir_files *files)
+{
+	t_dir_files	*cursor;
+	t_dir_files	*tmp;
+
+	cursor = files;
+	while (cursor)
+	{
+		tmp = cursor->next;
+		free(cursor);
+		cursor = tmp;
+	}
 }

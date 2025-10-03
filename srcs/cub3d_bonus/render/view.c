@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 05:44:21 by dfeve             #+#    #+#             */
-/*   Updated: 2025/09/12 04:19:55 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/10/03 05:43:12 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,12 @@ void	put_texture_line(t_ray *ray, int line_height, t_vector2 line_start_pos, t_i
 		img_y = ((((float)y - (float)line_start_pos.y) / line_height) * img.size.y);
 		if (x > 0 && x < mlx->screen_size.x && y > 0 && y < mlx->screen_size.y)
 		{
-			if (ray->wall_hit_dir == NORTH || ray->wall_hit_dir == WEST)
-				my_mlx_pixel_put(&mlx->imgs[0], x, y, get_pixel_img(img, img.size.x - (int)img_x, (int)img_y));
+			if (ray->wall_hit_dir == FOG_NORTH_SOUTH || ray->wall_hit_dir == FOG_EAST_WEST)
+				my_mlx_pixel_put(&mlx->imgs[0], x, y, get_pixel_img(img, x, y - line_start_pos.y));
+			else if (ray->wall_hit_dir == NORTH || ray->wall_hit_dir == WEST)
+				my_mlx_pixel_put(&mlx->imgs[0], x, y, get_pixel_img(img, (int)img_x, (int)img_y));
 			else
-				my_mlx_pixel_put(&mlx->imgs[0], x, y, (get_pixel_img(img, img_x, (int)img_y) & 0xfefefe) >> 1);
+				my_mlx_pixel_put(&mlx->imgs[0], x, y, (get_pixel_img(img, img.size.x - (int)img_x, (int)img_y) & 0xfefefe) >> 1);
 		}
 		y++;
 	}

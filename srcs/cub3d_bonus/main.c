@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 01:26:04 by mabdessm          #+#    #+#             */
-/*   Updated: 2025/10/01 19:19:59 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/10/03 02:15:29 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,7 +211,6 @@ int	main(int argc, char **argv)
 	//char	*tmp;
 	char		*name;
 
-	choose_texture_window();
 	setup_data(&data);
 	if (argc == 1) //for the mandatory part use this main but remove this condition
 	{
