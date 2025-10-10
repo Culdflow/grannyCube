@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 00:53:10 by dfeve             #+#    #+#             */
-/*   Updated: 2025/10/03 02:08:30 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/10/10 22:50:00 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	_input_file(int keycode, t_mlx *mlx)
 	char		*tmp;
 	char		*dir;
 
-	cursor = mlx->files;
+	cursor = mlx->dir->files;
 	dir = NULL;
 	while (cursor)
 	{
@@ -41,24 +41,30 @@ int	_input_file(int keycode, t_mlx *mlx)
 			{
 				if (cursor->type == T_DIRECTORY)
 				{
-					tmp = ft_strjoin(mlx->cur_dir, "/");
+					tmp = ft_strjoin(mlx->dir->cur_dir, "/");
 					dir = ft_strjoin(tmp, cursor->name);
 					free(tmp);
-					free(mlx->cur_dir);
-					mlx->cur_dir = dir;
-					free_dir_files(mlx->files);
-					mlx->files = get_files_from_dir(dir);
+					free(mlx->dir->cur_dir);
+					mlx->dir->cur_dir = dir;
+					free_dir_files(mlx->dir->files);
+					mlx->dir->files = get_files_from_dir(dir);
 					free_object_list(mlx->obj_list);
 					mlx->obj_list = NULL;
 					break ;
 				}
 				else
 				{
-					if (cursor->status != SELECTED)
+					if (check_extension(cursor->name, mlx->dir->extension) == TRUE)
+					{
 						cursor->status = SELECTED;
+						mlx_loop_end(mlx->mlx);
+					}
 					else
-						cursor->status = NOT_SELECTED;
-					mlx_loop_end(mlx->mlx);
+					{
+						add_obj_to_list(&mlx->obj_list, create_obj(LABEL, NULL, 0, vec2(820, 30), vec2(0, 0), 0xFF0000, mlx->dir->extension_prompt, NULL));
+						draw_files_window(mlx->dir->files, mlx);
+						return (0);
+					}
 				}
 			}
 		}
@@ -66,7 +72,7 @@ int	_input_file(int keycode, t_mlx *mlx)
 	}
 	del_images(mlx);
 	new_image(mlx, mlx->screen_size, vec2(0, 0));
-	draw_files_window(mlx->files, mlx);
+	draw_files_window(mlx->dir->files, mlx);
 	return (0);
 }
 

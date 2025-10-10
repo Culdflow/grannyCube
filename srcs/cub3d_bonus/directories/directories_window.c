@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 18:14:01 by dfeve             #+#    #+#             */
-/*   Updated: 2025/10/03 02:11:35 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/10/10 22:47:03 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	draw_files_window(t_dir_files *files, t_mlx *mlx)
 
 	i = 0;
 	draw_rectangle_no_fill(&mlx->imgs[0], vec2(0, 40), vec2(1500, mlx->screen_size.y - 10), 0x0000FF);
-	add_obj_to_list(&mlx->obj_list, create_obj(LABEL, NULL, 0, vec2(850, 20), vec2(0, 0), 0xFFFFFF, mlx->prompt, NULL));
+	add_obj_to_list(&mlx->obj_list, create_obj(LABEL, NULL, 0, vec2(850, 20), vec2(0, 0), 0xFFFFFF, mlx->dir->prompt, NULL));
 	cursor = files;
 	while (files)
 	{
@@ -52,7 +52,7 @@ char	*get_texture(t_dir_files *files)
 	return (NULL);
 }
 
-char	*choose_texture_window(char *prompt)
+char	*choose_texture_window(char *prompt, char *extension)
 {
 	t_mlx		*mlx;
 	char		*texture;
@@ -61,16 +61,19 @@ char	*choose_texture_window(char *prompt)
 
 	texture = NULL;
 	mlx = setup_mlx("CHOOSE TEXTURE", vec2(0, 0));
-	mlx->files = get_files_from_dir(".");
-	mlx->cur_dir = ft_strdup(".");
-	mlx->prompt = prompt;
+	mlx->dir = ft_calloc(1, sizeof(t_mlx_dir));
+	mlx->dir->extension = ft_strdup(extension);
+	mlx->dir->extension_prompt = ft_strjoin("file extension must be ", extension);
+	mlx->dir->files = get_files_from_dir(".");
+	mlx->dir->cur_dir = ft_strdup(".");
+	mlx->dir->prompt = prompt;
 	new_image(mlx, mlx->screen_size, vec2(0, 0));
 	mlx_hook(mlx->win, ON_KEYDOWN, 1L << 0, _input_file, mlx);
 	mlx_hook(mlx->win, ON_DESTROY, 0, fun_exit, mlx->mlx);
-	draw_files_window(mlx->files, mlx);
+	draw_files_window(mlx->dir->files, mlx);
 	mlx_loop(mlx->mlx);
-	texture = get_texture(mlx->files);
-	tmp2 = ft_strjoin(mlx->cur_dir, "/");
+	texture = get_texture(mlx->dir->files);
+	tmp2 = ft_strjoin(mlx->dir->cur_dir, "/");
 	tmp = ft_strjoin(tmp2, texture);
 	free(tmp2);
 	free(texture);

@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 16:43:45 by dfeve             #+#    #+#             */
-/*   Updated: 2025/10/03 02:06:34 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/10/10 22:45:10 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,22 @@ typedef struct	s_directory_file
 	struct s_directory_file	*prev;
 }	t_dir_files;
 
+typedef struct s_mlx_dir
+{
+	t_dir_files			*files;
+	char				*cur_dir;
+	char				*prompt;
+	char				*extension;
+	char				*extension_prompt;
+}	t_mlx_dir;
+
+
 t_dir_files	*get_files_from_dir(char *dir);
-char		*choose_texture_window(char *prompt);
+char		*choose_texture_window(char *prompt, char *extension);
 void		draw_files_window(t_dir_files *files, t_mlx *mlx);
 void		free_dir_files(t_dir_files *files);
 int			check_get_texture(t_dir_files *files);
+
+int			check_extension(char *filename, char *extension);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 20:33:25 by dfeve             #+#    #+#             */
-/*   Updated: 2025/09/24 17:54:35 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/10/10 22:55:35 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,7 +168,7 @@ float			ft_fclampf(float *nb, float min, float max);
 int				rgb_to_hex(char *rgb);
 char			*rgb_to_str(unsigned int r, unsigned int g, unsigned int b);
 void			draw_tab(char **map);
-
+void			ft_free_tab(char **tab);
 //////////////////--DEBUG--////////////////////////////
 
 t_debug_obj		*new_debug_obj(debug_type type, t_vector2 start, t_vector2 end, unsigned int color);

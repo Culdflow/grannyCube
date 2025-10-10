@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 20:07:34 by dfeve             #+#    #+#             */
-/*   Updated: 2025/10/03 01:59:29 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/10/10 22:43:07 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 typedef struct s_animation t_animation;
 typedef struct s_animation_player t_animation_player;
 typedef struct s_directory_file t_dir_files;
+typedef struct s_mlx_dir t_mlx_dir;
 
 typedef struct s_img
 {
@@ -57,9 +58,7 @@ typedef struct s_mlx
 	t_entity			*entities_on_screen;
 	t_vector2			mouse_pos;
 	int					dov;
-	t_dir_files			*files;
-	char				*cur_dir;
-	char				*prompt;
+	t_mlx_dir			*dir;
 }	t_mlx;
 
 ////////////////////////---RENDER---//////////////////////////////////////////

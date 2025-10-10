@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 23:56:16 by dfeve             #+#    #+#             */
-/*   Updated: 2025/09/24 17:53:58 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/10/10 22:54:56 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,20 @@ int	rgb_to_hex(char *rgb)
 	b = ft_atoi(tab[2]);
 	ft_free_tab(tab);
 	return ((r * rec_pwr(16, 4)) + (g * rec_pwr(16, 2)) + b);
+}
+
+void	ft_free_tab(char **tab)
+{
+	int	i;
+
+	i = 0;
+	if (!tab)
+		return ;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
 }
 

@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:50:57 by dfeve             #+#    #+#             */
-/*   Updated: 2025/10/03 01:49:48 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/10/10 22:56:28 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,23 @@ void	free_dir_files(t_dir_files *files)
 		free(cursor);
 		cursor = tmp;
 	}
+}
+
+int	check_extension(char *filename, char *extension)
+{
+	char **split;
+
+	split = ft_split(filename, '.');
+	if (!split || !split[1])
+	{
+		ft_free_tab(split);
+		return (FALSE);
+	}
+	if (ft_strlen(split[1]) == ft_strlen(extension) && ft_strncmp(split[1], extension, ft_strlen(extension)) == 0)
+	{
+		ft_free_tab(split);
+		return (TRUE);
+	}
+	ft_free_tab(split);
+	return (FALSE);
 }

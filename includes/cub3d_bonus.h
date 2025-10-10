@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 05:34:38 by mabdessm          #+#    #+#             */
-/*   Updated: 2025/09/30 17:50:39 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/10/10 22:41:58 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # define M_2PI M_PI / 2
 # define M_3PI 3 * M_PI / 2
 # define FOG_TEXT "textures/fog_texture.xpm"
+
 
 typedef enum	directions
 {
