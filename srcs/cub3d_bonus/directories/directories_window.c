@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 18:14:01 by dfeve             #+#    #+#             */
-/*   Updated: 2025/10/10 22:47:03 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/10/13 17:48:16 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ char	*choose_texture_window(char *prompt, char *extension)
 	mlx->dir->extension_prompt = ft_strjoin("file extension must be ", extension);
 	mlx->dir->files = get_files_from_dir(".");
 	mlx->dir->cur_dir = ft_strdup(".");
-	mlx->dir->prompt = prompt;
+	mlx->dir->prompt = ft_strdup(prompt);
 	new_image(mlx, mlx->screen_size, vec2(0, 0));
 	mlx_hook(mlx->win, ON_KEYDOWN, 1L << 0, _input_file, mlx);
 	mlx_hook(mlx->win, ON_DESTROY, 0, fun_exit, mlx->mlx);
@@ -77,6 +77,7 @@ char	*choose_texture_window(char *prompt, char *extension)
 	tmp = ft_strjoin(tmp2, texture);
 	free(tmp2);
 	free(texture);
+	free_mlx_dir(mlx->dir);
 	texture = tmp;
 	free_mlx(mlx);
 	return (texture);

@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 15:33:44 by mabdessm          #+#    #+#             */
-/*   Updated: 2025/09/24 16:27:08 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/10/13 17:47:21 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,6 @@ void	double_free(char *str1, char *str2)
 {
 	free (str1);
 	free (str2);
-}
-
-void	ft_free_tab(char **str)
-{
-	int	i;
-
-	i = -1;
-	if (!str)
-		return ;
-	while (str[++i])
-		free (str[i]);
-	free (str);
 }
 
 int	invalid_character(char c)
