@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 20:16:16 by dfeve             #+#    #+#             */
-/*   Updated: 2025/10/01 19:22:34 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/10/28 16:30:32 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,8 @@ void	draw_board(t_mlx *mlx, int	color1, char **board, t_vector2 board_size)
 				draw_rectangle(&mlx->imgs[0], add_vec2(start, vec2(20, 20)), add_vec2(end, vec2(20, 20)), color1);
 			else if (board[cursor.y][cursor.x] == 'N')
 				draw_rectangle(&mlx->imgs[0], add_vec2(start, vec2(20, 20)), add_vec2(end, vec2(20, 20)), 0xFF0000);
+			else if (board[cursor.y][cursor.x] == 'F')
+				draw_rectangle(&mlx->imgs[0], add_vec2(start, vec2(20, 20)), add_vec2(end, vec2(20, 20)), 0x0000FF);
 			cursor.x++;
 		}
 		cursor.y++;

@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 00:53:10 by dfeve             #+#    #+#             */
-/*   Updated: 2025/10/13 20:20:39 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/10/28 16:29:15 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,16 @@ int	_input(int keycode, void *void_mlx)
 	if (keycode == K_X)
 	{
 		mlx->turning_to = 'N';
+		del_images(mlx);
+		board_clicked(mlx->mouse_pos, mlx->board_size, mlx->board, mlx->turning_to);
+		new_image(mlx, mlx->screen_size, vec2(0, 0));
+		draw_board(mlx, 0xFFFFFF, mlx->board, mlx->board_size);
+		put_imgs(mlx);
+		draw_object_list(mlx, mlx->obj_list);
+	}
+	if (keycode == K_E)
+	{
+		mlx->turning_to = 'F';
 		del_images(mlx);
 		board_clicked(mlx->mouse_pos, mlx->board_size, mlx->board, mlx->turning_to);
 		new_image(mlx, mlx->screen_size, vec2(0, 0));

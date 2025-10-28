@@ -1,18 +1,18 @@
-NO ./maps/../textures/east_texture.xpm
-EA ./.vscode/../textures/west_texture.xpm
-SO ./textures/west_texture.xpm
-WE ./textures/fog_texture.xpm
-F 0, 0, 0
-C 0, 0, 0
+NO ./textures/north_texture.xpm
+EA ./textures/test_texture.xpm
+SO ./textures/HUD/../muhammad.xpm
+WE ./textures/east_texture.xpm
+F 100, 227, 193
+C 73, 59, 21
 
            
  1111111111
- 1001000101
- 1001010101
- 1001010101
- 1001010101
- 1001N10101
- 1001010101
- 1011010101
- 1000010001
+ 1000001001
+ 100000F001
+ 10N0001001
+ 1000001001
+ 1000001001
+ 100000F001
+ 1000001001
+ 1000001001
  1111111111
