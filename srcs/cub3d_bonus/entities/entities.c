@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 18:05:25 by dfeve             #+#    #+#             */
-/*   Updated: 2025/09/24 18:18:46 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/10/13 23:39:30 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,15 @@ t_entity	*get_last_entity(t_entity *lst)
 	return (cursor);
 }
 
-void	add_entity(t_entity *lst, t_vector2 pos, t_animation_player *player)
+void	add_entity(t_entity **lst, t_vector2 pos, t_animation_player *player)
 {
 	t_entity	*cursor;
 
-	cursor = get_last_entity(lst);
-	cursor->next = new_entity(pos, player);
+	cursor = get_last_entity(*lst);
+	if (cursor = NULL)
+		*lst = new_entity(pos, player);
+	else
+		cursor->next = new_entity(pos, player);
 }
 
 t_entity	*get_entity_from_pos(t_vector2 pos, t_entity *lst)

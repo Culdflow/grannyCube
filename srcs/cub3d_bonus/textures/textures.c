@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 17:11:23 by dfeve             #+#    #+#             */
-/*   Updated: 2025/07/30 00:06:22 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/10/28 14:27:06 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ t_textures	*new_textures(unsigned int floor_color, unsigned int ceiling_color, t
 	result->south_texture = create_img(data->path_to_the_south_texture, data->mlx);
 	result->east_texture = create_img(data->path_to_the_east_texture, data->mlx);
 	result->west_texture = create_img(data->path_to_the_west_texture, data->mlx);
+	result->door_texture = create_img("textures/door.xpm", data->mlx);
 	result->fog_texture = create_img(FOG_TEXT, data->mlx);
 	return (result);
 }

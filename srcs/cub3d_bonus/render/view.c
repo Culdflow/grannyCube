@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 05:44:21 by dfeve             #+#    #+#             */
-/*   Updated: 2025/10/10 22:24:24 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/10/28 14:53:59 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ float	find_x_for_img(t_ray *ray, t_img img)
 {
 	float	mul_vector;
 
-	if (ray->wall_hit_dir == NORTH || ray->wall_hit_dir == SOUTH || ray->wall_hit_dir == FOG_NORTH_SOUTH)
+	if (ray->wall_hit_dir == NORTH || ray->wall_hit_dir == SOUTH || ray->wall_hit_dir == FOG_NORTH_SOUTH || ray->wall_hit_dir == DOOR_NORTH_SOUTH)
 		mul_vector = ft_fmodulf((float)ray->end_pos.x, 100) / 100;
 	else
 		mul_vector = ft_fmodulf((float)ray->end_pos.y, 100) / 100;
@@ -43,7 +43,7 @@ void	put_texture_line(t_ray *ray, int line_height, t_vector2 line_start_pos, t_i
 		{
 			if (ray->wall_hit_dir == FOG_NORTH_SOUTH || ray->wall_hit_dir == FOG_EAST_WEST)
 				my_mlx_pixel_put(&mlx->imgs[0], x, y, get_pixel_img(img, x, y - line_start_pos.y));
-			else if (ray->wall_hit_dir == NORTH || ray->wall_hit_dir == WEST)
+			else if (ray->wall_hit_dir == NORTH || ray->wall_hit_dir == WEST || ray->wall_hit_dir == DOOR_NORTH_SOUTH)
 				my_mlx_pixel_put(&mlx->imgs[0], x, y, get_pixel_img(img, (int)img_x, (int)img_y));
 			else
 				my_mlx_pixel_put(&mlx->imgs[0], x, y, (get_pixel_img(img, img.size.x - (int)img_x, (int)img_y) & 0xfefefe) >> 1);
@@ -62,6 +62,8 @@ void	draw_3d_line(t_data *data, int line_height, t_vector2 line_start_pos, t_ray
 		put_texture_line(cursor, line_height, line_start_pos, *(data->textures->east_texture), data->mlx);
 	else if (cursor->wall_hit_dir == WEST)
 		put_texture_line(cursor, line_height, line_start_pos, *(data->textures->west_texture), data->mlx);
+	else if (cursor->wall_hit_dir == DOOR_NORTH_SOUTH || cursor->wall_hit_dir == DOOR_EAST_WEST)
+		put_texture_line(cursor, line_height, line_start_pos, *(data->textures->door_texture), data->mlx);
 	else
 		put_texture_line(cursor, line_height, line_start_pos, *(data->textures->fog_texture), data->mlx);	
 }

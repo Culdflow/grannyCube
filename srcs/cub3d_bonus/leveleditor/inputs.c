@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 00:53:10 by dfeve             #+#    #+#             */
-/*   Updated: 2025/10/13 17:46:12 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/10/13 20:20:39 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,12 @@ int	_input_file(int keycode, t_mlx *mlx)
 		{
 			if (keycode == K_AR_D && cursor->next)
 			{
-				printf("down\n");
 				cursor->on_cursor = FALSE;
 				cursor->next->on_cursor = TRUE;
 				break ;
 			}
 			if (keycode == K_AR_U && cursor->prev)
 			{
-				printf("up\n");
 				cursor->on_cursor = FALSE;
 				cursor->prev->on_cursor = TRUE;
 			}

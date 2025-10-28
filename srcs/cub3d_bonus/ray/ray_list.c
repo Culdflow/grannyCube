@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 03:05:49 by dfeve             #+#    #+#             */
-/*   Updated: 2025/08/25 16:43:30 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/10/28 16:06:33 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,21 @@ t_ray_list	*new_ray_list(int fov, int base_angle, t_vector2 start_pos, t_mlx *ml
 		angle += (((float)(fov) / (float)mlx->screen_size.x) * 4);
 	}
 	return (result);
+}
+
+t_ray *get_ray(t_ray_list *lst, int nb)
+{
+	int			i;
+	t_ray	*cursor;
+
+	i = 0;
+	cursor = lst->ray_list;
+	while (cursor && i < nb)
+	{
+		cursor = cursor->next_ray;
+		i++;
+	}
+	return (cursor);
 }
 
 void	draw_ray_list(t_ray_list *ray_list, t_vector2 start_pos, t_mlx *mlx)

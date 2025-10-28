@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 20:07:34 by dfeve             #+#    #+#             */
-/*   Updated: 2025/10/10 22:43:07 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/10/28 16:03:12 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,11 @@ typedef struct s_mlx
 	t_debug_obj			*debug_lst;
 	t_animation			*HUD;
 	t_animation_player	*HUD_CHAR;
-	t_entity			*entities_on_screen;
+	t_entity			*entity;
 	t_vector2			mouse_pos;
 	int					dov;
 	t_mlx_dir			*dir;
+	int					is_interracting;
 }	t_mlx;
 
 ////////////////////////---RENDER---//////////////////////////////////////////

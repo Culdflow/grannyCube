@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 15:33:44 by mabdessm          #+#    #+#             */
-/*   Updated: 2025/10/13 17:47:21 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/10/28 14:23:36 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	double_free(char *str1, char *str2)
 int	invalid_character(char c)
 {
 	if (c != '0' && c != '1' && c != 'N' && c != 'S' && c != 'E' && c != '\n'
-		&& c != 'W' && c != ' ' && c != 'G')
+		&& c != 'W' && c != ' ' && c != 'G' && c != 'O' && c != 'F')
 		return (1);
 	return (0);
 }

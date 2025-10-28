@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 23:23:41 by dfeve             #+#    #+#             */
-/*   Updated: 2025/09/14 19:53:43 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/10/28 16:03:23 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ t_mlx	*setup_mlx(char *name, t_vector2 minimap_size)
 	mlx->imgs[0].img = NULL;
 	mlx->is_clicking = FALSE;
 	mlx->screen_size = screen_size;
+	// mlx->entity = new_entity(vec2(55, 55), )
 	mlx->board = NULL;
 	mlx->obj_list = NULL;
 	mlx->minimap_size = minimap_size;
@@ -35,6 +36,7 @@ t_mlx	*setup_mlx(char *name, t_vector2 minimap_size)
 	hud_char(mlx);
 	mlx->HUD = hud(mlx);
 	mlx->dov = 3;
+	mlx->is_interracting = FALSE;
 	return (mlx);
 }
 

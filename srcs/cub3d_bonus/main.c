@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 01:26:04 by mabdessm          #+#    #+#             */
-/*   Updated: 2025/10/03 02:15:29 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/10/28 16:27:47 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	init_data(t_data *data, char *file)
 	data->number_of_ea = 0;
 	data->number_of_f = 0;
 	data->number_of_c = 0;
+	data->number_of_g = 1;
 	data->number_of_players = 0;
 	data->invalid_floor_color = 0;
 	data->path_to_the_north_texture = NULL;
@@ -114,6 +115,34 @@ void	check_keys(t_data *data)
 		switch_anim(data->mlx->HUD_CHAR, "state_2");
 	if (data->keys[K_L] == TRUE)
 		switch_anim(data->mlx->HUD_CHAR, "state_3");
+	if (data->keys[K_E] == TRUE)
+		data->mlx->is_interracting = TRUE;
+	else
+		data->mlx->is_interracting = FALSE;
+}
+
+
+
+void	check_door(t_data *data)
+{
+	float	rad;
+	float	new_x;
+	float	new_y;
+
+	rad = (data->player->angle * M_PI) / 180;
+	new_x = 200 * cos(rad);
+	new_y = 200 * sin(rad);
+	new_x += data->player->x;
+	new_y += data->player->y;
+	if ((data->mlx->board[(int)new_y / 100][(int)new_x / 100] == 'O'
+		|| data->mlx->board[(int)new_y / 100][(int)new_x / 100] == 'F') && data->mlx->is_interracting)
+		{
+			if (data->mlx->board[(int)new_y / 100][(int)new_x / 100] == 'O')
+				data->mlx->board[(int)new_y / 100][(int)new_x / 100] = 'F';
+			else
+				data->mlx->board[(int)new_y / 100][(int)new_x / 100] = 'O';
+			data->mlx->is_interracting = FALSE;
+		}
 }
 
 void	mouse_pos(t_data *data)
@@ -160,6 +189,7 @@ int	draw_textures(t_data *data)
 	last = now;
 	del_images(data->mlx);
 	check_keys(data);
+	check_door(data);
 	mouse_pos(data);
 	new_image(data->mlx, data->mlx->screen_size, vec2(0, 0));
 	data->ray_list = new_ray_list(60, data->player->angle, vec2((int)data->player->x, (int)data->player->y), data->mlx);

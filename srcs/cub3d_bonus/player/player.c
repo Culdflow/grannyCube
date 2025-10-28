@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 01:36:44 by dfeve             #+#    #+#             */
-/*   Updated: 2025/08/21 19:07:55 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/10/28 14:54:27 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	is_player_colliding(float new_x, float new_y, t_data *data)
 
 	map_pos = vec2(new_x / 100, new_y / 100);
 	clamp_vec2(&map_pos, vec2(0, 0), data->mlx->board_size);
-	if (data->mlx->board[map_pos.y][map_pos.x] != '1')
+	if (data->mlx->board[map_pos.y][map_pos.x] != '1' && data->mlx->board[map_pos.y][map_pos.x] != 'F')
 		return (FALSE);
 	return (TRUE);
 }

@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 19:18:41 by dfeve             #+#    #+#             */
-/*   Updated: 2025/10/03 02:28:25 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/10/28 14:37:26 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ t_vector2	ray_check_horizontal_lines(t_vector2 start_pos, float angle, t_mlx *ml
 	{
 		int grid_x = (int)(rx / 100);
 		int grid_y = (int)(ry / 100);
-		if (mlx->board[grid_y][grid_x] == '1' || dov >= mlx->dov)
+		if (mlx->board[grid_y][grid_x] == '1' || dov >= mlx->dov || mlx->board[grid_y][grid_x] == 'F')
 			break ;
 		rx += ox;
 		ry += oy;
@@ -132,7 +132,7 @@ t_vector2	ray_check_vertical_lines(t_vector2 start_pos, float angle, t_mlx *mlx)
 	{
 		int grid_x = (int)(rx / 100);
 		int grid_y = (int)(ry / 100);
-		if (mlx->board[grid_y][grid_x] == '1' || dov >= mlx->dov)
+		if (mlx->board[grid_y][grid_x] == '1' || dov >= mlx->dov || mlx->board[grid_y][grid_x] == 'F')
 			break ;
 		rx += ox;
 		ry += oy;
@@ -182,6 +182,13 @@ t_ray	*new_ray(t_vector2 start_pos, float angle, t_mlx *mlx)
 			result->wall_hit_dir = FOG_NORTH_SOUTH;
 		else
 			result->wall_hit_dir = FOG_EAST_WEST;
+	}
+	if (mlx->board[result->end_pos.y / 100][result->end_pos.x / 100] == 'F')
+	{
+		if (result->wall_hit_dir == NORTH || result->wall_hit_dir == SOUTH)
+			result->wall_hit_dir = DOOR_NORTH_SOUTH;
+		else
+			result->wall_hit_dir = DOOR_EAST_WEST;
 	}
 	result->next_ray = NULL;
 	return (result);

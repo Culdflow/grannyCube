@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 05:34:38 by mabdessm          #+#    #+#             */
-/*   Updated: 2025/10/10 22:41:58 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/10/28 16:07:26 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,9 @@ typedef enum	directions
 	WEST,
 	SOUTH,
 	FOG_NORTH_SOUTH,
-	FOG_EAST_WEST
+	FOG_EAST_WEST,
+	DOOR_NORTH_SOUTH,
+	DOOR_EAST_WEST
 }	e_dir;
 
 typedef struct	s_player_collisions
@@ -102,6 +104,7 @@ typedef struct s_textures
 	t_img			*east_texture;
 	t_img			*west_texture;
 	t_img			*fog_texture;
+	t_img			*door_texture;
 }	t_textures;
 
 
@@ -126,7 +129,9 @@ typedef struct s_data
 	int			number_of_ea;
 	int			number_of_f;
 	int			number_of_c;
+	int			number_of_g;
 	int			number_of_players;
+	char		*g_an;
 	t_player	*player;
 	t_ray_list	*ray_list;
 	t_textures	*textures;
@@ -212,6 +217,7 @@ void			draw_ray(t_vector2 start_pos, t_ray *ray, t_mlx *mlx);
 t_ray_list		*new_ray_list(int fov, int base_angle, t_vector2 start_pos, t_mlx *mlx);
 void			draw_ray_list(t_ray_list *ray_list, t_vector2 start_pos, t_mlx *mlx);
 void			free_ray_list(t_ray_list **ray_list);
+t_ray 			*get_ray(t_ray_list *lst, int nb);
 
 //////////////////--VIEW--////////////////////////////
 

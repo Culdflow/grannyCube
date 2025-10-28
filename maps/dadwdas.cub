@@ -1,0 +1,20 @@
+NO ./textures/./south_texture.xpm
+EA ./textures/fog_texture.xpm
+SO ./textures/anim/HUD/../../test_texture.xpm
+WE ./textures/muhammad.xpm
+F 90, 69, 150
+C 94, 213, 160
+
+              
+ 1111111111111
+ 1000100001001
+ 1000100001001
+ 1000101111001
+ 1000000001001
+ 1000000001001
+ 100000N001001
+ 1000000000001
+ 1000000001001
+ 1000000001001
+ 1000000001001
+ 1111111111111

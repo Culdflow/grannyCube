@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabdessm <mabdessm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 15:31:22 by mabdessm          #+#    #+#             */
-/*   Updated: 2025/06/03 16:01:26 by mabdessm         ###   ########.fr       */
+/*   Updated: 2025/10/13 23:26:24 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ char	**buffer_errors(char *buffer, t_data *data)
 			return_error("Map has multiple F elements!");
 		else if (data->number_of_c > 1)
 			return_error("Map has multiple C elements!");
+		else if (data->number_of_g > 1)
+			return_error("Map has multiple G elements!");
 		else if (no_element(data))
 			more_error_messages(data);
 		else
