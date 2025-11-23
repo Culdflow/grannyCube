@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animation_player.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 19:30:05 by dfeve             #+#    #+#             */
-/*   Updated: 2025/10/03 02:12:49 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/11/10 16:19:26 by jpecquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,20 @@ void	switch_anim(t_animation_player *player, char *tag)
 		player->current_anim = anim;
 }
 
+void	free_anim(char **anim)
+{
+	int		i;
+
+	i = 0;
+	while (anim[i] != NULL)
+	{
+		free(anim[i]);
+		i++;
+	}
+	free(anim);
+	anim = NULL;
+}
+
 t_animation	*hud(t_mlx *mlx)
 {
 	t_animation	*result;
@@ -51,9 +65,10 @@ t_animation	*hud(t_mlx *mlx)
 	anim = file_load_frames("textures/anim/HUD/HUD.an");
 	result = new_anim("HUD", anim, 4, vec2(0, 0), mlx);
 	result->loop = TRUE;
-	free(anim);
+	free_anim(anim);
 	return (result);
 }
+
 void	hud_char(t_mlx *mlx)
 {
 	t_animation	*result;
@@ -64,16 +79,16 @@ void	hud_char(t_mlx *mlx)
 	anim = file_load_frames("textures/anim/HUD/HUD_state_1.an");
 	result = new_anim("state_1", anim, 1, vec2(0, 0), mlx);
 	result->loop = TRUE;
-	free(anim);
+	free_anim(anim);
 	mlx->HUD_CHAR = new_animation_player(result, vec2(0, 0));
 	anim = file_load_frames("textures/anim/HUD/HUD_state_2.an");
 	result_state_2 = new_anim("state_2", anim, 1, vec2(0, 0), mlx);
 	result_state_2->loop = TRUE;
-	free(anim);
+	free_anim(anim);
 	add_animation(mlx->HUD_CHAR, result_state_2);
 	anim = file_load_frames("textures/anim/HUD/HUD_state_3.an");
 	result_state_3 = new_anim("state_3", anim, 4, vec2(0, 0), mlx);
 	result_state_3->loop = TRUE;
-	free(anim);
+	free_anim(anim);
 	add_animation(mlx->HUD_CHAR, result_state_3);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 23:23:41 by dfeve             #+#    #+#             */
-/*   Updated: 2025/10/28 16:03:23 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/11/23 08:46:04 by jpecquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,32 @@ t_mlx	*setup_mlx(char *name, t_vector2 minimap_size)
 
 void	free_mlx(t_mlx *mlx)
 {
+	t_frame	*tmp;
+
 	if (mlx->board)
 		free_tab(mlx->board, mlx->board_size);
 	free_object_list(mlx->obj_list);
 	del_images(mlx);
 	mlx_destroy_window(mlx->mlx, mlx->win);
 	mlx_destroy_display(mlx->mlx);
+	tmp = mlx->HUD->frames->next;
+	while(tmp)
+	{
+		free(mlx->HUD->frames);
+		mlx->HUD->frames = tmp;
+		tmp = mlx->HUD->frames->next;
+	}
+	free(mlx->HUD->frames);
+	//free(mlx->HUD);
+	// tmp = mlx->HUD_CHAR->anim_list->frames;
+	// while(tmp)
+	// {
+	// 	free(mlx->HUD_CHAR->anim_list->frames);
+	// 	mlx->HUD_CHAR->anim_list->frames = tmp;
+	// 	tmp = mlx->HUD_CHAR->anim_list->frames->next;
+	// }
+	free(mlx->HUD_CHAR->anim_list->frames);
+	free(mlx->HUD_CHAR);
 	free(mlx->mlx);
 	free(mlx);
 }
