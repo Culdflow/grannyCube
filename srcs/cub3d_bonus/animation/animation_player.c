@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animation_player.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 19:30:05 by dfeve             #+#    #+#             */
-/*   Updated: 2025/11/10 16:19:26 by jpecquer         ###   ########.fr       */
+/*   Updated: 2025/11/25 18:17:14 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,3 +92,4 @@ void	hud_char(t_mlx *mlx)
 	free_anim(anim);
 	add_animation(mlx->HUD_CHAR, result_state_3);
 }
+

@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 20:07:34 by dfeve             #+#    #+#             */
-/*   Updated: 2025/10/28 16:03:12 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/11/25 18:58:23 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <math.h>
+# include <time.h>
+# include <sys/time.h>
 # include <fcntl.h>
 # include "utils.h"
 # include "entities.h"

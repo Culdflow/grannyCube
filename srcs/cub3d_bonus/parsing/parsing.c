@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 15:29:42 by mabdessm          #+#    #+#             */
-/*   Updated: 2025/10/13 23:34:51 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/11/25 17:16:53 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,8 @@ void	refill_map(char ***map_ptr)
 	unsigned int	i;
 	unsigned int	j;
 
+	if (!(*map_ptr))
+		return ;
 	map = *map_ptr;
 	new_map = malloc(sizeof(char *) * (ft_strstrlen(map) + 2 + 1));
 	if (!new_map)

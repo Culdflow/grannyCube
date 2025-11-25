@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animation.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 16:54:51 by dfeve             #+#    #+#             */
-/*   Updated: 2025/11/20 14:29:20 by jpecquer         ###   ########.fr       */
+/*   Updated: 2025/11/25 18:17:39 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,37 @@ void	draw_frame(t_animation *animation, t_mlx *mlx, int frame)
 				animation->frames->current_frame = frame_temp;
 		else if (animation->loop)
 			animation->frames->current_frame = animation->frames;
+	}
+}
+
+void	free_frame_struct(t_frame *frame)
+{
+	t_frame	*cursor;
+	t_frame	*tmp;
+
+	cursor = frame;
+	tmp = frame;
+	while (cursor)
+	{
+		tmp = cursor->next;
+		free(cursor->frame);
+		free(cursor);
+		cursor = tmp;
+	}
+}
+
+void	free_animation_struct(t_animation *anim_list)
+{
+	t_animation	*cursor; 
+	t_animation	*tmp;
+
+	cursor = anim_list;
+	tmp = anim_list;
+	while (cursor)
+	{
+		tmp = cursor->next;
+		free_frame_struct(cursor->frames);
+		free(cursor);
+		cursor = tmp;
 	}
 }

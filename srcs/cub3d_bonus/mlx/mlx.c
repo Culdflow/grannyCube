@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 23:23:41 by dfeve             #+#    #+#             */
-/*   Updated: 2025/11/23 08:46:04 by jpecquer         ###   ########.fr       */
+/*   Updated: 2025/11/25 18:42:54 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ t_mlx	*setup_mlx(char *name, t_vector2 minimap_size)
 	mlx->debug_lst = NULL;
 	hud_char(mlx);
 	mlx->HUD = hud(mlx);
-	mlx->dov = 3;
+	mlx->dov = 8;
 	mlx->is_interracting = FALSE;
 	return (mlx);
 }
 
 void	free_mlx(t_mlx *mlx)
 {
-	t_frame	*tmp;
+	// t_frame	*tmp;
 
 	if (mlx->board)
 		free_tab(mlx->board, mlx->board_size);
@@ -50,15 +50,18 @@ void	free_mlx(t_mlx *mlx)
 	del_images(mlx);
 	mlx_destroy_window(mlx->mlx, mlx->win);
 	mlx_destroy_display(mlx->mlx);
-	tmp = mlx->HUD->frames->next;
-	while(tmp)
-	{
-		free(mlx->HUD->frames);
-		mlx->HUD->frames = tmp;
-		tmp = mlx->HUD->frames->next;
-	}
-	free(mlx->HUD->frames);
-	//free(mlx->HUD);
+	free_animation_struct(mlx->HUD);
+	free_animation_struct(mlx->HUD_CHAR->anim_list);
+	free(mlx->HUD_CHAR);
+	// tmp = mlx->HUD->frames->next;
+	// while(tmp)
+	// {
+	// 	free(mlx->HUD->frames);
+	// 	mlx->HUD->frames = tmp;
+	// 	tmp = mlx->HUD->frames->next;
+	// }
+	// free(mlx->HUD->frames);
+	// //free(mlx->HUD);
 	// tmp = mlx->HUD_CHAR->anim_list->frames;
 	// while(tmp)
 	// {
@@ -66,8 +69,8 @@ void	free_mlx(t_mlx *mlx)
 	// 	mlx->HUD_CHAR->anim_list->frames = tmp;
 	// 	tmp = mlx->HUD_CHAR->anim_list->frames->next;
 	// }
-	free(mlx->HUD_CHAR->anim_list->frames);
-	free(mlx->HUD_CHAR);
+	// free(mlx->HUD_CHAR->anim_list->frames);
+	// free(mlx->HUD_CHAR);
 	free(mlx->mlx);
 	free(mlx);
 }

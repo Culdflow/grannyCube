@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 01:26:04 by mabdessm          #+#    #+#             */
-/*   Updated: 2025/10/28 16:27:47 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/11/25 18:58:18 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,7 @@ void	check_door(t_data *data)
 			else
 				data->mlx->board[(int)new_y / 100][(int)new_x / 100] = 'O';
 			data->mlx->is_interracting = FALSE;
+			data->keys[K_E] = FALSE;
 		}
 }
 
@@ -260,6 +261,7 @@ int	main(int argc, char **argv)
 		{
 			free(name);
 			free_data(&data);
+			return (0);
 		}
 		free(name);
 		mlx_mouse_hide(data.mlx->mlx, data.mlx->win);

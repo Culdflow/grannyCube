@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 05:34:38 by mabdessm          #+#    #+#             */
-/*   Updated: 2025/10/28 16:07:26 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/11/25 18:53:55 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
-# include <time.h>
-# include <sys/time.h>
 # include <math.h>
 # include "level_editor.h"
 # include "directories.h"
