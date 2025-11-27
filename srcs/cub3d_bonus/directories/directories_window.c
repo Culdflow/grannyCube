@@ -3,14 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   directories_window.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 18:14:01 by dfeve             #+#    #+#             */
-/*   Updated: 2025/10/13 17:48:16 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/11/26 18:20:25 by jpecquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/cub3d_bonus.h"
+
+t_dir_files	*step_draw_files_window(t_dir_files *files, t_mlx *mlx)
+{
+	draw_rectangle_no_fill(&mlx->imgs[0], vec2(0, 40),
+		vec2(1500, mlx->screen_size.y - 10), 0x0000FF);
+	add_obj_to_list(&mlx->obj_list, create_obj(LABEL, NULL, 0,
+			vec2(850, 20), vec2(0, 0), 0xFFFFFF, mlx->dir->prompt, NULL));
+	return (files);
+}
 
 void	draw_files_window(t_dir_files *files, t_mlx *mlx)
 {
@@ -18,20 +27,23 @@ void	draw_files_window(t_dir_files *files, t_mlx *mlx)
 	int			i;
 
 	i = 0;
-	draw_rectangle_no_fill(&mlx->imgs[0], vec2(0, 40), vec2(1500, mlx->screen_size.y - 10), 0x0000FF);
-	add_obj_to_list(&mlx->obj_list, create_obj(LABEL, NULL, 0, vec2(850, 20), vec2(0, 0), 0xFFFFFF, mlx->dir->prompt, NULL));
-	cursor = files;
+	cursor = step_draw_files_window(files, mlx);
 	while (files)
 	{
 		if (files->status == SELECTED)
-			draw_rectangle(&mlx->imgs[0], vec2(5, 50 + (i * 20)), vec2(1400, 65 + (i * 20)), 0x588ec4);
+			draw_rectangle(&mlx->imgs[0],
+				vec2(5, 50 + (i * 20)), vec2(1400, 65 + (i * 20)), 0x588ec4);
 		if (files->on_cursor)
-			draw_rectangle_no_fill(&mlx->imgs[0], vec2(5, 50 + (i * 20)), vec2(1400, 65 + (i * 20)), 0xFF0000);
+			draw_rectangle_no_fill(&mlx->imgs[0],
+				vec2(5, 50 + (i * 20)), vec2(1400, 65 + (i * 20)), 0xFF0000);
 		if (files->type == T_FILE)
-			add_obj_to_list(&mlx->obj_list, create_obj(LABEL, NULL, 0, vec2(10, 60 + (i * 20)), vec2(0, 0), 0xFFFFFF, files->name, NULL));
+			add_obj_to_list(&mlx->obj_list,
+				create_obj(LABEL, NULL, 0, vec2(10, 60 + (i * 20)),
+					vec2(0, 0), 0xFFFFFF, files->name, NULL));
 		else
-			add_obj_to_list(&mlx->obj_list, create_obj(LABEL, NULL, 0, vec2(10, 60 + (i * 20)), vec2(0, 0), 0x83d2d6, files->name, NULL));
-		i++;
+			add_obj_to_list(&mlx->obj_list,
+				create_obj(LABEL, NULL, 0, vec2(10, 60 + ((i++) * 20)),
+					vec2(0, 0), 0x83d2d6, files->name, NULL));
 		files = files->next;
 	}
 	put_imgs(mlx);
@@ -52,6 +64,17 @@ char	*get_texture(t_dir_files *files)
 	return (NULL);
 }
 
+void	step_choose_texture_window(t_mlx *mlx, char *prompt, char *extension)
+{
+	mlx->dir = ft_calloc(1, sizeof(t_mlx_dir));
+	mlx->dir->extension = ft_strdup(extension);
+	mlx->dir->extension_prompt = ft_strjoin
+		("file extension must be ", extension);
+	mlx->dir->files = get_files_from_dir(".");
+	mlx->dir->cur_dir = ft_strdup(".");
+	mlx->dir->prompt = ft_strdup(prompt);
+}
+
 char	*choose_texture_window(char *prompt, char *extension)
 {
 	t_mlx		*mlx;
@@ -61,12 +84,7 @@ char	*choose_texture_window(char *prompt, char *extension)
 
 	texture = NULL;
 	mlx = setup_mlx("CHOOSE TEXTURE", vec2(0, 0));
-	mlx->dir = ft_calloc(1, sizeof(t_mlx_dir));
-	mlx->dir->extension = ft_strdup(extension);
-	mlx->dir->extension_prompt = ft_strjoin("file extension must be ", extension);
-	mlx->dir->files = get_files_from_dir(".");
-	mlx->dir->cur_dir = ft_strdup(".");
-	mlx->dir->prompt = ft_strdup(prompt);
+	step_choose_texture_window(mlx, prompt, extension);
 	new_image(mlx, mlx->screen_size, vec2(0, 0));
 	mlx_hook(mlx->win, ON_KEYDOWN, 1L << 0, _input_file, mlx);
 	mlx_hook(mlx->win, ON_DESTROY, 0, fun_exit, mlx->mlx);

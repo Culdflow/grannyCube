@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   directories.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:50:57 by dfeve             #+#    #+#             */
-/*   Updated: 2025/10/13 17:44:56 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/11/26 18:26:36 by jpecquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/directories.h"
 
-t_dir_files	*new_dir_file(file_type type, char *name, int on_cursor, t_dir_files *prev)
+t_dir_files	*new_dir_file(file_type type, char *name,
+	int on_cursor, t_dir_files *prev)
 {
 	t_dir_files	*result;
 
@@ -80,7 +81,7 @@ void	free_dir_files(t_dir_files *files)
 
 int	check_extension(char *filename, char *extension)
 {
-	char **split;
+	char	**split;
 
 	split = ft_split(filename, '.');
 	if (!split || !split[1])
@@ -88,7 +89,9 @@ int	check_extension(char *filename, char *extension)
 		ft_free_tab(split);
 		return (FALSE);
 	}
-	if (ft_strlen(split[1]) == ft_strlen(extension) && ft_strncmp(split[1], extension, ft_strlen(extension)) == 0)
+	if (ft_strlen(split[1]) == ft_strlen
+		(extension) && ft_strncmp(split[1], extension,
+			ft_strlen(extension)) == 0)
 	{
 		ft_free_tab(split);
 		return (TRUE);

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   animation_player.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 19:30:05 by dfeve             #+#    #+#             */
-/*   Updated: 2025/11/25 18:17:14 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/11/26 17:56:12 by jpecquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/animation.h"
 
-t_animation_player *new_animation_player(t_animation *animation, t_vector2 pos)
+t_animation_player	*new_animation_player(t_animation *animation, t_vector2 pos)
 {
 	t_animation_player	*result;
 
@@ -23,39 +23,25 @@ t_animation_player *new_animation_player(t_animation *animation, t_vector2 pos)
 	return (result);
 }
 
-void	add_animation(t_animation_player *player, t_animation *anim)
-{
-	t_animation *last_anim;
-	
-	last_anim = anim_get_last(player->anim_list);
-	last_anim->next = anim;
-}
+// void	add_animation(t_animation_player *player, t_animation *anim)
+// {
+// 	t_animation	*last_anim;
 
-void	switch_anim(t_animation_player *player, char *tag)
-{
-	t_animation *anim;
+// 	last_anim = anim_get_last(player->anim_list);
+// 	last_anim->next = anim;
+// }
 
-	if	(ft_strncmp(tag, player->current_anim->anim_tag, ft_strlen(tag)) == 0)
-		return ;
-	printf("looking for tag %s\n", tag);
-	anim = get_anim_with_tag(player->anim_list, tag);
-	if (anim)
-		player->current_anim = anim;
-}
+// void	switch_anim(t_animation_player *player, char *tag)
+// {
+// 	t_animation	*anim;
 
-void	free_anim(char **anim)
-{
-	int		i;
-
-	i = 0;
-	while (anim[i] != NULL)
-	{
-		free(anim[i]);
-		i++;
-	}
-	free(anim);
-	anim = NULL;
-}
+// 	if (ft_strncmp(tag, player->current_anim->anim_tag, ft_strlen(tag)) == 0)
+// 		return ;
+// 	printf("looking for tag %s\n", tag);
+// 	anim = get_anim_with_tag(player->anim_list, tag);
+// 	if (anim)
+// 		player->current_anim = anim;
+// }
 
 t_animation	*hud(t_mlx *mlx)
 {
@@ -92,4 +78,3 @@ void	hud_char(t_mlx *mlx)
 	free_anim(anim);
 	add_animation(mlx->HUD_CHAR, result_state_3);
 }
-

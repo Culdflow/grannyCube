@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   entities.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 18:05:25 by dfeve             #+#    #+#             */
-/*   Updated: 2025/10/13 23:39:30 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/11/26 18:27:02 by jpecquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	add_entity(t_entity **lst, t_vector2 pos, t_animation_player *player)
 	t_entity	*cursor;
 
 	cursor = get_last_entity(*lst);
-	if (cursor = NULL)
+	if (cursor == NULL)
 		*lst = new_entity(pos, player);
 	else
 		cursor->next = new_entity(pos, player);
@@ -60,6 +60,7 @@ t_entity	*get_entity_from_pos(t_vector2 pos, t_entity *lst)
 			return (cursor);
 		cursor = cursor->next;
 	}
-	printf("NO ENTITY FOUND CORRESPONDING TO THIS POS (%d, %d)\n", pos.x, pos.y);
+	printf("NO ENTITY FOUND CORRESPONDING TO THIS POS (%d, %d)\n",
+		pos.x, pos.y);
 	return (NULL);
 }

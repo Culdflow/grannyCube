@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animation_file.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 16:58:38 by dfeve             #+#    #+#             */
-/*   Updated: 2025/10/03 02:12:44 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/11/26 16:39:02 by jpecquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,53 @@ char	**file_load_frames(char *file)
 	result[i] = 0;
 	close(fd);
 	return (result);
+}
+
+void	draw_frame(t_animation *animation, t_mlx *mlx, int frame)
+{
+	t_frame	*frame_temp;
+
+	add_image(mlx, *animation->frames->current_frame->frame);
+	frame_temp = get_frame(animation->frames,
+			animation->frames->current_frame->frame_nb + 1);
+	if (frame == animation->next_frame || animation->next_frame == -1)
+	{
+		animation->next_frame = (frame + (30 / animation->anim_play_time)) % 30;
+		if (frame_temp)
+			animation->frames->current_frame = frame_temp;
+		else if (animation->loop)
+			animation->frames->current_frame = animation->frames;
+	}
+}
+
+void	free_frame_struct(t_frame *frame)
+{
+	t_frame	*cursor;
+	t_frame	*tmp;
+
+	cursor = frame;
+	tmp = frame;
+	while (cursor)
+	{
+		tmp = cursor->next;
+		free(cursor->frame);
+		free(cursor);
+		cursor = tmp;
+	}
+}
+
+void	free_animation_struct(t_animation *anim_list)
+{
+	t_animation	*cursor;
+	t_animation	*tmp;
+
+	cursor = anim_list;
+	tmp = anim_list;
+	while (cursor)
+	{
+		tmp = cursor->next;
+		free_frame_struct(cursor->frames);
+		free(cursor);
+		cursor = tmp;
+	}
 }

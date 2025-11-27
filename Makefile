@@ -6,7 +6,7 @@
 #    By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/04 14:55:29 by mabdessm          #+#    #+#              #
-#    Updated: 2025/11/23 08:47:22 by jpecquer         ###   ########.fr        #
+#    Updated: 2025/11/26 17:57:06 by jpecquer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,6 +63,7 @@ BONUS_SRCS = srcs/cub3d_bonus/main.c \
 		srcs/cub3d_bonus/animation/animation_player.c \
 		srcs/cub3d_bonus/animation/animation.c \
 		srcs/cub3d_bonus/animation/animation_file.c \
+		srcs/cub3d_bonus/animation/animation_utils.c \
 \
 		srcs/cub3d_bonus/directories/directories.c \
 		srcs/cub3d_bonus/directories/directories_window.c \

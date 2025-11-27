@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animation.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 16:54:51 by dfeve             #+#    #+#             */
-/*   Updated: 2025/11/25 18:17:39 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/11/26 16:38:11 by jpecquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_frame	*load_frames(char **frames, t_vector2 pos, t_mlx *mlx)
 {
-	t_frame *result;
+	t_frame	*result;
 	t_frame	*cursor;
 	int		i;
 
@@ -40,7 +40,7 @@ t_frame	*load_frames(char **frames, t_vector2 pos, t_mlx *mlx)
 
 t_frame	*get_frame(t_frame *lst, int frame_nb)
 {
-	t_frame *cursor;
+	t_frame	*cursor;
 
 	cursor = lst;
 	while (cursor && cursor->frame_nb != frame_nb)
@@ -65,7 +65,7 @@ t_animation	*new_anim(char *tag, char **frames, int anim_play_time, t_vector2 po
 
 t_animation	*anim_get_last(t_animation *anim_list)
 {
-	t_animation *cursor;
+	t_animation	*cursor;
 
 	cursor = anim_list;
 	while (cursor && cursor->next)
@@ -86,52 +86,4 @@ t_animation	*get_anim_with_tag(t_animation *anim_list, char *tag)
 		cursor = cursor->next;
 	}
 	return (NULL);
-}
-
-void	draw_frame(t_animation *animation, t_mlx *mlx, int frame)
-{
-	t_frame	*frame_temp;
-
-	add_image(mlx, *animation->frames->current_frame->frame);
-	frame_temp = get_frame(animation->frames, animation->frames->current_frame->frame_nb + 1);
-	if (frame == animation->next_frame || animation->next_frame == -1)
-	{
-		animation->next_frame = (frame + (30 / animation->anim_play_time)) % 30;
-		if (frame_temp)
-				animation->frames->current_frame = frame_temp;
-		else if (animation->loop)
-			animation->frames->current_frame = animation->frames;
-	}
-}
-
-void	free_frame_struct(t_frame *frame)
-{
-	t_frame	*cursor;
-	t_frame	*tmp;
-
-	cursor = frame;
-	tmp = frame;
-	while (cursor)
-	{
-		tmp = cursor->next;
-		free(cursor->frame);
-		free(cursor);
-		cursor = tmp;
-	}
-}
-
-void	free_animation_struct(t_animation *anim_list)
-{
-	t_animation	*cursor; 
-	t_animation	*tmp;
-
-	cursor = anim_list;
-	tmp = anim_list;
-	while (cursor)
-	{
-		tmp = cursor->next;
-		free_frame_struct(cursor->frames);
-		free(cursor);
-		cursor = tmp;
-	}
 }
