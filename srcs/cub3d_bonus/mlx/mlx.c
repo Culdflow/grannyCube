@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 23:23:41 by dfeve             #+#    #+#             */
-/*   Updated: 2025/11/25 18:42:54 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/07 23:33:18 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void	free_mlx(t_mlx *mlx)
 	free_animation_struct(mlx->HUD);
 	free_animation_struct(mlx->HUD_CHAR->anim_list);
 	free(mlx->HUD_CHAR);
+	if (mlx->dir)
+		free_mlx_dir(mlx->dir);
 	// tmp = mlx->HUD->frames->next;
 	// while(tmp)
 	// {

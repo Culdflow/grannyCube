@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 00:54:41 by dfeve             #+#    #+#             */
-/*   Updated: 2025/07/31 01:02:30 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/07 23:26:46 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	mlx_loop_end_signal(void *vmlx, int new_value)
 
 int	fun_exit(t_mlx *mlx)
 {
-	(void)mlx;
+	free_mlx(mlx);
 	exit(0);
 	return (1);
 }

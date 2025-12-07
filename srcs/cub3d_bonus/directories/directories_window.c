@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   directories_window.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 18:14:01 by dfeve             #+#    #+#             */
-/*   Updated: 2025/11/26 18:20:25 by jpecquer         ###   ########.fr       */
+/*   Updated: 2025/12/07 23:32:57 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	draw_files_window(t_dir_files *files, t_mlx *mlx)
 				vec2(5, 50 + (i * 20)), vec2(1400, 65 + (i * 20)), 0xFF0000);
 		if (files->type == T_FILE)
 			add_obj_to_list(&mlx->obj_list,
-				create_obj(LABEL, NULL, 0, vec2(10, 60 + (i * 20)),
+				create_obj(LABEL, NULL, 0, vec2(10, 60 + ((i++) * 20)),
 					vec2(0, 0), 0xFFFFFF, files->name, NULL));
 		else
 			add_obj_to_list(&mlx->obj_list,
@@ -95,7 +95,6 @@ char	*choose_texture_window(char *prompt, char *extension)
 	tmp = ft_strjoin(tmp2, texture);
 	free(tmp2);
 	free(texture);
-	free_mlx_dir(mlx->dir);
 	texture = tmp;
 	free_mlx(mlx);
 	return (texture);

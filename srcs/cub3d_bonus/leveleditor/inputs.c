@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 00:53:10 by dfeve             #+#    #+#             */
-/*   Updated: 2025/10/28 16:29:15 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/07 23:30:01 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	do_if_T_DIRECTORY(t_mlx *mlx, t_dir_files *cursor)
 	mlx->obj_list = NULL;
 }
 
-int	step2_input_file(t_mlx *mlx, t_dir_files *cursor)
+int	step_two_input_file(t_mlx *mlx, t_dir_files *cursor)
 {
 	if (check_extension(cursor->name, mlx->dir->extension) == TRUE)
 	{
@@ -77,7 +77,7 @@ int step_while_input_file(int keycode, t_mlx *mlx, t_dir_files	*cursor)
 				}
 				else
 				{
-					if (step2_input_file(mlx, cursor) == 0)
+					if (step_two_input_file(mlx, cursor) == 0)
 						return (0);
 				}
 			}
@@ -92,6 +92,8 @@ int	_input_file(int keycode, t_mlx *mlx)
 	t_dir_files	*cursor;
 
 	cursor = mlx->dir->files;
+	if (keycode == K_ESC)
+		fun_exit(mlx);
 	if(step_while_input_file(keycode, mlx, cursor) == 0)
 		return (0);
 	del_images(mlx);
