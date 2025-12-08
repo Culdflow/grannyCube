@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 16:58:38 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/08 02:16:51 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/08 02:29:02 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ void	free_frame_struct(t_frame *frame, t_mlx *mlx)
 		else
 			printf("I AM NOT ALIVE\n");
 		mlx_destroy_image(mlx->mlx, cursor->frame->img);
-		free(cursor->frame->img);
 		free(cursor->frame);
 		free(cursor);
 		cursor = tmp;

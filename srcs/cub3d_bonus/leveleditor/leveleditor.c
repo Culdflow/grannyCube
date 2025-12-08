@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 20:07:12 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/07 23:44:56 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/08 02:40:45 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*leveleditor( void )
 	board_size = map_size_window();
 	mlx = editor_window(board_size);
 	write_map(filename, colors, textures, mlx);
-	free_tab(colors, vec2(0, 2));
-	free_tab(textures, vec2(0, 4));
+	free_tab(colors, vec2(1, 6));
+	free_tab(textures, vec2(1, 4));
 	return (filename);
 }
