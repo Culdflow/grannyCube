@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animation.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 16:55:30 by dfeve             #+#    #+#             */
-/*   Updated: 2025/11/26 17:57:55 by jpecquer         ###   ########.fr       */
+/*   Updated: 2025/12/08 01:29:05 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,13 @@ void				hud_char(t_mlx *mlx);
 t_animation			*hud(t_mlx *mlx);
 void				add_animation(t_animation_player *player, t_animation *anim);
 
-void				free_animation_struct(t_animation *anim_list);
 //////////////--ANIMATION_FILE--///////////////////
 
 int					get_file_length(char *file);
 char				**file_load_frames(char *file);
 void				draw_frame(t_animation *animation, t_mlx *mlx, int frame);
-void				free_frame_struct(t_frame *frame);
-void				free_animation_struct(t_animation *anim_list);
+void				free_frame_struct(t_frame *frame, t_mlx *mlx);
+void				free_animation_struct(t_animation *anim_list, t_mlx *mlx);
 //////////////--ANIMATION_UTILS--///////////////////
 void				free_anim(char **anim);
 void				switch_anim(t_animation_player *player, char *tag);

@@ -6,13 +6,13 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 20:07:12 by dfeve             #+#    #+#             */
-/*   Updated: 2025/07/31 01:28:21 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/07 23:44:56 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/cub3d_bonus.h"
 
-char	*leveleditor(void)
+char	*leveleditor( void )
 {
 	t_mlx		*mlx;
 	t_vector2	board_size;

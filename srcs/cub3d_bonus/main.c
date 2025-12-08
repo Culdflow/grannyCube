@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 01:26:04 by mabdessm          #+#    #+#             */
-/*   Updated: 2025/11/25 18:58:18 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/08 02:25:46 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -246,7 +246,6 @@ int	main(int argc, char **argv)
 	if (argc == 1) //for the mandatory part use this main but remove this condition
 	{
 		name = leveleditor();
-		printf("filename = %s\n", name);
 		//tmp = ft_strjoin("maps/", name); //add this once we make level editor put it in maps folder
 		//free(name);
 		//name = tmp;

@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 23:23:41 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/07 23:33:18 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/08 02:23:26 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,15 @@ void	free_mlx(t_mlx *mlx)
 {
 	// t_frame	*tmp;
 
+	mlx_loop_end(mlx->mlx);
 	if (mlx->board)
 		free_tab(mlx->board, mlx->board_size);
-	free_object_list(mlx->obj_list);
 	del_images(mlx);
+	free_object_list(mlx->obj_list);
+	free_animation_struct(mlx->HUD, mlx);
+	free_animation_struct(mlx->HUD_CHAR->anim_list, mlx);
 	mlx_destroy_window(mlx->mlx, mlx->win);
 	mlx_destroy_display(mlx->mlx);
-	free_animation_struct(mlx->HUD);
-	free_animation_struct(mlx->HUD_CHAR->anim_list);
 	free(mlx->HUD_CHAR);
 	if (mlx->dir)
 		free_mlx_dir(mlx->dir);

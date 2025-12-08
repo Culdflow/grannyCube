@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   directories.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:50:57 by dfeve             #+#    #+#             */
-/*   Updated: 2025/11/26 18:26:36 by jpecquer         ###   ########.fr       */
+/*   Updated: 2025/12/08 00:26:35 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,11 @@ t_dir_files	*get_files_from_dir(char *dir)
 	while ((entry = readdir(directories)) != NULL)
 	{
 		if (entry->d_type == 8)
-			add_to_dir_list(&result, T_FILE, entry->d_name);
+			add_to_dir_list(&result, T_FILE, ft_strdup(entry->d_name));
 		else
-			add_to_dir_list(&result, T_DIRECTORY, entry->d_name);
+			add_to_dir_list(&result, T_DIRECTORY, ft_strdup(entry->d_name));
 	}
+	closedir(directories);
 	return (result);
 }
 
@@ -74,6 +75,7 @@ void	free_dir_files(t_dir_files *files)
 	while (cursor)
 	{
 		tmp = cursor->next;
+		free(cursor->name);
 		free(cursor);
 		cursor = tmp;
 	}
@@ -107,4 +109,5 @@ void	free_mlx_dir(t_mlx_dir *dir)
 	free(dir->prompt);
 	free(dir->extension);
 	free(dir->extension_prompt);
+	free(dir);
 }
