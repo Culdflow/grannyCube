@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 20:10:15 by dfeve             #+#    #+#             */
-/*   Updated: 2025/10/03 01:52:59 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/08 23:36:38 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_object	*create_obj(int type, void (*onClick)(void *, int), int value, t_vector
 	result->clickFunc = onClick;
 	result->pos = pos;
 	result->size = size;
-	result->tag  = tag;
+	result->tag  = ft_strdup(tag);
 	result->type = type;
 	result->value = value;
 	result->color = color;
@@ -71,7 +71,10 @@ void	free_object_list(t_object_list *start)
 	{
 		tmp = start->next;
 		if (start->object)
+		{
+			free(start->object->tag);
 			free(start->object);
+		}
 		free(start);
 		start = tmp;
 	}

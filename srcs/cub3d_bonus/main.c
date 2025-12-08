@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 01:26:04 by mabdessm          #+#    #+#             */
-/*   Updated: 2025/12/08 02:25:46 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/08 23:16:14 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,22 +128,28 @@ void	check_door(t_data *data)
 	float	rad;
 	float	new_x;
 	float	new_y;
+	int		dist;
 
+	dist = 100;
 	rad = (data->player->angle * M_PI) / 180;
-	new_x = 200 * cos(rad);
-	new_y = 200 * sin(rad);
-	new_x += data->player->x;
-	new_y += data->player->y;
-	if ((data->mlx->board[(int)new_y / 100][(int)new_x / 100] == 'O'
-		|| data->mlx->board[(int)new_y / 100][(int)new_x / 100] == 'F') && data->mlx->is_interracting)
-		{
-			if (data->mlx->board[(int)new_y / 100][(int)new_x / 100] == 'O')
-				data->mlx->board[(int)new_y / 100][(int)new_x / 100] = 'F';
-			else
-				data->mlx->board[(int)new_y / 100][(int)new_x / 100] = 'O';
-			data->mlx->is_interracting = FALSE;
-			data->keys[K_E] = FALSE;
-		}
+	while (dist <= 200)
+	{
+		new_x = dist * cos(rad);
+		new_y = dist * sin(rad);
+		new_x += data->player->x;
+		new_y += data->player->y;
+		if ((data->mlx->board[(int)new_y / 100][(int)new_x / 100] == 'O'
+			|| data->mlx->board[(int)new_y / 100][(int)new_x / 100] == 'F') && data->mlx->is_interracting)
+			{
+				if (data->mlx->board[(int)new_y / 100][(int)new_x / 100] == 'O')
+					data->mlx->board[(int)new_y / 100][(int)new_x / 100] = 'F';
+				else
+					data->mlx->board[(int)new_y / 100][(int)new_x / 100] = 'O';
+				data->mlx->is_interracting = FALSE;
+				data->keys[K_E] = FALSE;
+			}
+		dist += 100;
+	}
 }
 
 void	mouse_pos(t_data *data)
@@ -156,12 +162,10 @@ void	mouse_pos(t_data *data)
 	if (data->mouseX < 10)
 	{
 		mlx_mouse_move(data->mlx->mlx, data->mlx->win, data->mlx->screen_size.x - 10, data->mlx->screen_size.y / 2);
-		// data->old_mouseX = 0;
 	}
 	if (data->mouseX > data->mlx->screen_size.x - 10)
 	{
 		mlx_mouse_move(data->mlx->mlx, data->mlx->win, 10, data->mlx->screen_size.y / 2);
-		// data->old_mouseX = data->mlx->screen_size.x;
 	}
 	look_player_mouse(data->player, data->mouseX - data->old_mouseX);
 	if (data->mouseX > data->mlx->screen_size.x - 10)
@@ -197,7 +201,6 @@ int	draw_textures(t_data *data)
 	draw_floor_ceiling(data, data->mlx->screen_size, data->textures);
 	draw_3d_view(data, data->mlx->screen_size);
 	draw_minimap(data);
-	//draw_ray_list(data->ray_list, div_vec2(data->mlx->minimap_size, vec2(2, 2)), data->mlx);
 	draw_player(data->player, data->mlx);
 	draw_frame(data->mlx->HUD, data->mlx, frame);
 	draw_frame(data->mlx->HUD_CHAR->current_anim, data->mlx, frame);
@@ -246,10 +249,6 @@ int	main(int argc, char **argv)
 	if (argc == 1) //for the mandatory part use this main but remove this condition
 	{
 		name = leveleditor();
-		//tmp = ft_strjoin("maps/", name); //add this once we make level editor put it in maps folder
-		//free(name);
-		//name = tmp;
-		//printf("%s", name); //test
 	}
 	else if (argc == 2)
 		name = ft_strdup(argv[1]);

@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 00:50:21 by dfeve             #+#    #+#             */
-/*   Updated: 2025/09/12 16:43:10 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/08 23:43:27 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,35 +57,41 @@ t_mlx	*editor_window(t_vector2 board_size)
 	return(mlx);
 }
 
-void	map_size_obj(t_mlx *mlx, t_object *label_x, t_object *label_y)
+void	map_size_obj(t_mlx *mlx, t_object *value_x, t_object *value_y)
 {
+	
 	add_obj_to_list(&mlx->obj_list, create_obj(BUTTON, modif_label_up, 1
-						, vec2(50, 65), vec2(25, 15), 0xFFFFFF, "", label_x));
-	add_obj_to_list(&mlx->obj_list, label_x);
+						, vec2(50, 65), vec2(25, 15), 0xFFFFFF, "", value_x));
+	add_obj_to_list(&mlx->obj_list, create_obj(LABEL, NULL, 10, vec2(50, 100)
+						, vec2(25, 25), 0xFFFFFF, "X VALUE", NULL));
 	add_obj_to_list(&mlx->obj_list, create_obj(BUTTON, modif_label_down, 2
-						, vec2(50, 120), vec2(25, 15), 0xFFFFFF, "", label_x));
+						, vec2(50, 120), vec2(25, 15), 0xFFFFFF, "", value_x));
 	add_obj_to_list(&mlx->obj_list, create_obj(BUTTON, modif_label_up, 3
-						, vec2(100, 65), vec2(25, 15), 0xFFFFFF, "", label_y));
-	add_obj_to_list(&mlx->obj_list, label_y);
+						, vec2(100, 65), vec2(25, 15), 0xFFFFFF, "", value_y));
+	add_obj_to_list(&mlx->obj_list, create_obj(LABEL, NULL, 10, vec2(100, 100)
+						, vec2(25, 25), 0xFFFFFF, "Y VALUE", NULL));
 	add_obj_to_list(&mlx->obj_list, create_obj(BUTTON, modif_label_down, 4
-						, vec2(100, 120), vec2(25, 15), 0xFFFFFF, "", label_y));
+						, vec2(100, 120), vec2(25, 15), 0xFFFFFF, "", value_y));
 	add_obj_to_list(&mlx->obj_list, create_obj(BUTTON, mlx_loop_end_signal, 5
-						, vec2(150, 90), vec2(25, 15), 0xFFFFFF, "CREATE", mlx));
+						, vec2(150, 100), vec2(25, 15), 0xFFFFFF, "CREATE", mlx));
+	
+	add_obj_to_list(&mlx->obj_list, value_x);
+	add_obj_to_list(&mlx->obj_list, value_y);
 }
 
 t_vector2	map_size_window()
 {
 	t_mlx		*mlx;
 	t_vector2	board_size;
-	t_object	*label_x;
-	t_object	*label_y;
+	t_object	*value_x;
+	t_object	*value_y;
 
-	label_x = create_obj(LABEL, NULL, 10, vec2(50, 100), vec2(25, 25)
-						, 0xFFFFFF, "X VALUE", NULL);
-	label_y = create_obj(LABEL, NULL, 10, vec2(100, 100), vec2(25, 25)
-						, 0xFFFFFF, "Y VALUE", NULL);
+	value_x = create_obj(LABEL, NULL, 10, vec2(50, 110), vec2(25, 25),
+						 0xFFFFFF, "10", NULL);
+	value_y = create_obj(LABEL, NULL, 10, vec2(100, 110), vec2(25, 25),
+						 0xFFFFFF, "10", NULL);
 	mlx = setup_mlx("SELECT SIZE", vec2(0, 0));
-	map_size_obj(mlx, label_x, label_y);
+	map_size_obj(mlx, value_x, value_y);
 	new_image(mlx, vec2(300, 300), vec2(0, 0));
 	draw_object_list(mlx, mlx->obj_list);
 	mlx_hook(mlx->win, ON_KEYDOWN, 1L << 0, _input, mlx);
@@ -96,7 +102,7 @@ t_vector2	map_size_window()
 	put_imgs(mlx);
 	draw_object_list(mlx, mlx->obj_list);
 	mlx_loop(mlx->mlx);
-	board_size = vec2(label_x->value, label_y->value);
+	board_size = vec2(value_x->value, value_y->value);
 	free_mlx(mlx);
 	return (board_size);
 }
@@ -155,12 +161,12 @@ char	**color_choose_window()
 	sliders[3] = new_slider(vec2(500, 100), 255, 0xFF0000, mlx);
 	sliders[4] = new_slider(vec2(500, 150), 255, 0x00FF00, mlx);
 	sliders[5] = new_slider(vec2(500, 200), 255, 0x0000FF, mlx);
-	sliders[0]->tag = "red_1";
-	sliders[1]->tag = "green_1";
-	sliders[2]->tag = "blue_1";
-	sliders[3]->tag = "red_2";
-	sliders[4]->tag = "green_2";
-	sliders[5]->tag = "blue_2";
+	sliders[0]->tag = ft_strdup("red_1");
+	sliders[1]->tag = ft_strdup("green_1");
+	sliders[2]->tag = ft_strdup("blue_1");
+	sliders[3]->tag = ft_strdup("red_2");
+	sliders[4]->tag = ft_strdup("green_2");
+	sliders[5]->tag = ft_strdup("blue_2");
 	done_button = create_obj(BUTTON, on_done_button_click, 0, vec2(270, 500), vec2(25, 15), 0xFFFFFF, "DONE", mlx);
 	new_image(mlx, mlx->screen_size, vec2(0, 0));
 	rgb = rgb_to_str(sliders[0]->value, sliders[1]->value, sliders[2]->value);

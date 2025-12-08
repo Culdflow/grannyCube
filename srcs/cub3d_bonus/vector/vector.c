@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 20:19:13 by dfeve             #+#    #+#             */
-/*   Updated: 2025/07/23 18:09:21 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/08 21:47:59 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,10 @@ void	free_tab(char **tab, t_vector2 tab_size)
 	while (cursor < tab_size.y)
 	{
 		if (tab[cursor])
+		{
+			printf("freeing line: %s\n", tab[cursor]);
 			free(tab[cursor]);
+		}
 		cursor++;
 	}
 	free(tab);
