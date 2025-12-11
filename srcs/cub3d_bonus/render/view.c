@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 05:44:21 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/08 23:51:49 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/11 23:11:54 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,15 @@
 float	find_x_for_img(t_ray *ray, t_img img)
 {
 	float	mul_vector;
+	float	result;
 
 	if (ray->wall_hit_dir == NORTH || ray->wall_hit_dir == SOUTH || ray->wall_hit_dir == FOG_NORTH_SOUTH || ray->wall_hit_dir == DOOR_NORTH_SOUTH)
 		mul_vector = ft_fmodulf((float)ray->end_pos.x, 100) / 100;
 	else
 		mul_vector = ft_fmodulf((float)ray->end_pos.y, 100) / 100;
-	return (((float)img.size.x) * mul_vector);
+	result = ((float)img.size.x) * mul_vector;
+	ft_fclampf(&result, 0, (float)img.size.x - 1);
+	return (result);
 }
 
 void	put_texture_line(t_ray *ray, int line_height, t_vector2 line_start_pos, t_img img, t_mlx *mlx)
@@ -38,6 +41,7 @@ void	put_texture_line(t_ray *ray, int line_height, t_vector2 line_start_pos, t_i
 	{
 		img_x = find_x_for_img(ray, img);
 		img_y = ((((float)y - (float)line_start_pos.y) / line_height) * img.size.y);
+		ft_fclampf(&img_y, 0, img.size.y - 1);
 		if (x > 0 && x < mlx->screen_size.x && y > 0 && y < mlx->screen_size.y)
 		{
 			if (ray->wall_hit_dir == FOG_NORTH_SOUTH || ray->wall_hit_dir == FOG_EAST_WEST)
@@ -88,7 +92,7 @@ void	draw_3d_view(t_data *data, t_vector2 screen_size)
 		ca = ft_fabsf(ft_fabsf(player_angle_rad - ray_angle_rad));
 		if (ca < 0)
 			ca += 2 * M_PI;
-		if (ca > 2 * M_PI)						//supposed to fix fisheye but doesnt work
+		if (ca > 2 * M_PI)
 			ca -= 2 * M_PI;
 		cursor->length = cursor->length * cos(ca);
 		if (cursor->wall_hit_dir == FOG_EAST_WEST || cursor->wall_hit_dir == FOG_NORTH_SOUTH)

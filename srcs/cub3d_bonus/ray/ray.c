@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 19:18:41 by dfeve             #+#    #+#             */
-/*   Updated: 2025/10/28 14:37:26 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/11 23:05:42 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,54 +41,51 @@ float	ray_get_length(t_vector2 start_pos, t_vector2 end_pos)
 	return (result);//theoreme de pythagore
 }
 
+t_vector2	ray_check_loop(float rx, float ry, t_mlx *mlx, int dov)
+{
+	int	grid_x;
+	int	grid_y;
+
+	while (is_out_of_bounds(div_vec2(vec2((int)rx, (int)ry), vec2(100, 100)), mlx->board_size) == FALSE)
+	{
+		grid_x = (int)(rx / 100);
+		grid_y = (int)(ry / 100);
+		if (mlx->board[grid_y][grid_x] == '1' || dov >= mlx->dov || mlx->board[grid_y][grid_x] == 'F')
+			break ;
+		rx += mlx->ox;
+		ry += mlx->oy;
+		dov++;
+	}
+	return (vec2((int)rx, (int)ry));
+}
+
 t_vector2	ray_check_horizontal_lines(t_vector2 start_pos, float angle, t_mlx *mlx)
 {
 	float	a_tan;
 	float	ry;
 	float	rad;
 	float	rx;
-	float	oy;
-	float	ox;
 	int		dov;
 
 	dov = 0;
 	rad = (angle * M_PI) / 180;
 	a_tan = -1 / tan(rad);
 	ry = start_pos.y;
-	rx = 0;
-	oy = 0;
-	ox = 0;
 	if (rad > M_PI)
 	{
 		ry -= (int)ry % 100 + 0.001;
 		rx = (start_pos.y - ry) * a_tan + start_pos.x;
-		oy = -100;
-		ox = (-1 * oy) * a_tan;
+		mlx->oy = -100;
+		mlx->ox = (-1 * mlx->oy) * a_tan;
 	}
-	if (rad < M_PI)
+	if (rad <= M_PI)
 	{
 		ry += (100 - ((int)ry % 100));
 		rx = (start_pos.y - ry) * a_tan + start_pos.x;
-		oy = 100;
-		ox = (-1 * oy) * a_tan;
+		mlx->oy = 100;
+		mlx->ox = (-1 * mlx->oy) * a_tan;
 	}
-	if (rad == 0 || rad == M_PI)
-	{
-		rx = start_pos.x;
-		ry = start_pos.y;
-		dov = mlx->dov;
-	}
-	while (is_out_of_bounds(div_vec2(vec2((int)rx, (int)ry), vec2(100, 100)), mlx->board_size) == FALSE)
-	{
-		int grid_x = (int)(rx / 100);
-		int grid_y = (int)(ry / 100);
-		if (mlx->board[grid_y][grid_x] == '1' || dov >= mlx->dov || mlx->board[grid_y][grid_x] == 'F')
-			break ;
-		rx += ox;
-		ry += oy;
-		dov++;
-	}
-	return (vec2((int)rx, (int)ry));
+	return (ray_check_loop(rx, ry, mlx, dov));
 }
 
 t_vector2	ray_check_vertical_lines(t_vector2 start_pos, float angle, t_mlx *mlx)
@@ -97,48 +94,27 @@ t_vector2	ray_check_vertical_lines(t_vector2 start_pos, float angle, t_mlx *mlx)
 	float	rad;
 	float	ry;
 	float	rx;
-	float	oy;
-	float	ox;
 	int		dov;
 
 	dov = 0;
 	rad = (angle * M_PI) / 180;
 	n_tan = -1 * tan(rad);
-	ry = 0;
 	rx = start_pos.x;
-	oy = 0;
-	ox = 0;
-	if (rad < M_2PI || rad > M_3PI)
+	if (rad <= M_2PI || rad >= M_3PI)
 	{
 		rx += 100 - ((int)rx % 100);
 		ry = (start_pos.x - rx) * n_tan + start_pos.y;
-		ox = 100;
-		oy = (-1 * ox) * n_tan;
+		mlx->ox = 100;
+		mlx->oy = (-1 * mlx->ox) * n_tan;
 	}
 	if (rad > M_2PI && rad < M_3PI)
 	{
 		rx -= ((int)rx % 100) + 0.01;
 		ry = (start_pos.x - rx) * n_tan + start_pos.y;
-		ox = -100;
-		oy = (-1 * ox) * n_tan;
+		mlx->ox = -100;
+		mlx->oy = (-1 * mlx->ox) * n_tan;
 	}
-	if (rad == M_2PI || rad == M_3PI)
-	{
-		rx = start_pos.x;
-		ry = start_pos.y;
-		dov = mlx->dov;
-	}
-	while (is_out_of_bounds(div_vec2(vec2((int)rx, (int)ry), vec2(100, 100)), mlx->board_size) == FALSE)
-	{
-		int grid_x = (int)(rx / 100);
-		int grid_y = (int)(ry / 100);
-		if (mlx->board[grid_y][grid_x] == '1' || dov >= mlx->dov || mlx->board[grid_y][grid_x] == 'F')
-			break ;
-		rx += ox;
-		ry += oy;
-		dov++;
-	}
-	return (vec2((int)rx, (int)ry));
+	return (ray_check_loop(rx, ry, mlx, dov));
 }
 
 t_vector2	ray_get_end_pos(t_ray *ray, t_vector2 start_pos, float angle, t_mlx *mlx)
