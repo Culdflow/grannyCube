@@ -6,25 +6,39 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 20:10:15 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/08 23:36:38 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/11 22:21:33 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/level_editor.h"
 
-t_object	*create_obj(int type, void (*onClick)(void *, int), int value, t_vector2 pos, t_vector2 size, int color, char *tag, void *victim)
+t_object	*obj_set_onClick(t_object *obj, void (*onClick)(void *, int), void *victim)
+{
+	obj->clickFunc = onClick;
+	obj->victim = victim;
+	return (obj);
+}
+
+t_object	*obj_set_val_size(t_object *obj, int value, t_vector2 size)
+{
+	obj->value = value;
+	obj->size = size;
+	return (obj);
+}
+
+t_object	*create_obj(int type, t_vector2 pos, int color, char *tag)
 {
 	t_object	*result;
 	
 	result = malloc(sizeof(t_object));
-	result->clickFunc = onClick;
+	result->clickFunc = NULL;
 	result->pos = pos;
-	result->size = size;
+	result->size = vec2(25, 15);
 	result->tag  = ft_strdup(tag);
 	result->type = type;
-	result->value = value;
+	result->value = 0;
 	result->color = color;
-	result->victim = victim;
+	result->victim = NULL;
 	result->max_value = 0;
 	return (result);
 }

@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 01:26:04 by mabdessm          #+#    #+#             */
-/*   Updated: 2025/12/08 23:16:14 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/11 19:25:24 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -272,19 +272,4 @@ int	main(int argc, char **argv)
 }
 
 //TODO
-//fix minimap zoom**
-//make left and right movement**
-//fix player collision**
-//make player turn head with mouse movement**
 
-//add ability to go diagonally**
-//add security collisions**
-//fix collisions so player isnt so close to wall**
-//add parsing of color and textures to code**
-//fix and finish minimap editor**
-
-//fix leaks
-//flip north and west textures
-
-//multiple players in map
-//seg_fault when map_error

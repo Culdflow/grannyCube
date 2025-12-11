@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 20:33:25 by dfeve             #+#    #+#             */
-/*   Updated: 2025/10/10 22:55:35 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/11 22:22:47 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,9 +144,9 @@ t_vector2		div_vec2(t_vector2 vec1, t_vector2 divi);
 
 void			check_if_obj_clicked(t_vector2 mouse_pos, t_object_list *lst);
 void			add_obj_to_list(t_object_list **lst, t_object *obj);
-t_object		*create_obj(int type, void (*onClick)(void *, int), int value,
-					t_vector2 pos, t_vector2 size, int color, char *tag,
-					void *victim);
+t_object		*create_obj(int type, t_vector2 pos, int color, char *tag);
+t_object		*obj_set_val_size(t_object *obj, int value, t_vector2 size);
+t_object		*obj_set_onClick(t_object *obj, void (*onClick)(void *, int), void *victim);
 t_object		*get_object_from_tag(t_object_list *lst, char *tag);
 t_object_list	*get_last_object(t_object_list *start);
 void			free_object_list(t_object_list *start);

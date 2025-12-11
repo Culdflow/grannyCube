@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 00:53:10 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/08 01:36:19 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/11 22:38:27 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ int	step_two_input_file(t_mlx *mlx, t_dir_files *cursor)
 	}
 	else
 	{
-		add_obj_to_list(&mlx->obj_list, create_obj(LABEL, NULL, 0, vec2(820, 30), vec2(0, 0), 0xFF0000, mlx->dir->extension_prompt, NULL));
+		add_obj_to_list(&mlx->obj_list, create_obj(LABEL, vec2(820, 30)
+				, 0xFF0000, mlx->dir->extension_prompt));
 		draw_files_window(mlx->dir->files, mlx);
 		return (0);
 	}

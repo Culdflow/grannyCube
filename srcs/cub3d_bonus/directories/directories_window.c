@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 18:14:01 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/07 23:32:57 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/11 22:38:02 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ t_dir_files	*step_draw_files_window(t_dir_files *files, t_mlx *mlx)
 {
 	draw_rectangle_no_fill(&mlx->imgs[0], vec2(0, 40),
 		vec2(1500, mlx->screen_size.y - 10), 0x0000FF);
-	add_obj_to_list(&mlx->obj_list, create_obj(LABEL, NULL, 0,
-			vec2(850, 20), vec2(0, 0), 0xFFFFFF, mlx->dir->prompt, NULL));
+	add_obj_to_list(&mlx->obj_list, create_obj(LABEL,vec2(850, 20), 0xFFFFFF
+				, mlx->dir->prompt));
 	return (files);
 }
 
@@ -38,12 +38,12 @@ void	draw_files_window(t_dir_files *files, t_mlx *mlx)
 				vec2(5, 50 + (i * 20)), vec2(1400, 65 + (i * 20)), 0xFF0000);
 		if (files->type == T_FILE)
 			add_obj_to_list(&mlx->obj_list,
-				create_obj(LABEL, NULL, 0, vec2(10, 60 + ((i++) * 20)),
-					vec2(0, 0), 0xFFFFFF, files->name, NULL));
+				create_obj(LABEL, vec2(10, 60 + ((i++) * 20)), 0xFFFFFF
+						, files->name));
 		else
 			add_obj_to_list(&mlx->obj_list,
-				create_obj(LABEL, NULL, 0, vec2(10, 60 + ((i++) * 20)),
-					vec2(0, 0), 0x83d2d6, files->name, NULL));
+				create_obj(LABEL, vec2(10, 60 + ((i++) * 20)), 0x83d2d6
+						, files->name));
 		files = files->next;
 	}
 	put_imgs(mlx);

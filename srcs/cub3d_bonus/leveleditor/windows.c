@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 00:50:21 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/08 23:43:27 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/11 22:36:01 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_mlx	*editor_window(t_vector2 board_size)
 	mlx->board = create_board(mlx->board_size);
 	new_image(mlx, mlx->screen_size, vec2(0, 0));
 	draw_board(mlx, 0xFFFFFF, mlx->board, mlx->board_size);
-	add_obj_to_list(&mlx->obj_list, create_obj(BUTTON, mlx_loop_end_signal, 5, vec2(1750, 450), vec2(50, 25), 0xFFFFFF, "SUBMIT", mlx));
+	add_obj_to_list(&mlx->obj_list, obj_set_onClick(create_obj(BUTTON, vec2(1750, 450), 0xFFFFFF, "SUBMIT"), mlx_loop_end_signal, mlx));
 	mlx_hook(mlx->win, ON_DESTROY, 0, fun_exit, mlx->mlx);
 	put_imgs(mlx);
 	draw_object_list(mlx, mlx->obj_list);
@@ -60,21 +60,21 @@ t_mlx	*editor_window(t_vector2 board_size)
 void	map_size_obj(t_mlx *mlx, t_object *value_x, t_object *value_y)
 {
 	
-	add_obj_to_list(&mlx->obj_list, create_obj(BUTTON, modif_label_up, 1
-						, vec2(50, 65), vec2(25, 15), 0xFFFFFF, "", value_x));
-	add_obj_to_list(&mlx->obj_list, create_obj(LABEL, NULL, 10, vec2(50, 100)
-						, vec2(25, 25), 0xFFFFFF, "X VALUE", NULL));
-	add_obj_to_list(&mlx->obj_list, create_obj(BUTTON, modif_label_down, 2
-						, vec2(50, 120), vec2(25, 15), 0xFFFFFF, "", value_x));
-	add_obj_to_list(&mlx->obj_list, create_obj(BUTTON, modif_label_up, 3
-						, vec2(100, 65), vec2(25, 15), 0xFFFFFF, "", value_y));
-	add_obj_to_list(&mlx->obj_list, create_obj(LABEL, NULL, 10, vec2(100, 100)
-						, vec2(25, 25), 0xFFFFFF, "Y VALUE", NULL));
-	add_obj_to_list(&mlx->obj_list, create_obj(BUTTON, modif_label_down, 4
-						, vec2(100, 120), vec2(25, 15), 0xFFFFFF, "", value_y));
-	add_obj_to_list(&mlx->obj_list, create_obj(BUTTON, mlx_loop_end_signal, 5
-						, vec2(150, 100), vec2(25, 15), 0xFFFFFF, "CREATE", mlx));
-	
+	add_obj_to_list(&mlx->obj_list, obj_set_onClick(create_obj(BUTTON
+					, vec2(50, 65), 0xFFFFFF, ""), modif_label_up, value_x));
+	add_obj_to_list(&mlx->obj_list, create_obj(LABEL, vec2(50, 100), 0xFFFFFF
+					, "X VALUE"));
+	add_obj_to_list(&mlx->obj_list, obj_set_onClick(create_obj(BUTTON
+					, vec2(50, 120), 0xFFFFFF, ""), modif_label_down, value_x));
+	add_obj_to_list(&mlx->obj_list, obj_set_onClick(create_obj(BUTTON
+					, vec2(100, 65), 0xFFFFFF, ""), modif_label_up, value_y));
+	add_obj_to_list(&mlx->obj_list, create_obj(LABEL, vec2(100, 100), 0xFFFFFF
+					, "Y VALUE"));
+	add_obj_to_list(&mlx->obj_list, obj_set_onClick(create_obj(BUTTON
+					, vec2(100, 120), 0xFFFFFF, ""), modif_label_down, value_y));
+	add_obj_to_list(&mlx->obj_list, obj_set_onClick(create_obj(BUTTON
+					, vec2(150, 100), 0xFFFFFF, "CREATE")
+					, mlx_loop_end_signal, mlx));
 	add_obj_to_list(&mlx->obj_list, value_x);
 	add_obj_to_list(&mlx->obj_list, value_y);
 }
@@ -86,10 +86,10 @@ t_vector2	map_size_window()
 	t_object	*value_x;
 	t_object	*value_y;
 
-	value_x = create_obj(LABEL, NULL, 10, vec2(50, 110), vec2(25, 25),
-						 0xFFFFFF, "10", NULL);
-	value_y = create_obj(LABEL, NULL, 10, vec2(100, 110), vec2(25, 25),
-						 0xFFFFFF, "10", NULL);
+	value_x = obj_set_val_size(create_obj(LABEL, vec2(50, 110), 0xFFFFFF, "10")
+							, 10, vec2(25, 25));
+	value_y = obj_set_val_size(create_obj(LABEL, vec2(100, 110), 0xFFFFFF, "10")
+							, 10, vec2(25, 25));
 	mlx = setup_mlx("SELECT SIZE", vec2(0, 0));
 	map_size_obj(mlx, value_x, value_y);
 	new_image(mlx, vec2(300, 300), vec2(0, 0));
@@ -167,7 +167,8 @@ char	**color_choose_window()
 	sliders[3]->tag = ft_strdup("red_2");
 	sliders[4]->tag = ft_strdup("green_2");
 	sliders[5]->tag = ft_strdup("blue_2");
-	done_button = create_obj(BUTTON, on_done_button_click, 0, vec2(270, 500), vec2(25, 15), 0xFFFFFF, "DONE", mlx);
+	done_button = obj_set_onClick(create_obj(BUTTON, vec2(270, 500), 0xFFFFFF
+						, "DONE"), on_done_button_click, mlx);
 	new_image(mlx, mlx->screen_size, vec2(0, 0));
 	rgb = rgb_to_str(sliders[0]->value, sliders[1]->value, sliders[2]->value);
 	draw_rectangle_no_fill(&mlx->imgs[0], vec2(9, 229), vec2(31, 251), 0xffffff);
