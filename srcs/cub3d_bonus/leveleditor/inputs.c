@@ -12,97 +12,6 @@
 
 #include "../../../includes/cub3d_bonus.h"
 
-int	step_input_file(int keycode, t_dir_files *cursor)
-{
-	if (keycode == K_AR_D && cursor->next)
-	{
-		cursor->on_cursor = FALSE;
-		cursor->next->on_cursor = TRUE;
-		return (1) ;
-	}
-	if (keycode == K_AR_U && cursor->prev)
-	{
-		cursor->on_cursor = FALSE;
-		cursor->prev->on_cursor = TRUE;
-	}
-	return (0);
-}
-
-void	do_if_T_DIRECTORY(t_mlx *mlx, t_dir_files *cursor)
-{
-	char		*tmp;
-	char		*dir;
-
-	tmp = ft_strjoin(mlx->dir->cur_dir, "/");
-	dir = ft_strjoin(tmp, cursor->name);
-	free(tmp);
-	free(mlx->dir->cur_dir);
-	mlx->dir->cur_dir = dir;
-	free_dir_files(mlx->dir->files);
-	mlx->dir->files = get_files_from_dir(dir);
-	free_object_list(mlx->obj_list);
-	mlx->obj_list = NULL;
-}
-
-int	step_two_input_file(t_mlx *mlx, t_dir_files *cursor)
-{
-	if (check_extension(cursor->name, mlx->dir->extension) == TRUE)
-	{
-		cursor->status = SELECTED;
-		mlx_loop_end(mlx->mlx);
-	}
-	else
-	{
-		add_obj_to_list(&mlx->obj_list, create_obj(LABEL, vec2(820, 30)
-				, 0xFF0000, mlx->dir->extension_prompt));
-		draw_files_window(mlx->dir->files, mlx);
-		return (0);
-	}
-	return (1);
-}
-
-int step_while_input_file(int keycode, t_mlx *mlx, t_dir_files	*cursor)
-{
-	while (cursor)
-	{
-		if (cursor->on_cursor == TRUE)
-		{
-			if(step_input_file(keycode, cursor) == 1)
-				break ;
-			if (keycode == K_SP)
-			{
-				if (cursor->type == T_DIRECTORY)
-				{
-					do_if_T_DIRECTORY(mlx, cursor);
-					break ;
-				}
-				else
-				{
-					if (step_two_input_file(mlx, cursor) == 0)
-						return (0);
-				}
-			}
-		}
-		cursor = cursor->next;
-	}
-	return (1);
-}
-
-int	_input_file(int keycode, t_mlx *mlx)
-{
-	t_dir_files	*cursor;
-
-	cursor = mlx->dir->files;
-	if (keycode == K_ESC)
-		fun_exit(mlx);
-	if(step_while_input_file(keycode, mlx, cursor) == 0)
-		return (0);
-	del_images(mlx);
-	new_image(mlx, mlx->screen_size, vec2(0, 0));
-	draw_files_window(mlx->dir->files, mlx);
-	return (0);
-}
-
 int	_input(int keycode, void *void_mlx)
 {
 	t_mlx	*mlx;
@@ -110,31 +19,25 @@ int	_input(int keycode, void *void_mlx)
 	mlx = (t_mlx *)void_mlx;
 	mlx->turning_to = '1';
 	if (keycode == K_ESC)
+	{
 		exit(0);
+		return (1);
+	}
 	if (keycode == K_X)
-	{
 		mlx->turning_to = 'N';
-		del_images(mlx);
-		board_clicked(mlx->mouse_pos, mlx->board_size, mlx->board, mlx->turning_to);
-		new_image(mlx, mlx->screen_size, vec2(0, 0));
-		draw_board(mlx, 0xFFFFFF, mlx->board, mlx->board_size);
-		put_imgs(mlx);
-		draw_object_list(mlx, mlx->obj_list);
-	}
 	if (keycode == K_E)
-	{
 		mlx->turning_to = 'F';
-		del_images(mlx);
-		board_clicked(mlx->mouse_pos, mlx->board_size, mlx->board, mlx->turning_to);
-		new_image(mlx, mlx->screen_size, vec2(0, 0));
-		draw_board(mlx, 0xFFFFFF, mlx->board, mlx->board_size);
-		put_imgs(mlx);
-		draw_object_list(mlx, mlx->obj_list);
-	}
+	del_images(mlx);
+	board_clicked(mlx->mouse_pos, mlx->board_size, mlx->board,
+		mlx->turning_to);
+	new_image(mlx, mlx->screen_size, vec2(0, 0));
+	draw_board(mlx, 0xFFFFFF, mlx->board, mlx->board_size);
+	put_imgs(mlx);
+	draw_object_list(mlx, mlx->obj_list);
 	return (1);
 }
 
-int _input_mouse_ex(int x, int y, t_mlx *mlx)
+int	_input_mouse_ex(int x, int y, t_mlx *mlx)
 {
 	t_vector2	pos;
 
@@ -151,12 +54,36 @@ int _input_mouse_ex(int x, int y, t_mlx *mlx)
 		draw_object_list(mlx, mlx->obj_list);
 	}
 	return (1);
+}
+
+void	step_input_mouse(t_mlx *mlx)
+{
+	char	*rgb;
+
+	rgb = rgb_to_str(get_object_from_tag(mlx->obj_list, "red_1")->value,
+			get_object_from_tag(mlx->obj_list, "green_1")->value,
+			get_object_from_tag(mlx->obj_list, "blue_1")->value);
+	draw_rectangle_no_fill(&mlx->imgs[0], vec2(9, 229),
+		vec2(31, 251), 0xffffff);
+	draw_rectangle(&mlx->imgs[0], vec2(10, 230),
+		vec2(30, 250), rgb_to_hex(rgb));
+	free(rgb);
+	rgb = rgb_to_str(get_object_from_tag(mlx->obj_list, "red_2")->value,
+			get_object_from_tag(mlx->obj_list, "green_2")->value,
+			get_object_from_tag(mlx->obj_list, "blue_2")->value);
+	draw_rectangle_no_fill(&mlx->imgs[0],
+		vec2(489, 229), vec2(511, 251), 0xffffff);
+	draw_rectangle(&mlx->imgs[0], vec2(490, 230),
+		vec2(510, 250), rgb_to_hex(rgb));
+	free(rgb);
+	draw_object_list(mlx, mlx->obj_list);
+	put_imgs(mlx);
+	draw_object_list(mlx, mlx->obj_list);
 }
 
 int	_input_mouse(int x, int y, t_mlx *mlx)
 {
 	t_vector2	pos;
-	char		*rgb;
 
 	pos.x = x;
 	pos.y = y;
@@ -170,17 +97,7 @@ int	_input_mouse(int x, int y, t_mlx *mlx)
 		put_imgs(mlx);
 		draw_object_list(mlx, mlx->obj_list);
 	}
-	rgb = rgb_to_str(get_object_from_tag(mlx->obj_list, "red_1")->value, get_object_from_tag(mlx->obj_list, "green_1")->value, get_object_from_tag(mlx->obj_list, "blue_1")->value);
-	draw_rectangle_no_fill(&mlx->imgs[0], vec2(9, 229), vec2(31, 251), 0xffffff);
-	draw_rectangle(&mlx->imgs[0], vec2(10, 230), vec2(30, 250), rgb_to_hex(rgb));
-	free(rgb);
-	rgb = rgb_to_str(get_object_from_tag(mlx->obj_list, "red_2")->value, get_object_from_tag(mlx->obj_list, "green_2")->value, get_object_from_tag(mlx->obj_list, "blue_2")->value);
-	draw_rectangle_no_fill(&mlx->imgs[0], vec2(489, 229), vec2(511, 251), 0xffffff);
-	draw_rectangle(&mlx->imgs[0], vec2(490, 230), vec2(510, 250), rgb_to_hex(rgb));
-	free(rgb);
-	draw_object_list(mlx, mlx->obj_list);
-	put_imgs(mlx);
-	draw_object_list(mlx, mlx->obj_list);
+	step_input_mouse(mlx);
 	return (1);
 }
 
@@ -199,77 +116,6 @@ int	_input_mouse_board(int keycode, int x, t_mlx *mlx)
 		draw_board(mlx, 0xFFFFFF, mlx->board, mlx->board_size);
 		put_imgs(mlx);
 		draw_object_list(mlx, mlx->obj_list);
-	}
-	return (1);
-}
-
-int	_input_mouse_click_down(int keycode, int x, int y, void *void_mlx)
-{
-	t_vector2	pos;
-	t_mlx		*mlx;
-	pos.x = x;
-	pos.y = y;
-	char	el;
-	mlx = (t_mlx *)void_mlx;
-	if (keycode == M_CLK_L)
-	{
-		check_if_obj_clicked(pos, mlx->obj_list);
-		el = get_el_from_board(pos, mlx->board_size, mlx->board);
-		mlx->is_clicking = TRUE;
-		if (el != '0')
-			mlx->turning_to = '0';
-		else
-			mlx->turning_to = '1';
-		del_images(mlx);
-		board_clicked(pos, mlx->board_size, mlx->board, mlx->turning_to);
-		new_image(mlx, mlx->screen_size, vec2(0, 0));
-		draw_board(mlx, 0xFFFFFF, mlx->board, mlx->board_size);
-		put_imgs(mlx);
-		draw_object_list(mlx, mlx->obj_list);
-	}
-	return (1);
-}
-
-int	_input_mouse_click_down_ex(int keycode, int x, int y, t_mlx *mlx)
-{
-	mlx->mouse_pos.x = x;
-	mlx->mouse_pos.y = y;
-	if (keycode == M_CLK_L)
-	{
-		mlx->is_clicking = TRUE;
-		check_if_obj_clicked(mlx->mouse_pos, mlx->obj_list);
-		del_images(mlx);
-		new_image(mlx, mlx->screen_size, vec2(0, 0));
-		put_imgs(mlx);
-		draw_object_list(mlx, mlx->obj_list);
-	}
-	return (1);
-}
-
-int	_input_mouse_click_up_ex(int keycode, int x, int y, t_mlx *mlx)
-{
-	(void)x;
-	(void)y;
-
-	if (keycode == M_CLK_L)
-	{
-		if (mlx)
-			mlx->is_clicking = FALSE;
-	}
-	return (1);
-}
-
-int	_input_mouse_click_up(int keycode, int x, int y, void *void_mlx)
-{
-	t_mlx	*mlx;
-
-	(void)x;
-	(void)y;
-	mlx = (t_mlx *)void_mlx;
-	if (keycode == M_CLK_L)
-	{
-		if (mlx)
-			mlx->is_clicking = FALSE;
 	}
 	return (1);
 }

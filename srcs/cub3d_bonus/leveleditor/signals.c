@@ -14,8 +14,9 @@
 
 void	modif_label_up(void *obj_lst, int new_value)
 {
+	t_object	*newobj_lst;
+
 	(void)new_value;
-	t_object *newobj_lst;
 	newobj_lst = (t_object *)obj_lst;
 	newobj_lst->value = newobj_lst->value + 1;
 	free(newobj_lst->tag);
@@ -24,8 +25,9 @@ void	modif_label_up(void *obj_lst, int new_value)
 
 void	modif_label_down(void *obj_lst, int new_value)
 {
+	t_object	*newobj_lst;
+
 	(void)new_value;
-	t_object *newobj_lst;
 	newobj_lst = (t_object *)obj_lst;
 	if (newobj_lst->value > 5)
 		newobj_lst->value = newobj_lst->value - 1;
@@ -37,8 +39,9 @@ void	modif_label_down(void *obj_lst, int new_value)
 
 void	mlx_loop_end_signal(void *vmlx, int new_value)
 {
-	(void)new_value;
 	t_mlx	*mlx;
+
+	(void)new_value;
 	mlx = (t_mlx *)vmlx;
 	mlx_loop_end(mlx->mlx);
 }

@@ -12,7 +12,7 @@
 
 #include "../../../includes/cub3d_bonus.h"
 
-char	*file_name_prompt()
+char	*file_name_prompt(void)
 {
 	char		*name;
 	char		*tmp;
@@ -28,7 +28,7 @@ char	*file_name_prompt()
 	return (name);
 }
 
-char	**color_prompt()
+char	**color_prompt(void)
 {
 	char			**colors;
 
@@ -36,7 +36,7 @@ char	**color_prompt()
 	return (colors);
 }
 
-char	**texture_prompt()
+char	**texture_prompt(void)
 {
 	char	**textures;
 
@@ -53,8 +53,7 @@ void	write_colors_and_textures(int fd, char **colors, char **textures)
 {
 	ft_putstr_fd("NO ", fd);
 	ft_putstr_fd(textures[0], fd);
-	ft_putstr_fd("\n", fd);
-	ft_putstr_fd("EA ", fd);
+	ft_putstr_fd("\nEA ", fd);
 	ft_putstr_fd(textures[2], fd);
 	ft_putstr_fd("\n", fd);
 	ft_putstr_fd("SO ", fd);
@@ -76,8 +75,7 @@ void	write_colors_and_textures(int fd, char **colors, char **textures)
 	ft_putstr_fd(colors[4], fd);
 	ft_putstr_fd(", ", fd);
 	ft_putstr_fd(colors[5], fd);
-	ft_putstr_fd("\n", fd);
-	ft_putstr_fd("\n", fd);
+	ft_putstr_fd("\n\n", fd);
 }
 
 void	write_map(char *filename, char **colors, char **textures, t_mlx *mlx)
@@ -86,11 +84,10 @@ void	write_map(char *filename, char **colors, char **textures, t_mlx *mlx)
 	int			fd;
 	t_vector2	cursor;
 	t_vector2	map_size;
-	
+
 	tmp_map = close_map(mlx->board);
 	map_size = mlx->board_size;
 	free_mlx(mlx);
-
 	cursor = vec2(0, 0);
 	fd = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	write_colors_and_textures(fd, colors, textures);

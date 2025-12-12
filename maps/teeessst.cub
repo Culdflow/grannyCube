@@ -1,0 +1,20 @@
+NO ./textures/muhammad.xpm
+EA./textures/test_texture.xpm
+SO ./textures/muhammad.xpm
+WE ./textures/north_texture.xpm
+F 0, 252, 0
+C 0, 0, 255
+
+           
+ 1111111111
+ 1000000001
+ 1000000001
+ 1000F00001
+ 1011110001
+ 1010011001
+ 10000000N1
+ 1000000001
+ 1000000001
+ 1000000001
+ 1000011101
+ 1111111111

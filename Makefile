@@ -23,10 +23,13 @@ BONUS_SRCS = srcs/cub3d_bonus/main.c \
 		srcs/cub3d_bonus/map_filler.c \
 \
 		srcs/cub3d_bonus/leveleditor/inputs.c \
+		srcs/cub3d_bonus/leveleditor/inputs_file.c \
+		srcs/cub3d_bonus/leveleditor/inputs_mouse_click.c \
 		srcs/cub3d_bonus/leveleditor/leveleditor.c \
 		srcs/cub3d_bonus/leveleditor/prompts.c \
 		srcs/cub3d_bonus/leveleditor/signals.c \
 		srcs/cub3d_bonus/leveleditor/windows.c \
+		srcs/cub3d_bonus/leveleditor/windows_color.c \
 \
 		srcs/cub3d_bonus/render/draw.c \
 		srcs/cub3d_bonus/render/images.c \
