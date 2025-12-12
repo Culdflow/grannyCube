@@ -6,14 +6,14 @@
 #    By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/04 14:55:29 by mabdessm          #+#    #+#              #
-#    Updated: 2025/12/08 02:29:49 by dfeve            ###   ########.fr        #
+#    Updated: 2025/12/12 20:31:39 by dfeve            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 BONUS_NAME = cub3D_bonus
 CC = cc
-FLAGS = -Wall -Werror -Wextra -g3 -O2 -fsanitize=address
+FLAGS = -Wall -Werror -Wextra -g3 -O2 #-fsanitize=address
 RM = rm -rf
 INCLUDES = -L./lib/libft -lft -L./lib/minilibx -lmlx -L/usr/lib -Iminilibx -lreadline -lXext -lX11 -lm -lz
 
@@ -30,6 +30,7 @@ BONUS_SRCS = srcs/cub3d_bonus/main.c \
 		srcs/cub3d_bonus/leveleditor/signals.c \
 		srcs/cub3d_bonus/leveleditor/windows.c \
 		srcs/cub3d_bonus/leveleditor/windows_color.c \
+		srcs/cub3d_bonus/leveleditor/windows_color_utils.c \
 \
 		srcs/cub3d_bonus/render/draw.c \
 		srcs/cub3d_bonus/render/images.c \
@@ -51,6 +52,7 @@ BONUS_SRCS = srcs/cub3d_bonus/main.c \
 		srcs/cub3d_bonus/mlx/mlx.c \
 \
 		srcs/cub3d_bonus/map/map.c \
+		srcs/cub3d_bonus/map/map_utils.c \
 \
 		srcs/cub3d_bonus/player/player.c \
 \
@@ -70,6 +72,7 @@ BONUS_SRCS = srcs/cub3d_bonus/main.c \
 \
 		srcs/cub3d_bonus/directories/directories.c \
 		srcs/cub3d_bonus/directories/directories_window.c \
+		srcs/cub3d_bonus/directories/directories_utils.c \
 
 OBJS = $(SRCS:.c=.o)
 

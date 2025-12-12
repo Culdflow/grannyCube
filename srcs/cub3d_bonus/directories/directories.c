@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:50:57 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/08 00:26:35 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/12 19:53:00 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,11 @@ t_dir_files	*get_files_from_dir(char *dir)
 		printf("directory not valid\n");
 		return (NULL);
 	}
-	while ((entry = readdir(directories)) != NULL)
+	while (1)
 	{
+		entry = readdir(directories);
+		if (entry == NULL)
+			break ;
 		if (entry->d_type == 8)
 			add_to_dir_list(&result, T_FILE, ft_strdup(entry->d_name));
 		else
@@ -64,21 +67,6 @@ t_dir_files	*get_files_from_dir(char *dir)
 	}
 	closedir(directories);
 	return (result);
-}
-
-void	free_dir_files(t_dir_files *files)
-{
-	t_dir_files	*cursor;
-	t_dir_files	*tmp;
-
-	cursor = files;
-	while (cursor)
-	{
-		tmp = cursor->next;
-		free(cursor->name);
-		free(cursor);
-		cursor = tmp;
-	}
 }
 
 int	check_extension(char *filename, char *extension)

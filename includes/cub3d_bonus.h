@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 05:34:38 by mabdessm          #+#    #+#             */
-/*   Updated: 2025/11/25 18:53:55 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/12 22:57:14 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,23 +44,23 @@ typedef enum	directions
 
 typedef struct	s_player_collisions
 {
-	int		north_east;
-	int		helper_north_east;
-	int		helper_east_north;
-	int		north;
-	int		north_west;
-	int		helper_north_west;
-	int		helper_west_north;
+	int		n_e;
+	int		helper_n_e;
+	int		helper_e_n;
+	int		n;
+	int		n_w;
+	int		helper_n_w;
+	int		helper_w_n;
 	int		middle;
-	int		west;
-	int		east;
-	int		south;
-	int		south_east;
-	int		helper_south_east;
-	int		helper_east_south;
-	int		south_west;
-	int		helper_south_west;
-	int		helper_west_south;
+	int		w;
+	int		e;
+	int		s;
+	int		s_e;
+	int		helper_s_e;
+	int		helper_e_s;
+	int		s_w;
+	int		helper_s_w;
+	int		helper_w_s;
 	e_dir	last_collision;
 }	t_player_collisions;
 
@@ -195,6 +195,7 @@ void			look_player(t_player *player, int turning_right);
 void			draw_player(t_player *player, t_mlx *mlx);
 t_vector2		find_player(char **map);
 void			look_player_mouse(t_player *player, int mouse_diff);
+t_vector2		is_player_colliding_secure(float new_x, float new_y, t_data *data);
 
 //////////////////--MAP--////////////////////////////
 

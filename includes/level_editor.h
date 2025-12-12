@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 20:07:34 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/11 22:53:44 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/12 19:19:34 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ char			*leveleditor(void);
 char			*file_name_prompt(void);
 char			**color_prompt(void);
 char			**texture_prompt(void);
+
 void			write_map(char *filename, char **colors, char **textures, t_mlx *mlx);
 
 ////////////////////---SIGNALS---////////////////////////////
@@ -112,6 +113,8 @@ int				fun_exit(t_mlx *mlx);
 t_vector2		map_size_window(void);
 t_mlx			*editor_window(t_vector2 board_size);
 char			**color_choose_window();
+void			draw_sliders(t_mlx *mlx, t_object **sliders);
+char			*rgb_to_str(unsigned int r, unsigned int g, unsigned int b);
 
 ////////////////////---INPUTS---////////////////////////////
 

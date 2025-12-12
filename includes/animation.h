@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 16:55:30 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/08 01:29:05 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/12 19:46:09 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ typedef struct	s_animation_player
 
 //////////////--ANIMATION--//////////////////////////
 
-t_animation			*new_anim(char *tag, char **frames, int anim_play_time, t_vector2 pos, t_mlx *mlx);
+t_animation			*new_anim(char *tag, char **frames, t_vector2 pos, t_mlx *mlx);
 t_frame				*get_frame(t_frame *lst, int frame_nb);
 void				draw_frame(t_animation *animation, t_mlx *mlx, int frame);
 t_animation			*anim_get_last(t_animation *anim);
 t_animation			*get_anim_with_tag(t_animation *anim_list, char *tag);
-
+t_animation			*anim_set_play_time(t_animation *anim, int play_time);
 //////////////--ANIMATION_PLAYER--///////////////////
 
 t_animation_player *new_animation_player(t_animation *animation, t_vector2 pos);

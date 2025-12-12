@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animation_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 17:59:09 by jpecquer          #+#    #+#             */
-/*   Updated: 2025/11/26 18:00:28 by jpecquer         ###   ########.fr       */
+/*   Updated: 2025/12/12 19:48:35 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,10 @@ void	free_anim(char **anim)
 	}
 	free(anim);
 	anim = NULL;
+}
+
+t_animation	*anim_set_play_time(t_animation *anim, int play_time)
+{
+	anim->anim_play_time = play_time;
+	return (anim);
 }

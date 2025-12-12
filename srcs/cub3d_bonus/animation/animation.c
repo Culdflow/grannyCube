@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animation.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 16:54:51 by dfeve             #+#    #+#             */
-/*   Updated: 2025/11/26 16:38:11 by jpecquer         ###   ########.fr       */
+/*   Updated: 2025/12/12 19:45:14 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_frame	*get_frame(t_frame *lst, int frame_nb)
 	return (cursor);
 }
 
-t_animation	*new_anim(char *tag, char **frames, int anim_play_time, t_vector2 pos, t_mlx *mlx)
+t_animation	*new_anim(char *tag, char **frames, t_vector2 pos, t_mlx *mlx)
 {
 	t_animation	*result;
 
@@ -56,7 +56,7 @@ t_animation	*new_anim(char *tag, char **frames, int anim_play_time, t_vector2 po
 	result->frames = load_frames(frames, pos, mlx);
 	result->frames->current_frame = result->frames;
 	result->anim_tag = tag;
-	result->anim_play_time = anim_play_time;
+	result->anim_play_time = 1;
 	result->loop = FALSE;
 	result->next_frame = -1;
 	result->next = 0;

@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 00:50:21 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/11 22:36:01 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/12 19:04:17 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,4 +107,3 @@ t_vector2	map_size_window(void)
 	free_mlx(mlx);
 	return (board_size);
 }
-

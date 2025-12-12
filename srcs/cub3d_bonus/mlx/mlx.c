@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 23:23:41 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/08 02:23:26 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/12 20:33:18 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 t_mlx	*setup_mlx(char *name, t_vector2 minimap_size)
 {
-	t_mlx	*mlx;
-	t_vector2 screen_size;
+	t_mlx		*mlx;
+	t_vector2	screen_size;
 
 	mlx = malloc(sizeof(t_mlx));
 	mlx->mlx = mlx_init();
@@ -26,13 +26,13 @@ t_mlx	*setup_mlx(char *name, t_vector2 minimap_size)
 	mlx->imgs[0].img = NULL;
 	mlx->is_clicking = FALSE;
 	mlx->screen_size = screen_size;
-	// mlx->entity = new_entity(vec2(55, 55), )
 	mlx->board = NULL;
 	mlx->obj_list = NULL;
 	mlx->minimap_size = minimap_size;
 	mlx->cube_size_minimap = vec2(50, 50);
 	mlx->minimap_margin = vec2(30, 50);
 	mlx->debug_lst = NULL;
+	mlx->dir = NULL;
 	hud_char(mlx);
 	mlx->HUD = hud(mlx);
 	mlx->dov = 8;
@@ -42,8 +42,6 @@ t_mlx	*setup_mlx(char *name, t_vector2 minimap_size)
 
 void	free_mlx(t_mlx *mlx)
 {
-	// t_frame	*tmp;
-
 	mlx_loop_end(mlx->mlx);
 	if (mlx->board)
 		free_tab(mlx->board, mlx->board_size);
@@ -56,24 +54,6 @@ void	free_mlx(t_mlx *mlx)
 	free(mlx->HUD_CHAR);
 	if (mlx->dir)
 		free_mlx_dir(mlx->dir);
-	// tmp = mlx->HUD->frames->next;
-	// while(tmp)
-	// {
-	// 	free(mlx->HUD->frames);
-	// 	mlx->HUD->frames = tmp;
-	// 	tmp = mlx->HUD->frames->next;
-	// }
-	// free(mlx->HUD->frames);
-	// //free(mlx->HUD);
-	// tmp = mlx->HUD_CHAR->anim_list->frames;
-	// while(tmp)
-	// {
-	// 	free(mlx->HUD_CHAR->anim_list->frames);
-	// 	mlx->HUD_CHAR->anim_list->frames = tmp;
-	// 	tmp = mlx->HUD_CHAR->anim_list->frames->next;
-	// }
-	// free(mlx->HUD_CHAR->anim_list->frames);
-	// free(mlx->HUD_CHAR);
 	free(mlx->mlx);
 	free(mlx);
 }
