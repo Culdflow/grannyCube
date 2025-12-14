@@ -6,7 +6,7 @@
 #    By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/04 14:55:29 by mabdessm          #+#    #+#              #
-#    Updated: 2025/12/12 20:31:39 by dfeve            ###   ########.fr        #
+#    Updated: 2025/12/14 15:09:00 by dfeve            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,8 @@ BONUS_SRCS = srcs/cub3d_bonus/main.c \
 \
 		srcs/cub3d_bonus/vector/vector.c \
 		srcs/cub3d_bonus/vector/vector_utils.c \
+		srcs/cub3d_bonus/vector/vector_more_utils.c \
+		srcs/cub3d_bonus/vector/vector_even_more_utils.c \
 \
 		srcs/cub3d_bonus/parsing/parsing.c \
 		srcs/cub3d_bonus/parsing/parsing_utils.c \
@@ -55,11 +57,15 @@ BONUS_SRCS = srcs/cub3d_bonus/main.c \
 		srcs/cub3d_bonus/map/map_utils.c \
 \
 		srcs/cub3d_bonus/player/player.c \
+		srcs/cub3d_bonus/player/player_utils.c \
+		srcs/cub3d_bonus/player/player_utils_two.c \
 \
 		srcs/cub3d_bonus/ray/ray.c \
 		srcs/cub3d_bonus/ray/ray_list.c \
+		srcs/cub3d_bonus/ray/ray_utils.c \
 \
 		srcs/cub3d_bonus/utils/utils.c \
+		srcs/cub3d_bonus/utils/more_utils.c \
 \
 		srcs/cub3d_bonus/textures/textures.c \
 \

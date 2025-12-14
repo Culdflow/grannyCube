@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 20:19:13 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/08 21:47:59 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/14 15:08:25 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_vector2	vec2_make_start(t_vector2 start, t_vector2 end)
 	return (result);
 }
 
-t_vector2	vec2_make_end(t_vector2 start, t_vector2 end)//Reverse vec2_make_start
+t_vector2	vec2_make_end(t_vector2 start, t_vector2 end)
 {
 	t_vector2	result;
 
@@ -63,50 +63,4 @@ t_vector2	sub_vec2(t_vector2 vec1, t_vector2 vec2)//Returns vec1 - vec2
 	result.x = vec1.x - vec2.x;
 	result.y = vec1.y - vec2.y;
 	return (result);
-}
-
-t_vector2	div_vec2(t_vector2 vec1, t_vector2 divi)
-{
-	t_vector2	result;
-
-	result = vec2(0, 0);
-	if (divi.x > 0)
-		result.x = vec1.x / divi.x;
-	if (divi.y > 0)
-	result.y = vec1.y / divi.y;
-	return (result);
-}
-
-int	abs(int x)
-{
-	if (x < 0)
-		return (x * -1);
-	return (x);
-}
-
-void	free_tab(char **tab, t_vector2 tab_size)
-{
-	int cursor;
-
-	cursor = 0;
-	if (!tab)
-		return ;
-	while (cursor < tab_size.y)
-	{
-		if (tab[cursor])
-		{
-			printf("freeing line: %s\n", tab[cursor]);
-			free(tab[cursor]);
-		}
-		cursor++;
-	}
-	free(tab);
-}
-
-void	ft_approach(int *a, int app)
-{
-	if (*a < app)
-		(*a)++;
-	else
-		(*a)--;
 }

@@ -6,13 +6,14 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 03:05:49 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/11 20:01:39 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/14 14:30:07 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/cub3d_bonus.h"
 
-t_ray_list	*new_ray_list(int fov, int base_angle, t_vector2 start_pos, t_mlx *mlx)
+t_ray_list	*new_ray_list(int fov, int base_angle, t_vector2 start_pos,
+		t_mlx *mlx)
 {
 	t_ray_list	*result;
 	t_ray		*cursor;
@@ -32,7 +33,6 @@ t_ray_list	*new_ray_list(int fov, int base_angle, t_vector2 start_pos, t_mlx *ml
 		if (angle < 0)
 			angle = 360 - ft_fabsf(angle);
 		angle = ft_fmodulf(angle, 360);
-		// printf("angle = %d\n", angle);
 		cursor->next_ray = new_ray(start_pos, angle, mlx);
 		cursor = cursor->next_ray;
 		angle += (((float)(fov) / (float)mlx->screen_size.x) * 4);
@@ -40,9 +40,9 @@ t_ray_list	*new_ray_list(int fov, int base_angle, t_vector2 start_pos, t_mlx *ml
 	return (result);
 }
 
-t_ray *get_ray(t_ray_list *lst, int nb)
+t_ray	*get_ray(t_ray_list *lst, int nb)
 {
-	int			i;
+	int		i;
 	t_ray	*cursor;
 
 	i = 0;
@@ -72,7 +72,6 @@ void	free_ray_list(t_ray_list **ray_list)
 	t_ray	*cursor;
 	t_ray	*tmp;
 
-	// printf("freeing ray list\n");
 	if (!(*ray_list) || !ray_list)
 		return ;
 	cursor = (*ray_list)->ray_list;

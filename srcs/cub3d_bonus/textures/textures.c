@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 17:11:23 by dfeve             #+#    #+#             */
-/*   Updated: 2025/10/28 14:27:06 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/14 15:00:53 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,29 @@ t_img	*create_img(char *path, t_mlx *mlx)
 		return (NULL);
 	}
 	mlx_destroy_image(mlx->mlx, temp);
-	img->img = mlx_xpm_file_to_image(mlx->mlx, path, &img->size.x, &img->size.y);
-	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel, &img->line_length, &img->endian);
+	img->img = mlx_xpm_file_to_image(mlx->mlx, path, &img->size.x,
+			&img->size.y);
+	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel,
+			&img->line_length, &img->endian);
 	return (img);
 }
 
-t_textures	*new_textures(unsigned int floor_color, unsigned int ceiling_color, t_data *data)
+t_textures	*new_textures(unsigned int floor_color, unsigned int ceiling_color,
+		t_data *data)
 {
 	t_textures	*result;
 
 	result = malloc(sizeof(t_textures));
 	result->floor_color = floor_color;
 	result->ceiling_color = ceiling_color;
-	result->north_texture = create_img(data->path_to_the_north_texture, data->mlx);
-	result->south_texture = create_img(data->path_to_the_south_texture, data->mlx);
-	result->east_texture = create_img(data->path_to_the_east_texture, data->mlx);
-	result->west_texture = create_img(data->path_to_the_west_texture, data->mlx);
+	result->north_texture = create_img(data->path_to_the_north_texture,
+			data->mlx);
+	result->south_texture = create_img(data->path_to_the_south_texture,
+			data->mlx);
+	result->east_texture = create_img(data->path_to_the_east_texture,
+			data->mlx);
+	result->west_texture = create_img(data->path_to_the_west_texture,
+			data->mlx);
 	result->door_texture = create_img("textures/door.xpm", data->mlx);
 	result->fog_texture = create_img(FOG_TEXT, data->mlx);
 	return (result);

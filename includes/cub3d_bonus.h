@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 05:34:38 by mabdessm          #+#    #+#             */
-/*   Updated: 2025/12/12 22:57:14 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/14 14:28:43 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,6 +217,9 @@ t_ray_list		*new_ray_list(int fov, int base_angle, t_vector2 start_pos, t_mlx *m
 void			draw_ray_list(t_ray_list *ray_list, t_vector2 start_pos, t_mlx *mlx);
 void			free_ray_list(t_ray_list **ray_list);
 t_ray 			*get_ray(t_ray_list *lst, int nb);
+float			wtf_sqrt( float number );
+float			ray_get_length(t_vector2 start_pos, t_vector2 end_pos);
+t_vector2		ray_get_end_pos(t_ray *ray, t_vector2 start_pos, float angle, t_mlx *mlx);
 
 //////////////////--VIEW--////////////////////////////
 
