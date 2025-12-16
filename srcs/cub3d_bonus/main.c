@@ -6,13 +6,11 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 01:26:04 by mabdessm          #+#    #+#             */
-/*   Updated: 2025/12/11 19:25:24 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/16 18:26:26 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d_bonus.h"
-
-//for testing
 
 int	init_data(t_data *data, char *file)
 {

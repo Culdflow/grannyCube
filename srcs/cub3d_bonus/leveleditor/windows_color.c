@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 00:50:21 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/12 19:26:32 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/16 16:53:42 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ char	**color_choose_window( void )
 
 	mlx = setup_mlx("COLOR CHOOSE", vec2(0, 0));
 	result = NULL;
-	done_button = obj_set_onClick(create_obj(BUTTON, vec2(270, 500), 0xFFFFFF,
+	done_button = obj_set_on_click(create_obj(BUTTON, vec2(270, 500), 0xFFFFFF,
 				"DONE"), on_done_button_click, mlx);
 	new_image(mlx, mlx->screen_size, vec2(0, 0));
 	sliders = set_sliders(mlx);

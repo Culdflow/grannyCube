@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 00:17:25 by dfeve             #+#    #+#             */
-/*   Updated: 2025/08/29 19:39:50 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/16 16:52:15 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,10 @@ void	draw_image_scaled(t_img *img, float scale, t_vector2 pos, t_mlx *mlx)
 		cursor.x = pos.x;
 		while (img_cursor_x < img->size.x)
 		{
-			if (cursor.x >= 0 && cursor.x < mlx->screen_size.x && cursor.y >= 0 && cursor.y < mlx->screen_size.y)
-				my_mlx_pixel_put(&mlx->imgs[0], cursor.x, cursor.y, get_pixel_img(*img, img_cursor_x, img_cursor_y));
+			if (cursor.x >= 0 && cursor.x < mlx->screen_size.x && cursor.y >= 0
+				&& cursor.y < mlx->screen_size.y)
+				my_mlx_pixel_put(&mlx->imgs[0], cursor.x, cursor.y,
+					get_pixel_img(*img, img_cursor_x, img_cursor_y));
 			img_cursor_x += 1 / scale;
 			cursor.x++;
 		}

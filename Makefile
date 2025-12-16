@@ -6,7 +6,7 @@
 #    By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/04 14:55:29 by mabdessm          #+#    #+#              #
-#    Updated: 2025/12/14 15:09:00 by dfeve            ###   ########.fr        #
+#    Updated: 2025/12/16 18:27:52 by dfeve            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,9 +33,13 @@ BONUS_SRCS = srcs/cub3d_bonus/main.c \
 		srcs/cub3d_bonus/leveleditor/windows_color_utils.c \
 \
 		srcs/cub3d_bonus/render/draw.c \
+		srcs/cub3d_bonus/render/draw_utils.c \
+		srcs/cub3d_bonus/render/draw_more_utils.c \
 		srcs/cub3d_bonus/render/images.c \
 		srcs/cub3d_bonus/render/images_utils.c \
 		srcs/cub3d_bonus/render/objects.c \
+		srcs/cub3d_bonus/render/objects_utils.c \
+		srcs/cub3d_bonus/render/objects_more_utils.c \
 		srcs/cub3d_bonus/render/view.c \
 \
 		srcs/cub3d_bonus/vector/vector.c \

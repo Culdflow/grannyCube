@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 00:50:21 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/12 19:04:17 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/16 16:53:42 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_mlx	*editor_window(t_vector2 board_size)
 	mlx->board = create_board(mlx->board_size);
 	new_image(mlx, mlx->screen_size, vec2(0, 0));
 	draw_board(mlx, 0xFFFFFF, mlx->board, mlx->board_size);
-	add_obj_to_list(&mlx->obj_list, obj_set_onClick(create_obj(BUTTON,
+	add_obj_to_list(&mlx->obj_list, obj_set_on_click(create_obj(BUTTON,
 				vec2(1750, 450), 0xFFFFFF, "SUBMIT"),
 			mlx_loop_end_signal, mlx));
 	mlx_hook(mlx->win, ON_DESTROY, 0, fun_exit, mlx->mlx);
@@ -61,19 +61,19 @@ t_mlx	*editor_window(t_vector2 board_size)
 
 void	map_size_obj(t_mlx *mlx, t_object *value_x, t_object *value_y)
 {
-	add_obj_to_list(&mlx->obj_list, obj_set_onClick(create_obj(BUTTON,
+	add_obj_to_list(&mlx->obj_list, obj_set_on_click(create_obj(BUTTON,
 				vec2(50, 65), 0xFFFFFF, ""), modif_label_up, value_x));
 	add_obj_to_list(&mlx->obj_list, create_obj(LABEL, vec2(50, 100), 0xFFFFFF,
 			"X VALUE"));
-	add_obj_to_list(&mlx->obj_list, obj_set_onClick(create_obj(BUTTON,
+	add_obj_to_list(&mlx->obj_list, obj_set_on_click(create_obj(BUTTON,
 				vec2(50, 120), 0xFFFFFF, ""), modif_label_down, value_x));
-	add_obj_to_list(&mlx->obj_list, obj_set_onClick(create_obj(BUTTON,
+	add_obj_to_list(&mlx->obj_list, obj_set_on_click(create_obj(BUTTON,
 				vec2(100, 65), 0xFFFFFF, ""), modif_label_up, value_y));
 	add_obj_to_list(&mlx->obj_list, create_obj(LABEL, vec2(100, 100), 0xFFFFFF,
 			"Y VALUE"));
-	add_obj_to_list(&mlx->obj_list, obj_set_onClick(create_obj(BUTTON,
+	add_obj_to_list(&mlx->obj_list, obj_set_on_click(create_obj(BUTTON,
 				vec2(100, 120), 0xFFFFFF, ""), modif_label_down, value_y));
-	add_obj_to_list(&mlx->obj_list, obj_set_onClick(create_obj(BUTTON,
+	add_obj_to_list(&mlx->obj_list, obj_set_on_click(create_obj(BUTTON,
 				vec2(150, 100), 0xFFFFFF, "CREATE"),
 			mlx_loop_end_signal, mlx));
 	add_obj_to_list(&mlx->obj_list, value_x);
