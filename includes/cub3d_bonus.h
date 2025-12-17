@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 05:34:38 by mabdessm          #+#    #+#             */
-/*   Updated: 2025/12/14 14:28:43 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/17 22:49:05 by jpecquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@
 # include "utils.h"
 # include "animation.h"
 # include "entities.h"
+
 # define M_2PI M_PI / 2
 # define M_3PI 3 * M_PI / 2
 # define FOG_TEXT "textures/fog_texture.xpm"
 
-
-typedef enum	directions
+typedef enum directions
 {
 	NORTH,
 	EAST,
@@ -40,9 +40,9 @@ typedef enum	directions
 	FOG_EAST_WEST,
 	DOOR_NORTH_SOUTH,
 	DOOR_EAST_WEST
-}	e_dir;
+}	t_dir;
 
-typedef struct	s_player_collisions
+typedef struct s_player_collisions
 {
 	int		n_e;
 	int		helper_n_e;
@@ -64,7 +64,7 @@ typedef struct	s_player_collisions
 	e_dir	last_collision;
 }	t_player_collisions;
 
-typedef struct	s_player
+typedef struct s_player
 {
 	float				x;
 	float				y;
@@ -74,8 +74,7 @@ typedef struct	s_player
 	t_player_collisions	*collisions;
 }	t_player;
 
-
-typedef struct	s_ray
+typedef struct s_ray
 {
 	t_vector2		start_pos;
 	t_vector2		end_pos;
@@ -85,13 +84,11 @@ typedef struct	s_ray
 	struct s_ray	*next_ray;
 }	t_ray;
 
-
 typedef struct s_ray_list
 {
 	int		fov;
 	t_ray	*ray_list;
 }	t_ray_list;
-
 
 typedef struct s_textures
 {
@@ -104,7 +101,6 @@ typedef struct s_textures
 	t_img			*fog_texture;
 	t_img			*door_texture;
 }	t_textures;
-
 
 typedef struct s_data
 {
@@ -137,6 +133,14 @@ typedef struct s_data
 	float		mouseX;
 	float		old_mouseX;
 }				t_data;
+
+typedef struct s_ptl
+{
+	t_ray		*ray;
+	int			line_height;
+	t_vector2	line_start_pos;
+	t_data		*data;
+}	t_ptl;
 
 ////////////////////////---PARSING---//////////////////////////////////////////
 
@@ -180,6 +184,7 @@ int				valid_colors(t_data *data);
 char			**check_errors(char *file, t_data *data);
 char			**close_map(char **map);
 void			refill_map(char ***map_ptr);
+void			setup_hooks(t_data *data);
 
 //////////////////--MLX--////////////////////////////
 
@@ -197,6 +202,10 @@ t_vector2		find_player(char **map);
 void			look_player_mouse(t_player *player, int mouse_diff);
 t_vector2		is_player_colliding_secure(float new_x, float new_y, t_data *data);
 
+//////////////////--MAIN--////////////////////////////
+int				init_data(t_data *data, char *file);
+int				free_data(t_data *data);
+
 //////////////////--MAP--////////////////////////////
 
 t_vector2		convert_pos_to_map_pos(t_vector2 pos, t_vector2 screen_size, t_vector2 map_size);
@@ -208,6 +217,15 @@ int				is_out_of_bounds(t_vector2 coord, t_vector2 map_size);
 //////////////////--DATA--////////////////////////////
 
 void			setup_data(t_data *data);
+
+//////////////////--GAME_LOOP--////////////////////////////
+int				on_keypress(int keysym, t_data *data);
+int				on_keyrelease(int keysym, t_data *data);
+void			mouse_pos(t_data *data);
+int				draw_textures(t_data *data);
+void			load_textures(t_data *data);
+void			check_keys(t_data *data);
+void			check_door(t_data *data);
 
 //////////////////--RAY--////////////////////////////
 
@@ -225,6 +243,7 @@ t_vector2		ray_get_end_pos(t_ray *ray, t_vector2 start_pos, float angle, t_mlx *
 
 void			draw_floor_ceiling(t_data *data, t_vector2 screen_size, t_textures *textures);
 void			draw_3d_view(t_data *data, t_vector2 screen_size);
+void			put_texture_line(t_ray *ray, int line_height, t_vector2 line_start_pos, t_data *data);
 
 //////////////////--TEXTURES--////////////////////////////
 

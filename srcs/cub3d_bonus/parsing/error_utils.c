@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 15:31:22 by mabdessm          #+#    #+#             */
-/*   Updated: 2025/10/13 23:26:24 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/17 19:41:03 by jpecquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@ int	no_element(t_data *data)
 		|| data->number_of_f == 0 || data->number_of_c == 0)
 		return (1);
 	return (0);
+}
+
+static void	error_empty(char *buffer)
+{
+	free(buffer);
+	return_error("Map contains an empty line!");
 }
 
 char	**buffer_errors(char *buffer, t_data *data)
@@ -45,28 +51,8 @@ char	**buffer_errors(char *buffer, t_data *data)
 			return_error("Map is Invalid!");
 	}
 	else if (empty_lines_in_map(buffer))
-	{
-		free(buffer);
-		return_error("Map contains an empty line!");
-	}
+		error_empty(buffer);
 	return (NULL);
-}
-
-int	ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}
-
-int	ft_strstrlen(char **str)
-{
-	int	i;
-
-	i = 0;
-	while (str && str[i])
-		++i;
-	return (i);
 }
 
 int	color_valid_to_atoi(char *str)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animation.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 16:55:30 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/12 19:46:09 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/17 22:44:54 by jpecquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 # include "utils.h"
 # include "level_editor.h"
 
-typedef struct s_mlx t_mlx;
-typedef struct s_img t_img;
+typedef struct s_mlx	t_mlx;
+typedef struct s_img	t_img;
 
-typedef struct	s_frame
+typedef struct s_frame
 {
 	t_img			*frame;
 	int				frame_nb;
@@ -37,7 +37,7 @@ typedef struct s_animation
 	struct s_animation	*next;
 }	t_animation;
 
-typedef struct	s_animation_player
+typedef struct s_animation_player
 {
 	t_animation	*current_anim;
 	t_animation	*anim_list;
@@ -46,18 +46,21 @@ typedef struct	s_animation_player
 
 //////////////--ANIMATION--//////////////////////////
 
-t_animation			*new_anim(char *tag, char **frames, t_vector2 pos, t_mlx *mlx);
+t_animation			*new_anim(char *tag, char **frames,
+						t_vector2 pos, t_mlx *mlx);
 t_frame				*get_frame(t_frame *lst, int frame_nb);
 void				draw_frame(t_animation *animation, t_mlx *mlx, int frame);
 t_animation			*anim_get_last(t_animation *anim);
 t_animation			*get_anim_with_tag(t_animation *anim_list, char *tag);
 t_animation			*anim_set_play_time(t_animation *anim, int play_time);
-//////////////--ANIMATION_PLAYER--///////////////////
 
-t_animation_player *new_animation_player(t_animation *animation, t_vector2 pos);
+//////////////--ANIMATION_PLAYER--///////////////////
+t_animation_player	*new_animation_player(t_animation *animation,
+						t_vector2 pos);
 void				hud_char(t_mlx *mlx);
 t_animation			*hud(t_mlx *mlx);
-void				add_animation(t_animation_player *player, t_animation *anim);
+void				add_animation(t_animation_player *player,
+						t_animation *anim);
 
 //////////////--ANIMATION_FILE--///////////////////
 
@@ -70,7 +73,5 @@ void				free_animation_struct(t_animation *anim_list, t_mlx *mlx);
 void				free_anim(char **anim);
 void				switch_anim(t_animation_player *player, char *tag);
 //////////////--DEBUG--//////////////////////////////
-
-
 
 #endif

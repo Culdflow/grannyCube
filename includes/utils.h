@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 20:33:25 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/16 16:53:16 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/17 17:16:10 by jpecquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,6 @@ typedef struct s_object_list
 	t_object				*object;
 	struct s_object_list	*next;
 }	t_object_list;
-
 
 ////////////////////////---VECTOR---//////////////////////////////////////////
 

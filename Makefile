@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+         #
+#    By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/04 14:55:29 by mabdessm          #+#    #+#              #
-#    Updated: 2025/12/16 18:27:52 by dfeve            ###   ########.fr        #
+#    Updated: 2025/12/17 22:04:05 by jpecquer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 BONUS_NAME = cub3D_bonus
 CC = cc
-FLAGS = -Wall -Werror -Wextra -g3 -O2 #-fsanitize=address
+FLAGS = -Wall -Werror -Wextra -g3 -O2 -fsanitize=address
 RM = rm -rf
 INCLUDES = -L./lib/libft -lft -L./lib/minilibx -lmlx -L/usr/lib -Iminilibx -lreadline -lXext -lX11 -lm -lz
 
@@ -41,6 +41,7 @@ BONUS_SRCS = srcs/cub3d_bonus/main.c \
 		srcs/cub3d_bonus/render/objects_utils.c \
 		srcs/cub3d_bonus/render/objects_more_utils.c \
 		srcs/cub3d_bonus/render/view.c \
+		srcs/cub3d_bonus/render/view_utils.c \
 \
 		srcs/cub3d_bonus/vector/vector.c \
 		srcs/cub3d_bonus/vector/vector_utils.c \
@@ -49,6 +50,7 @@ BONUS_SRCS = srcs/cub3d_bonus/main.c \
 \
 		srcs/cub3d_bonus/parsing/parsing.c \
 		srcs/cub3d_bonus/parsing/parsing_utils.c \
+		srcs/cub3d_bonus/parsing/utils_again.c \
 		srcs/cub3d_bonus/parsing/parsing_extra.c \
 		srcs/cub3d_bonus/parsing/additional_utils.c \
 		srcs/cub3d_bonus/parsing/more_utils.c \
@@ -56,6 +58,9 @@ BONUS_SRCS = srcs/cub3d_bonus/main.c \
 		srcs/cub3d_bonus/parsing/error_utils.c \
 \
 		srcs/cub3d_bonus/mlx/mlx.c \
+\
+		srcs/cub3d_bonus/game_loop/game_loop.c \
+		srcs/cub3d_bonus/game_loop/game_loop_utils.c \
 \
 		srcs/cub3d_bonus/map/map.c \
 		srcs/cub3d_bonus/map/map_utils.c \

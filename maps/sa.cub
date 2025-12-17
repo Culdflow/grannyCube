@@ -1,0 +1,13 @@
+NO ./textures/east_texture.xpm
+EA ./textures/north_texture.xpm
+SO ./textures/muhammad.xpm
+WE ./textures/west_texture.xpm
+F 233, 228, 0
+C 0, 255, 254
+
+         
+ 11111111
+ 100010N1
+ 1000F001
+ 10001001
+ 11111111

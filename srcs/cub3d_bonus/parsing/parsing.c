@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 15:29:42 by mabdessm          #+#    #+#             */
-/*   Updated: 2025/11/25 17:16:53 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/17 19:36:44 by jpecquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,47 +71,10 @@ int	valid_colors(t_data *data)
 		return (1);
 }
 
-char	**check_errors(char *file, t_data *data)
+void	step_refill_map(char **map, char **new_map, unsigned int i)
 {
-	int		fd;
-	char	**map;
-
-	fd = open(file, O_RDONLY);
-	if (fd < 0 || invalid_file(file))
-		return (file_errors(fd, file));
-	map = check_file_errors(fd, data);
-	if (!map)
-		return (NULL);
-	else
-	{
-		if (valid_colors(data))
-			return (map);
-		else
-		{
-			ft_free_tab(map);
-			if (data->invalid_floor_color)
-				return_error("Invalid floor color!");
-			else
-				return_error("Invalid ceiling color!");
-			return (NULL);
-		}
-	}
-}
-
-void	refill_map(char ***map_ptr)
-{
-	char			**map;
-	char			**new_map;
-	unsigned int	i;
 	unsigned int	j;
 
-	if (!(*map_ptr))
-		return ;
-	map = *map_ptr;
-	new_map = malloc(sizeof(char *) * (ft_strstrlen(map) + 2 + 1));
-	if (!new_map)
-		return ;
-	i = 0;
 	while (i < (unsigned int)(ft_strstrlen(map) + 2))
 	{
 		new_map[i] = ft_calloc(sizeof(char), longest_line(map) + 3);
@@ -129,10 +92,29 @@ void	refill_map(char ***map_ptr)
 		}
 		++i;
 	}
+	printf("a\n");
 	new_map[i] = NULL;
+}
+
+void	refill_map(char ***map_ptr)
+{
+	char			**map;
+	char			**new_map;
+	unsigned int	i;
+
+	if (!(*map_ptr))
+		return ;
+	map = *map_ptr;
+	new_map = malloc(sizeof(char *) * (ft_strstrlen(map) + 2 + 1));
+	if (!new_map)
+		return ;
+	i = 0;
+	printf("ya\n");
+	step_refill_map(map, new_map, i);
 	i = 0;
 	while (map[i])
 		free(map[i++]);
+	printf("a\n");
 	free(map);
 	*map_ptr = new_map;
 }

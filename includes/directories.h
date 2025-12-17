@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   directories.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 16:43:45 by dfeve             #+#    #+#             */
-/*   Updated: 2025/10/13 17:45:06 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/17 22:40:18 by jpecquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,19 @@
 # include "level_editor.h"
 # include "animation.h"
 
-typedef enum	e_file_type
+typedef enum e_file_type
 {
 	T_FILE,
 	T_DIRECTORY,
-}	file_type;
+}	t_file_type;
 
-typedef enum	e_file_status
+typedef enum e_file_status
 {
 	NOT_SELECTED,
 	SELECTED,
-}	file_status;
+}	t_file_status;
 
-typedef struct	s_directory_file
+typedef struct s_directory_file
 {
 	file_type				type;
 	char					*name;
@@ -48,7 +48,6 @@ typedef struct s_mlx_dir
 	char				*extension;
 	char				*extension_prompt;
 }	t_mlx_dir;
-
 
 t_dir_files	*get_files_from_dir(char *dir);
 char		*choose_texture_window(char *prompt, char *extension);
