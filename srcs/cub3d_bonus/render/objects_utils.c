@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objects_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 16:58:13 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/16 16:59:36 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/18 23:43:10 by jpecquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ t_object	*new_slider(t_vector2 pos, int max_value, int color, t_mlx *mlx)
 	result->type = SLIDER;
 	result->color = color;
 	result->victim = mlx;
-	result->clickFunc = slider_on_click;
+	result->click_func = slider_on_click;
 	return (result);
 }
 

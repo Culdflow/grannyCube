@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   directories.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:50:57 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/12 19:53:00 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/18 23:29:29 by jpecquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/directories.h"
 
-t_dir_files	*new_dir_file(file_type type, char *name,
+t_dir_files	*new_dir_file(t_file_type type, char *name,
 	int on_cursor, t_dir_files *prev)
 {
 	t_dir_files	*result;
@@ -27,7 +27,7 @@ t_dir_files	*new_dir_file(file_type type, char *name,
 	return (result);
 }
 
-void	add_to_dir_list(t_dir_files **list, file_type type, char *name)
+void	add_to_dir_list(t_dir_files **list, t_file_type type, char *name)
 {
 	t_dir_files	*cursor;
 
@@ -92,7 +92,7 @@ int	check_extension(char *filename, char *extension)
 
 void	free_mlx_dir(t_mlx_dir *dir)
 {
-	free_dir_files(dir->files);
+	fret_dir_files(dir->files);
 	free(dir->cur_dir);
 	free(dir->prompt);
 	free(dir->extension);

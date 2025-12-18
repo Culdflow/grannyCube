@@ -6,13 +6,13 @@
 /*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 17:48:46 by dfeve             #+#    #+#             */
-/*   Updated: 2025/11/26 18:03:16 by jpecquer         ###   ########.fr       */
+/*   Updated: 2025/12/18 23:41:06 by jpecquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/cub3d_bonus.h"
 
-t_debug_obj	*new_debug_obj(debug_type type, t_vector2 start,
+t_debug_obj	*new_debug_obj(t_debug_type type, t_vector2 start,
 			t_vector2 end, unsigned int color)
 {
 	t_debug_obj	*result;

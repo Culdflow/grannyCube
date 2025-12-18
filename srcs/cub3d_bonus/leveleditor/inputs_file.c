@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   inputs.c                                           :+:      :+:    :+:   */
+/*   inputs_file.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 00:53:10 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/11 22:38:27 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/18 23:29:29 by jpecquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	do_if_t_directory(t_mlx *mlx, t_dir_files *cursor)
 	free(tmp);
 	free(mlx->dir->cur_dir);
 	mlx->dir->cur_dir = dir;
-	free_dir_files(mlx->dir->files);
+	fret_dir_files(mlx->dir->files);
 	mlx->dir->files = get_files_from_dir(dir);
 	free_object_list(mlx->obj_list);
 	mlx->obj_list = NULL;

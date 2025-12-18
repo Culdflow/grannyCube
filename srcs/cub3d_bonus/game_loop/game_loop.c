@@ -6,7 +6,7 @@
 /*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 20:40:18 by jpecquer          #+#    #+#             */
-/*   Updated: 2025/12/17 22:16:50 by jpecquer         ###   ########.fr       */
+/*   Updated: 2025/12/18 23:36:55 by jpecquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,24 +34,24 @@ void	mouse_pos(t_data *data)
 	int	y;
 
 	mlx_mouse_get_pos(data->mlx->mlx, data->mlx->win, &x, &y);
-	data->mouseX = x;
-	if (data->mouseX < 10)
+	data->mouse_x = x;
+	if (data->mouse_x < 10)
 	{
 		mlx_mouse_move(data->mlx->mlx, data->mlx->win,
 			data->mlx->screen_size.x - 10, data->mlx->screen_size.y / 2);
 	}
-	if (data->mouseX > data->mlx->screen_size.x - 10)
+	if (data->mouse_x > data->mlx->screen_size.x - 10)
 	{
 		mlx_mouse_move(data->mlx->mlx, data->mlx->win,
 			10, data->mlx->screen_size.y / 2);
 	}
-	look_player_mouse(data->player, data->mouseX - data->old_mouseX);
-	if (data->mouseX > data->mlx->screen_size.x - 10)
-		data->old_mouseX = 0;
-	else if (data->mouseX < 10)
-		data->old_mouseX = data->mlx->screen_size.x;
+	look_player_mouse(data->player, data->mouse_x - data->old_mouse_x);
+	if (data->mouse_x > data->mlx->screen_size.x - 10)
+		data->old_mouse_x = 0;
+	else if (data->mouse_x < 10)
+		data->old_mouse_x = data->mlx->screen_size.x;
 	else
-		data->old_mouseX = data->mouseX;
+		data->old_mouse_x = data->mouse_x;
 }
 
 void	step_draw_textures(t_data *data, int frame)
@@ -62,8 +62,8 @@ void	step_draw_textures(t_data *data, int frame)
 	draw_3d_view(data, data->mlx->screen_size);
 	draw_minimap(data);
 	draw_player(data->player, data->mlx);
-	draw_frame(data->mlx->HUD, data->mlx, frame);
-	draw_frame(data->mlx->HUD_CHAR->current_anim, data->mlx, frame);
+	draw_frame(data->mlx->hud, data->mlx, frame);
+	draw_frame(data->mlx->hud_char->current_anim, data->mlx, frame);
 	draw_debug(data->mlx->debug_lst, data->mlx);
 	data->mlx->debug_lst = NULL;
 	put_imgs(data->mlx);

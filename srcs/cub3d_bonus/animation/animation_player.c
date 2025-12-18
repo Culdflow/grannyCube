@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animation_player.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 19:30:05 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/12 19:48:03 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/18 23:36:23 by jpecquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,16 +66,16 @@ void	hud_char(t_mlx *mlx)
 	result = new_anim("state_1", anim, vec2(0, 0), mlx);
 	result->loop = TRUE;
 	free_anim(anim);
-	mlx->HUD_CHAR = new_animation_player(result, vec2(0, 0));
+	mlx->hud_char = new_animation_player(result, vec2(0, 0));
 	anim = file_load_frames("textures/anim/HUD/HUD_state_2.an");
 	result_state_2 = new_anim("state_2", anim, vec2(0, 0), mlx);
 	result_state_2->loop = TRUE;
 	free_anim(anim);
-	add_animation(mlx->HUD_CHAR, result_state_2);
+	add_animation(mlx->hud_char, result_state_2);
 	anim = file_load_frames("textures/anim/HUD/HUD_state_3.an");
 	result_state_3 = anim_set_play_time(new_anim("state_3", anim, vec2(0, 0),
 				mlx), 4);
 	result_state_3->loop = TRUE;
 	free_anim(anim);
-	add_animation(mlx->HUD_CHAR, result_state_3);
+	add_animation(mlx->hud_char, result_state_3);
 }

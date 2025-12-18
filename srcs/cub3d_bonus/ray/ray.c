@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 19:18:41 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/14 14:29:10 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/18 23:47:15 by jpecquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,14 +75,14 @@ t_vector2	ray_check_vertical_lines(t_vector2 start_pos, float angle,
 	rad = (angle * M_PI) / 180;
 	n_tan = -1 * tan(rad);
 	rx = start_pos.x;
-	if (rad <= M_2PI || rad >= M_3PI)
+	if (rad <= (M_PI / 2) || rad >= (3 * M_PI / 2))
 	{
 		rx += 100 - ((int)rx % 100);
 		ry = (start_pos.x - rx) * n_tan + start_pos.y;
 		mlx->ox = 100;
 		mlx->oy = (-1 * mlx->ox) * n_tan;
 	}
-	if (rad > M_2PI && rad < M_3PI)
+	if (rad > (M_PI / 2) && rad < (3 * M_PI / 2))
 	{
 		rx -= ((int)rx % 100) + 0.01;
 		ry = (start_pos.x - rx) * n_tan + start_pos.y;

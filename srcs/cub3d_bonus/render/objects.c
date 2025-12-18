@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objects.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 20:10:15 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/16 18:28:34 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/18 23:43:10 by jpecquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_object	*obj_set_on_click(t_object *obj, void (*onClick)(void *, int),
 	void *victim)
 {
-	obj->clickFunc = onClick;
+	obj->click_func = onClick;
 	obj->victim = victim;
 	return (obj);
 }
@@ -32,7 +32,7 @@ t_object	*create_obj(int type, t_vector2 pos, int color, char *tag)
 	t_object	*result;
 
 	result = malloc(sizeof(t_object));
-	result->clickFunc = NULL;
+	result->click_func = NULL;
 	result->pos = pos;
 	result->size = vec2(25, 15);
 	result->tag = ft_strdup(tag);

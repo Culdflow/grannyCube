@@ -6,7 +6,7 @@
 /*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 05:34:38 by mabdessm          #+#    #+#             */
-/*   Updated: 2025/12/17 22:49:05 by jpecquer         ###   ########.fr       */
+/*   Updated: 2025/12/18 23:49:11 by jpecquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@
 # include "animation.h"
 # include "entities.h"
 
-# define M_2PI M_PI / 2
-# define M_3PI 3 * M_PI / 2
 # define FOG_TEXT "textures/fog_texture.xpm"
 
 typedef enum directions
@@ -61,7 +59,7 @@ typedef struct s_player_collisions
 	int		s_w;
 	int		helper_s_w;
 	int		helper_w_s;
-	e_dir	last_collision;
+	t_dir	last_collision;
 }	t_player_collisions;
 
 typedef struct s_player
@@ -80,7 +78,7 @@ typedef struct s_ray
 	t_vector2		end_pos;
 	float			angle;
 	float			length;
-	e_dir			wall_hit_dir;
+	t_dir			wall_hit_dir;
 	struct s_ray	*next_ray;
 }	t_ray;
 
@@ -130,8 +128,8 @@ typedef struct s_data
 	t_ray_list	*ray_list;
 	t_textures	*textures;
 	int			keys[65365];
-	float		mouseX;
-	float		old_mouseX;
+	float		mouse_x;
+	float		old_mouse_x;
 }				t_data;
 
 typedef struct s_ptl
@@ -194,13 +192,16 @@ t_vector2		get_map_size(char **map);
 
 //////////////////--PLAYER--////////////////////////////
 
-t_player		*new_player(t_vector2 pos, int angle, int speed, int look_speed);
-void			move_player(t_player *player, t_vector2 mv_vector, t_data *data);
+t_player		*new_player(t_vector2 pos, int angle,
+					int speed, int look_speed);
+void			move_player(t_player *player,
+					t_vector2 mv_vector, t_data *data);
 void			look_player(t_player *player, int turning_right);
 void			draw_player(t_player *player, t_mlx *mlx);
 t_vector2		find_player(char **map);
 void			look_player_mouse(t_player *player, int mouse_diff);
-t_vector2		is_player_colliding_secure(float new_x, float new_y, t_data *data);
+t_vector2		is_player_colliding_secure(float new_x,
+					float new_y, t_data *data);
 
 //////////////////--MAIN--////////////////////////////
 int				init_data(t_data *data, char *file);
@@ -208,8 +209,10 @@ int				free_data(t_data *data);
 
 //////////////////--MAP--////////////////////////////
 
-t_vector2		convert_pos_to_map_pos(t_vector2 pos, t_vector2 screen_size, t_vector2 map_size);
-t_vector2		convert_map_pos_to_pos(t_vector2 map_pos, t_vector2 screen_size, t_vector2 map_size);
+t_vector2		convert_pos_to_map_pos(t_vector2 pos,
+					t_vector2 screen_size, t_vector2 map_size);
+t_vector2		convert_map_pos_to_pos(t_vector2 map_pos,
+					t_vector2 screen_size, t_vector2 map_size);
 void			draw_minimap(t_data *data);
 void			zoom_minimap(t_mlx *mlx, int val);
 int				is_out_of_bounds(t_vector2 coord, t_vector2 map_size);
@@ -231,23 +234,29 @@ void			check_door(t_data *data);
 
 t_ray			*new_ray(t_vector2 start_pos, float angle, t_mlx *mlx);
 void			draw_ray(t_vector2 start_pos, t_ray *ray, t_mlx *mlx);
-t_ray_list		*new_ray_list(int fov, int base_angle, t_vector2 start_pos, t_mlx *mlx);
-void			draw_ray_list(t_ray_list *ray_list, t_vector2 start_pos, t_mlx *mlx);
+t_ray_list		*new_ray_list(int fov, int base_angle,
+					t_vector2 start_pos, t_mlx *mlx);
+void			draw_ray_list(t_ray_list *ray_list,
+					t_vector2 start_pos, t_mlx *mlx);
 void			free_ray_list(t_ray_list **ray_list);
-t_ray 			*get_ray(t_ray_list *lst, int nb);
+t_ray			*get_ray(t_ray_list *lst, int nb);
 float			wtf_sqrt( float number );
 float			ray_get_length(t_vector2 start_pos, t_vector2 end_pos);
-t_vector2		ray_get_end_pos(t_ray *ray, t_vector2 start_pos, float angle, t_mlx *mlx);
+t_vector2		ray_get_end_pos(t_ray *ray, t_vector2 start_pos,
+					float angle, t_mlx *mlx);
 
 //////////////////--VIEW--////////////////////////////
 
-void			draw_floor_ceiling(t_data *data, t_vector2 screen_size, t_textures *textures);
+void			draw_floor_ceiling(t_data *data, t_vector2 screen_size,
+					t_textures *textures);
 void			draw_3d_view(t_data *data, t_vector2 screen_size);
-void			put_texture_line(t_ray *ray, int line_height, t_vector2 line_start_pos, t_data *data);
+void			put_texture_line(t_ray *ray, int line_height,
+					t_vector2 line_start_pos, t_data *data);
 
 //////////////////--TEXTURES--////////////////////////////
 
-t_textures		*new_textures(unsigned int floor_color, unsigned int ceiling_color, t_data *data);
+t_textures		*new_textures(unsigned int floor_color,
+					unsigned int ceiling_color, t_data *data);
 void			free_textures(t_textures **textures, t_mlx *mlx);
 
 //////////////////--DEBUG--////////////////////////////
@@ -257,9 +266,12 @@ void			draw_debug(t_debug_obj *lst, t_mlx *mlx);
 //////////////////--BILLBOARD--////////////////////////
 
 int				trig_get_angle(int adj, int hyp);
-int				check_is_angle_in_player_view(int angle, int fov, int player_angle);
-float			get_percent_billboard_from_view(int angle, int fov, int player_angle);
-void			draw_billboard_sprite(int length, int percent, t_entity *billboard, t_mlx *mlx);
+int				check_is_angle_in_player_view(int angle, int fov,
+					int player_angle);
+float			get_percent_billboard_from_view(int angle, int fov,
+					int player_angle);
+void			draw_billboard_sprite(int length, int percent,
+					t_entity *billboard, t_mlx *mlx);
 
 t_object		*new_slider(t_vector2 pos, int size, int color, t_mlx *mlx);
 #endif

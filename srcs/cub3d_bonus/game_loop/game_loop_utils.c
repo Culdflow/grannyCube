@@ -6,7 +6,7 @@
 /*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 21:51:31 by jpecquer          #+#    #+#             */
-/*   Updated: 2025/12/17 22:13:40 by jpecquer         ###   ########.fr       */
+/*   Updated: 2025/12/18 23:36:23 by jpecquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ static void	step_check_keys(t_data *data)
 	if (data->keys[K_AR_R] == TRUE)
 		look_player(data->player, TRUE);
 	if (data->keys[K_J] == TRUE)
-		switch_anim(data->mlx->HUD_CHAR, "state_1");
+		switch_anim(data->mlx->hud_char, "state_1");
 	if (data->keys[K_K] == TRUE)
-		switch_anim(data->mlx->HUD_CHAR, "state_2");
+		switch_anim(data->mlx->hud_char, "state_2");
 	if (data->keys[K_L] == TRUE)
-		switch_anim(data->mlx->HUD_CHAR, "state_3");
+		switch_anim(data->mlx->hud_char, "state_3");
 }
 
 void	check_keys(t_data *data)

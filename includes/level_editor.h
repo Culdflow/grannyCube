@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   level_editor.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 20:07:34 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/12 19:19:34 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/18 23:37:02 by jpecquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,11 @@
 # include "utils.h"
 # include "entities.h"
 # include "../lib/libft/libft.h"
-typedef struct s_animation t_animation;
-typedef struct s_animation_player t_animation_player;
-typedef struct s_directory_file t_dir_files;
-typedef struct s_mlx_dir t_mlx_dir;
+
+typedef struct s_animation			t_animation;
+typedef struct s_animation_player	t_animation_player;
+typedef struct s_directory_file		t_dir_files;
+typedef struct s_mlx_dir			t_mlx_dir;
 
 typedef struct s_img
 {
@@ -55,8 +56,8 @@ typedef struct s_mlx
 	t_vector2			cube_size_minimap;
 	t_vector2			minimap_margin;
 	t_debug_obj			*debug_lst;
-	t_animation			*HUD;
-	t_animation_player	*HUD_CHAR;
+	t_animation			*hud;
+	t_animation_player	*hud_char;
 	t_entity			*entity;
 	t_vector2			mouse_pos;
 	int					dov;
@@ -70,13 +71,14 @@ typedef struct s_mlx
 
 void			my_mlx_pixel_put(t_img *data, int x, int y, int color);
 void			draw_rectangle(t_img *data, t_vector2 start, t_vector2 end,
-				int color);
+					int color);
 void			draw_board(t_mlx *mlx, int color1, char **board,
-				t_vector2 board_size);
+					t_vector2 board_size);
 void			draw_rectangle_no_fill(t_img *data, t_vector2 start,
-				t_vector2 end, int color);
+					t_vector2 end, int color);
 void			draw_object_list(t_mlx *mlx, t_object_list *obj_lst);
-void			draw_line(t_img *data, t_vector2 start, t_vector2 end, int color);
+void			draw_line(t_img *data, t_vector2 start,
+					t_vector2 end, int color);
 unsigned int	get_pixel_img(t_img img, int x, int y);
 
 ////////////////////////---IMAGES---//////////////////////////////////////////
@@ -90,7 +92,8 @@ t_img			*xpm_file_to_img(t_mlx *mlx, char *path, t_vector2 pos);
 int				new_image(t_mlx *mlx, t_vector2 size, t_vector2 pos);
 void			put_img_to_img(t_img *dst, t_img src, int x, int y);
 t_vector2		get_pos_mouse(t_mlx *mlx);
-void			draw_image_scaled(t_img *img, float scale, t_vector2 pos, t_mlx *mlx);
+void			draw_image_scaled(t_img *img, float scale,
+					t_vector2 pos, t_mlx *mlx);
 
 ////////////////////---THE MOTHERFUCKER HIMSELF---////////////////////////////
 
@@ -99,7 +102,8 @@ char			*file_name_prompt(void);
 char			**color_prompt(void);
 char			**texture_prompt(void);
 
-void			write_map(char *filename, char **colors, char **textures, t_mlx *mlx);
+void			write_map(char *filename, char **colors,
+					char **textures, t_mlx *mlx);
 
 ////////////////////---SIGNALS---////////////////////////////
 
@@ -112,20 +116,25 @@ int				fun_exit(t_mlx *mlx);
 
 t_vector2		map_size_window(void);
 t_mlx			*editor_window(t_vector2 board_size);
-char			**color_choose_window();
+char			**color_choose_window(void);
 void			draw_sliders(t_mlx *mlx, t_object **sliders);
-char			*rgb_to_str(unsigned int r, unsigned int g, unsigned int b);
+char			*rgb_to_str(unsigned int r, unsigned int g,
+					unsigned int b);
 
 ////////////////////---INPUTS---////////////////////////////
 
 int				_input(int keycode, void *void_mlx);
 int				_input_mouse(int x, int y, t_mlx *mlx);
-int 			_input_mouse_ex(int x, int y, t_mlx *mlx);
+int				_input_mouse_ex(int x, int y, t_mlx *mlx);
 int				_input_mouse_board(int keycode, int x, t_mlx *mlx);
-int				_input_mouse_click_down(int keycode, int x, int y, void *void_mlx);
-int				_input_mouse_click_up(int keycode, int x, int y, void *void_mlx);
-int				_input_mouse_click_up_ex(int keycode, int x, int y, t_mlx *mlx);
-int				_input_mouse_click_down_ex(int keycode, int x, int y, t_mlx *mlx);
+int				_input_mouse_click_down(int keycode, int x, int y,
+					void *void_mlx);
+int				_input_mouse_click_up(int keycode, int x, int y,
+					void *void_mlx);
+int				_input_mouse_click_up_ex(int keycode, int x, int y,
+					t_mlx *mlx);
+int				_input_mouse_click_down_ex(int keycode, int x, int y,
+					t_mlx *mlx);
 int				_input_file(int keycode, t_mlx *mlx);
 
 #endif

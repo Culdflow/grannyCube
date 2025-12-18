@@ -6,7 +6,7 @@
 /*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 20:33:25 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/17 17:16:10 by jpecquer         ###   ########.fr       */
+/*   Updated: 2025/12/18 23:43:10 by jpecquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,20 +67,20 @@ enum e_event//Events
 	ON_DESTROY = 17
 };
 
-typedef enum	e_object_type
+typedef enum e_object_type
 {
 	BUTTON = 1,
 	LABEL = 2,
 	SLIDER = 3
-}	object_type;
+}	t_object_type;
 
-typedef enum	e_debug_obj_type
+typedef enum e_debug_obj_type
 {
 	DOT = 1,
 	RECTANGLE = 2,
 	RECTANGLE_NO_FILL = 3,
 	LINE = 4
-}	debug_type;
+}	t_debug_type;
 
 typedef struct s_vector2
 {
@@ -88,9 +88,9 @@ typedef struct s_vector2
 	int	y;
 }	t_vector2;
 
-typedef struct	s_debug_obj
+typedef struct s_debug_obj
 {
-	debug_type			type;
+	t_debug_type		type;
 	t_vector2			start_pos;
 	t_vector2			end_pos;
 	unsigned int		color;
@@ -105,14 +105,14 @@ typedef struct s_vector2_float
 
 typedef struct s_object
 {
-	object_type		type;
+	t_object_type	type;
 	t_vector2		pos;
 	t_vector2		size;
 	char			*tag;
 	int				value;
 	int				max_value;
 	int				color;
-	void			(*clickFunc)(void *, int);
+	void			(*click_func)(void *, int);
 	void			*victim;
 }	t_object;
 
@@ -145,7 +145,8 @@ void			check_if_obj_clicked(t_vector2 mouse_pos, t_object_list *lst);
 void			add_obj_to_list(t_object_list **lst, t_object *obj);
 t_object		*create_obj(int type, t_vector2 pos, int color, char *tag);
 t_object		*obj_set_val_size(t_object *obj, int value, t_vector2 size);
-t_object		*obj_set_on_click(t_object *obj, void (*onClick)(void *, int), void *victim);
+t_object		*obj_set_on_click(t_object *obj, void (*onClick)(void *, int),
+					void *victim);
 t_object		*get_object_from_tag(t_object_list *lst, char *tag);
 t_object_list	*get_last_object(t_object_list *start);
 void			free_object_list(t_object_list *start);
@@ -170,7 +171,8 @@ void			draw_tab(char **map);
 void			ft_free_tab(char **tab);
 //////////////////--DEBUG--////////////////////////////
 
-t_debug_obj		*new_debug_obj(debug_type type, t_vector2 start, t_vector2 end, unsigned int color);
+t_debug_obj		*new_debug_obj(t_debug_type type, t_vector2 start,
+					t_vector2 end, unsigned int color);
 void			add_debug_obj(t_debug_obj **lst, t_debug_obj *el);
 void			free_debug_obj(t_debug_obj *lst);
 

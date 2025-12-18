@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objects_more_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 17:00:15 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/16 18:28:40 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/18 23:51:40 by jpecquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,13 @@ void	check_if_obj_clicked(t_vector2 mouse_pos, t_object_list *lst)
 	{
 		if (check_vector_in_zone(mouse_pos, lst->object->pos,
 				add_vec2(lst->object->pos, lst->object->size)) == TRUE
-			&& lst->object->clickFunc)
+			&& lst->object->click_func)
 		{
 			if (lst->object->type == SLIDER)
-				lst->object->clickFunc(lst->object, lst->object->value);
+				lst->object->click_func(lst->object, lst->object->value);
 			else
-				lst->object->clickFunc(lst->object->victim, lst->object->value);
+				lst->object->click_func(lst->object->victim,
+					lst->object->value);
 			return ;
 		}
 		lst = lst->next;

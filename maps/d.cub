@@ -1,18 +1,15 @@
-NO ./textures/fog_texture.xpm
-EA ./textures/muhammad.xpm
-SO ./textures/east_texture.xpm
-WE ./textures/door.xpm
-F 0, 0, 0
-C 0, 0, 0
+NO ./textures/north_texture.xpm
+EA ./textures/east_texture.xpm
+SO ./textures/south_texture.xpm
+WE ./textures/west_texture.xpm
+F 249, 255, 0
+C 0, 255, 255
 
-           
- 1111111111
- 1000000111
- 1000000001
- 1000000001
- 10N0000001
- 1000000001
- 1000000001
- 1000000001
- 1111100001
- 1111111111
+       
+ 111111
+ 101001
+ 10F001
+ 111001
+ 1000N1
+ 100001
+ 111111
