@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   animation_player.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 19:30:05 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/18 23:36:23 by jpecquer         ###   ########.fr       */
+/*   Updated: 2025/12/28 18:43:32 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/animation.h"
+#include "../../../includes/bonus/animation.h"
 
 t_animation_player	*new_animation_player(t_animation *animation, t_vector2 pos)
 {

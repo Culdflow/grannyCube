@@ -6,11 +6,11 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/14 14:25:36 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/14 14:27:21 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/28 18:43:32 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/cub3d_bonus.h"
+#include "../../../includes/bonus/cub3d_bonus.h"
 
 t_ray	*new_ray(t_vector2 start_pos, float angle, t_mlx *mlx)
 {

@@ -6,11 +6,11 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 18:14:01 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/11 22:38:02 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/28 18:43:32 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/cub3d_bonus.h"
+#include "../../../includes/bonus/cub3d_bonus.h"
 
 t_dir_files	*step_draw_files_window(t_dir_files *files, t_mlx *mlx)
 {

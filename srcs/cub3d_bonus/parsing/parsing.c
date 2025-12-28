@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 15:29:42 by mabdessm          #+#    #+#             */
-/*   Updated: 2025/12/17 19:36:44 by jpecquer         ###   ########.fr       */
+/*   Updated: 2025/12/28 19:20:16 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/cub3d_bonus.h"
+#include "../../../includes/bonus/cub3d_bonus.h"
 
 int	check_floor_color(t_data *data, char *str)
 {
@@ -92,7 +92,6 @@ void	step_refill_map(char **map, char **new_map, unsigned int i)
 		}
 		++i;
 	}
-	printf("a\n");
 	new_map[i] = NULL;
 }
 
@@ -109,12 +108,10 @@ void	refill_map(char ***map_ptr)
 	if (!new_map)
 		return ;
 	i = 0;
-	printf("ya\n");
 	step_refill_map(map, new_map, i);
 	i = 0;
 	while (map[i])
 		free(map[i++]);
-	printf("a\n");
 	free(map);
 	*map_ptr = new_map;
 }

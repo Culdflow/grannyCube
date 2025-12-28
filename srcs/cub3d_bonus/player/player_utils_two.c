@@ -6,11 +6,11 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 22:54:31 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/12 22:56:43 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/28 18:43:32 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/cub3d_bonus.h"
+#include "../../../includes/bonus/cub3d_bonus.h"
 
 void	set_new_var(t_vector2 mv_vector, float *new_x, float *new_y,
 			t_player *player)

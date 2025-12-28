@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   view_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 14:48:43 by jpecquer          #+#    #+#             */
-/*   Updated: 2025/12/17 14:51:43 by jpecquer         ###   ########.fr       */
+/*   Updated: 2025/12/28 18:43:32 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/cub3d_bonus.h"
+#include "../../../includes/bonus/cub3d_bonus.h"
 
 void	draw_3d_line(t_data *data, int line_height, t_vector2 line_start_pos,
 	t_ray *cursor)

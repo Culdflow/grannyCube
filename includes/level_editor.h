@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   level_editor.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 20:07:34 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/18 23:37:02 by jpecquer         ###   ########.fr       */
+/*   Updated: 2025/12/28 19:16:01 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # include <sys/time.h>
 # include <fcntl.h>
 # include "utils.h"
-# include "entities.h"
 # include "../lib/libft/libft.h"
 
 typedef struct s_animation			t_animation;
@@ -58,7 +57,6 @@ typedef struct s_mlx
 	t_debug_obj			*debug_lst;
 	t_animation			*hud;
 	t_animation_player	*hud_char;
-	t_entity			*entity;
 	t_vector2			mouse_pos;
 	int					dov;
 	t_mlx_dir			*dir;

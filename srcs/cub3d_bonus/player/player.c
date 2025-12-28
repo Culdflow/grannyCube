@@ -6,11 +6,11 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 01:36:44 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/12 22:57:35 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/28 19:03:40 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/cub3d_bonus.h"
+#include "../../../includes/bonus/cub3d_bonus.h"
 
 int	is_player_colliding(float new_x, float new_y, t_data *data)
 {

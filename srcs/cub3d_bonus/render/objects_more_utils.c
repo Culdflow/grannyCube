@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   objects_more_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 17:00:15 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/18 23:51:40 by jpecquer         ###   ########.fr       */
+/*   Updated: 2025/12/28 18:43:32 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/level_editor.h"
+#include "../../../includes/bonus/level_editor.h"
 
 t_object_list	*new_object_list(t_object *obj)
 {

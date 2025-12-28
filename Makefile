@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+         #
+#    By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/04 14:55:29 by mabdessm          #+#    #+#              #
-#    Updated: 2025/12/17 22:04:05 by jpecquer         ###   ########.fr        #
+#    Updated: 2025/12/28 19:26:43 by dfeve            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,54 @@ FLAGS = -Wall -Werror -Wextra -g3 -O2 -fsanitize=address
 RM = rm -rf
 INCLUDES = -L./lib/libft -lft -L./lib/minilibx -lmlx -L/usr/lib -Iminilibx -lreadline -lXext -lX11 -lm -lz
 
-SRCS = 
+SRCS = srcs/cub3d/main.c \
+		srcs/cub3d/map_filler.c \
+\
+		srcs/cub3d/render/draw.c \
+		srcs/cub3d/render/draw_utils.c \
+		srcs/cub3d/render/draw_more_utils.c \
+		srcs/cub3d/render/images.c \
+		srcs/cub3d/render/images_utils.c \
+		srcs/cub3d/render/objects.c \
+		srcs/cub3d/render/objects_utils.c \
+		srcs/cub3d/render/objects_more_utils.c \
+		srcs/cub3d/render/view.c \
+		srcs/cub3d/render/view_utils.c \
+\
+		srcs/cub3d/vector/vector.c \
+		srcs/cub3d/vector/vector_utils.c \
+		srcs/cub3d/vector/vector_more_utils.c \
+		srcs/cub3d/vector/vector_even_more_utils.c \
+\
+		srcs/cub3d/parsing/parsing.c \
+		srcs/cub3d/parsing/parsing_utils.c \
+		srcs/cub3d/parsing/utils_again.c \
+		srcs/cub3d/parsing/parsing_extra.c \
+		srcs/cub3d/parsing/additional_utils.c \
+		srcs/cub3d/parsing/more_utils.c \
+		srcs/cub3d/parsing/error_parsing.c \
+		srcs/cub3d/parsing/error_utils.c \
+\
+		srcs/cub3d/mlx/mlx.c \
+\
+		srcs/cub3d/game_loop/game_loop.c \
+		srcs/cub3d/game_loop/game_loop_utils.c \
+\
+		srcs/cub3d/map/map.c \
+		srcs/cub3d/map/map_utils.c \
+\
+		srcs/cub3d/player/player.c \
+		srcs/cub3d/player/player_utils.c \
+		srcs/cub3d/player/player_utils_two.c \
+\
+		srcs/cub3d/ray/ray.c \
+		srcs/cub3d/ray/ray_list.c \
+		srcs/cub3d/ray/ray_utils.c \
+\
+		srcs/cub3d/utils/utils.c \
+		srcs/cub3d/utils/more_utils.c \
+\
+		srcs/cub3d/textures/textures.c \
 
 BONUS_SRCS = srcs/cub3d_bonus/main.c \
 		srcs/cub3d_bonus/map_filler.c \
@@ -99,7 +146,7 @@ $(NAME): $(OBJS)
 	@echo "\033[0;32m${NAME} compiled!\033[0m"
 	@echo
 
-bonus: $(BONUS_OBJS)
+$(BONUS_NAME): $(BONUS_OBJS)
 	@echo "\033[0;31mcompiling ${BONUS_NAME}...\033[0m"
 	@$(CC) $(FLAGS) $(BONUS_OBJS) $(INCLUDES) -o $(BONUS_NAME)
 	@echo "\033[0;32m${BONUS_NAME} compiled!\033[0m"

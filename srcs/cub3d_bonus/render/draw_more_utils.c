@@ -6,11 +6,11 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 16:49:04 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/16 16:49:55 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/28 18:43:32 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/level_editor.h"
+#include "../../../includes/bonus/level_editor.h"
 
 void	put_img_to_img(t_img *dst, t_img src, int x, int y)
 {

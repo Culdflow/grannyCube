@@ -6,11 +6,11 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 16:58:38 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/08 21:23:44 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/28 18:43:32 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/animation.h"
+#include "../../../includes/bonus/animation.h"
 
 int	get_file_length(char *file)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   directories_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 19:52:19 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/18 23:29:29 by jpecquer         ###   ########.fr       */
+/*   Updated: 2025/12/28 18:43:32 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/directories.h"
+#include "../../../includes/bonus/directories.h"
 
 void	fret_dir_files(t_dir_files *files)
 {

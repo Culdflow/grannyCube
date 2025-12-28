@@ -6,11 +6,11 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/14 15:07:57 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/14 15:12:52 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/28 19:19:02 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/level_editor.h"
+#include "../../../includes/bonus/level_editor.h"
 
 t_vector2	div_vec2(t_vector2 vec1, t_vector2 divi)
 {
@@ -42,7 +42,6 @@ void	free_tab(char **tab, t_vector2 tab_size)
 	{
 		if (tab[cursor])
 		{
-			printf("freeing line: %s\n", tab[cursor]);
 			free(tab[cursor]);
 		}
 		cursor++;

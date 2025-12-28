@@ -6,11 +6,11 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 00:17:25 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/16 16:52:15 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/28 18:43:32 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/level_editor.h"
+#include "../../../includes/bonus/level_editor.h"
 
 int	count_images(t_mlx *mlx)
 {

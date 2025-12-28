@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 05:34:38 by mabdessm          #+#    #+#             */
-/*   Updated: 2025/12/18 23:49:11 by jpecquer         ###   ########.fr       */
+/*   Updated: 2025/12/28 19:16:27 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,7 @@
 # include <unistd.h>
 # include <math.h>
 # include "level_editor.h"
-# include "directories.h"
 # include "utils.h"
-# include "animation.h"
-# include "entities.h"
 
 # define FOG_TEXT "textures/fog_texture.xpm"
 
@@ -263,15 +260,6 @@ void			free_textures(t_textures **textures, t_mlx *mlx);
 
 void			draw_debug(t_debug_obj *lst, t_mlx *mlx);
 
-//////////////////--BILLBOARD--////////////////////////
-
-int				trig_get_angle(int adj, int hyp);
-int				check_is_angle_in_player_view(int angle, int fov,
-					int player_angle);
-float			get_percent_billboard_from_view(int angle, int fov,
-					int player_angle);
-void			draw_billboard_sprite(int length, int percent,
-					t_entity *billboard, t_mlx *mlx);
 
 t_object		*new_slider(t_vector2 pos, int size, int color, t_mlx *mlx);
 #endif

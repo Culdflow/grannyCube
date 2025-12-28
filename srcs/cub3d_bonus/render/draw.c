@@ -6,11 +6,11 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 20:16:16 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/16 16:49:20 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/12/28 18:43:32 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/level_editor.h"
+#include "../../../includes/bonus/level_editor.h"
 
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 {
@@ -106,9 +106,9 @@ void	draw_board(t_mlx *mlx, int color1, char **board, t_vector2 board_size)
 			else if (board[cursor.y][cursor.x] == '1')
 				d_b_rec(1, start_end, mlx, color1);
 			else if (board[cursor.y][cursor.x] == 'N')
-				d_b_rec(0, start_end, mlx, 0xFF0000);
+				d_b_rec(1, start_end, mlx, 0xFF0000);
 			else if (board[cursor.y][cursor.x] == 'F')
-				d_b_rec(0, start_end, mlx, 0x0000FF);
+				d_b_rec(1, start_end, mlx, 0x0000FF);
 		}
 		cursor.y++;
 	}
