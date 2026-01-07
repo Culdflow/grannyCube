@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 05:34:38 by mabdessm          #+#    #+#             */
-/*   Updated: 2025/12/28 19:16:27 by dfeve            ###   ########.fr       */
+/*   Updated: 2026/01/07 17:33:36 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -259,7 +259,6 @@ void			free_textures(t_textures **textures, t_mlx *mlx);
 //////////////////--DEBUG--////////////////////////////
 
 void			draw_debug(t_debug_obj *lst, t_mlx *mlx);
-
 
 t_object		*new_slider(t_vector2 pos, int size, int color, t_mlx *mlx);
 #endif
