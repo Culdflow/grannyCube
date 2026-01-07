@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 16:58:38 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/28 18:43:32 by dfeve            ###   ########.fr       */
+/*   Updated: 2026/01/07 17:47:09 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ char	**file_load_frames(char *file)
 	int		i;
 	char	*buffer;
 
-	printf("loading file: %s\n", file);
 	result = ft_calloc(get_file_length(file) + 1, sizeof(char *));
 	fd = open(file, O_RDONLY);
 	i = 0;
