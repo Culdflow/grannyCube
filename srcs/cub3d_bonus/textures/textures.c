@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 17:11:23 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/28 18:43:32 by dfeve            ###   ########.fr       */
+/*   Updated: 2026/01/07 20:19:53 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_img	*create_img(char *path, t_mlx *mlx)
 	{
 		printf("img not valid\n");
 		free(img);
-		return (NULL);
+		return (create_img("textures/error.xpm", mlx));
 	}
 	mlx_destroy_image(mlx->mlx, temp);
 	img->img = mlx_xpm_file_to_image(mlx->mlx, path, &img->size.x,
