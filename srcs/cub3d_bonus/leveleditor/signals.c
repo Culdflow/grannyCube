@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 00:54:41 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/28 18:43:32 by dfeve            ###   ########.fr       */
+/*   Updated: 2026/01/07 17:43:29 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,12 @@ void	modif_label_up(void *obj_lst, int new_value)
 
 	(void)new_value;
 	newobj_lst = (t_object *)obj_lst;
-	newobj_lst->value = newobj_lst->value + 1;
-	free(newobj_lst->tag);
-	newobj_lst->tag = ft_itoa(newobj_lst->value);
+	if (newobj_lst->value < 50)
+	{
+		newobj_lst->value = newobj_lst->value + 1;
+		free(newobj_lst->tag);
+		newobj_lst->tag = ft_itoa(newobj_lst->value);
+	}
 }
 
 void	modif_label_down(void *obj_lst, int new_value)
