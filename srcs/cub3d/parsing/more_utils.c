@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 15:35:41 by mabdessm          #+#    #+#             */
-/*   Updated: 2025/12/28 19:14:13 by dfeve            ###   ########.fr       */
+/*   Updated: 2026/01/12 18:01:35 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*get_map(char *file, t_data *data)
 	char	*temp;
 
 	i = 0;
+	if (ft_strlen(file) > 10000)
+		return (NULL);
 	if (!parse_elements(file, data, &i))
 		return (NULL);
 	while (file[i] == '\n')
