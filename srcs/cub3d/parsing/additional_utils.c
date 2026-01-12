@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   additional_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 15:33:44 by mabdessm          #+#    #+#             */
-/*   Updated: 2025/12/28 19:14:13 by dfeve            ###   ########.fr       */
+/*   Updated: 2026/01/12 15:26:06 by jpecquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ int	invalid_character(char c)
 int	duplicate_player(char c, t_data *data)
 {
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
+	{
 		++data->number_of_players;
+		data->player_angle = c;
+	}
 	if (data->number_of_players > 1)
 		return (1);
 	return (0);

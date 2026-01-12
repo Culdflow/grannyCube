@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ray_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/14 14:25:36 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/28 19:14:13 by dfeve            ###   ########.fr       */
+/*   Updated: 2026/01/12 15:35:18 by jpecquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/cub3d_bonus.h"
+
+char	get_cell(int x, int y, t_mlx *mlx)
+{
+	if (x < 0 || y < 0 || x >= mlx->board_size.x || y >= mlx->board_size.y)
+		return ('1');
+	return (mlx->board[y][x]);
+}
 
 t_ray	*new_ray(t_vector2 start_pos, float angle, t_mlx *mlx)
 {
@@ -28,7 +35,7 @@ t_ray	*new_ray(t_vector2 start_pos, float angle, t_mlx *mlx)
 		else
 			result->wall_hit_dir = FOG_EAST_WEST;
 	}
-	if (mlx->board[result->end_pos.y / 100][result->end_pos.x / 100] == 'F')
+	if (get_cell(result->end_pos.x / 100, result->end_pos.y / 100, mlx) == 'F')
 	{
 		if (result->wall_hit_dir == NORTH || result->wall_hit_dir == SOUTH)
 			result->wall_hit_dir = DOOR_NORTH_SOUTH;

@@ -6,7 +6,7 @@
 /*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 05:34:38 by mabdessm          #+#    #+#             */
-/*   Updated: 2025/12/18 23:49:11 by jpecquer         ###   ########.fr       */
+/*   Updated: 2026/01/12 15:32:31 by jpecquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ typedef struct s_data
 	int			number_of_c;
 	int			number_of_g;
 	int			number_of_players;
+	char		player_angle;
 	char		*g_an;
 	t_player	*player;
 	t_ray_list	*ray_list;

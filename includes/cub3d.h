@@ -6,7 +6,7 @@
 /*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 14:58:24 by mabdessm          #+#    #+#             */
-/*   Updated: 2025/12/17 17:18:34 by jpecquer         ###   ########.fr       */
+/*   Updated: 2026/01/12 15:07:42 by jpecquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_data
 	int			number_of_f;
 	int			number_of_c;
 	int			number_of_players;
+	int			pos_player;
 }				t_data;
 
 #endif

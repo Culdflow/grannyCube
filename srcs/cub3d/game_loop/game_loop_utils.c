@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_loop_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 21:51:31 by jpecquer          #+#    #+#             */
-/*   Updated: 2025/12/28 19:17:24 by dfeve            ###   ########.fr       */
+/*   Updated: 2026/01/12 15:31:10 by jpecquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,22 @@ void	load_textures(t_data *data)
 	int			h;
 	int			w;
 	t_vector2	spawn_point;
+	int			angle;
 
+	if (data->player_angle == 'S')
+		angle = 270;
+	else if (data->player_angle == 'W')
+		angle = 180;
+	else if (data->player_angle == 'N')
+		angle = 90;
+	else
+		angle = 0;
 	mlx_get_screen_size(data->mlx->mlx, &w, &h);
 	data->height = h;
 	data->width = w;
 	spawn_point = add_vec2(mul_vec2(find_player(data->mlx->board),
 				vec2(100, 100)), vec2(50, 50));
-	data->player = new_player(spawn_point, 0, 5, 5);
+	data->player = new_player(spawn_point, angle, 5, 5);
 }
 
 static void	step_check_keys(t_data *data)
