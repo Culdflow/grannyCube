@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 14:48:43 by jpecquer          #+#    #+#             */
-/*   Updated: 2025/12/28 18:43:32 by dfeve            ###   ########.fr       */
+/*   Updated: 2026/01/16 19:11:32 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	draw_lines(t_data *data, t_vector2 *line_start_pos, t_ray *cursor,
 {
 	int	line_height;
 
-	line_height = (100 * screen_size.y) / cursor->length;
+	line_height = (CUBESIZE * screen_size.y) / cursor->length;
 	line_start_pos->y = (screen_size.y / 2) - (line_height / 2);
 	draw_3d_line(data, line_height, *line_start_pos, cursor);
 	line_start_pos->x++;
@@ -64,7 +64,7 @@ void	draw_3d_view(t_data *data, t_vector2 screen_size)
 		cursor->length = cursor->length * cos(ca);
 		if (cursor->wall_hit_dir == FOG_EAST_WEST
 			|| cursor->wall_hit_dir == FOG_NORTH_SOUTH)
-			cursor->length = data->mlx->dov * 100;
+			cursor->length = data->mlx->dov * CUBESIZE;
 		draw_lines(data, &line_start_pos, cursor, screen_size);
 		cursor = cursor->next_ray;
 	}

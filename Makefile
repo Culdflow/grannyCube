@@ -6,7 +6,7 @@
 #    By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/04 14:55:29 by mabdessm          #+#    #+#              #
-#    Updated: 2026/01/16 16:23:05 by dfeve            ###   ########.fr        #
+#    Updated: 2026/01/16 19:29:49 by dfeve            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -156,6 +156,8 @@ $(BONUS_NAME): $(BONUS_OBJS)
 	@$(CC) $(FLAGS) -Iminilibx -c $< -o $@
 	
 all: $(NAME)
+
+bonus: $(BONUS_NAME)
 
 clean:
 	@echo "\033[0;31mdeleting objects...\033[0m"

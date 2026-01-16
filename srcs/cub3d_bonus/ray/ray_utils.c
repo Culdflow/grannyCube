@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/14 14:25:36 by dfeve             #+#    #+#             */
-/*   Updated: 2026/01/12 15:34:45 by jpecquer         ###   ########.fr       */
+/*   Updated: 2026/01/16 19:07:26 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ t_ray	*new_ray(t_vector2 start_pos, float angle, t_mlx *mlx)
 	result->start_pos = start_pos;
 	result->end_pos = ray_get_end_pos(result, start_pos, angle, mlx);
 	result->length = ray_get_length(start_pos, result->end_pos);
-	if (result->length >= mlx->dov * 100)
+	if (result->length >= mlx->dov * CUBESIZE)
 	{
 		if (result->wall_hit_dir == NORTH || result->wall_hit_dir == SOUTH)
 			result->wall_hit_dir = FOG_NORTH_SOUTH;
 		else
 			result->wall_hit_dir = FOG_EAST_WEST;
 	}
-	if (get_cell(result->end_pos.x / 100, result->end_pos.y / 100, mlx) == 'F')
+	if (get_cell(result->end_pos.x / CUBESIZE, result->end_pos.y / CUBESIZE, mlx) == 'F')
 	{
 		if (result->wall_hit_dir == NORTH || result->wall_hit_dir == SOUTH)
 			result->wall_hit_dir = DOOR_NORTH_SOUTH;

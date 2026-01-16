@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 18:05:25 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/28 18:43:32 by dfeve            ###   ########.fr       */
+/*   Updated: 2026/01/16 19:11:16 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ t_entity	*get_entity_from_pos(t_vector2 pos, t_entity *lst)
 	t_vector2	r_pos;
 	t_vector2	r_pos_limit;
 
-	r_pos = mul_vec2(pos, vec2(100, 100));
-	r_pos_limit = add_vec2(r_pos, vec2(100, 100));
+	r_pos = mul_vec2(pos, vec2(CUBESIZE, CUBESIZE));
+	r_pos_limit = add_vec2(r_pos, vec2(CUBESIZE, CUBESIZE));
 	cursor = lst;
 	while (cursor)
 	{

@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 19:18:41 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/28 18:43:32 by dfeve            ###   ########.fr       */
+/*   Updated: 2026/01/16 19:07:55 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ t_vector2	ray_check_loop(float rx, float ry, t_mlx *mlx, int dov)
 	int	grid_x;
 	int	grid_y;
 
-	while (is_out_of_bounds(div_vec2(vec2((int)rx, (int)ry), vec2(100, 100)),
+	while (is_out_of_bounds(div_vec2(vec2((int)rx, (int)ry), vec2(CUBESIZE, CUBESIZE)),
 			mlx->board_size) == FALSE)
 	{
-		grid_x = (int)(rx / 100);
-		grid_y = (int)(ry / 100);
+		grid_x = (int)(rx / CUBESIZE);
+		grid_y = (int)(ry / CUBESIZE);
 		if (mlx->board[grid_y][grid_x] == '1' || dov >= mlx->dov ||
 			mlx->board[grid_y][grid_x] == 'F')
 			break ;
@@ -47,16 +47,16 @@ t_vector2	ray_check_horizontal_lines(t_vector2 start_pos, float angle,
 	ry = start_pos.y;
 	if (rad > M_PI)
 	{
-		ry -= (int)ry % 100 + 0.001;
+		ry -= (int)ry % CUBESIZE + 0.0001;
 		rx = (start_pos.y - ry) * a_tan + start_pos.x;
-		mlx->oy = -100;
+		mlx->oy = -CUBESIZE;
 		mlx->ox = (-1 * mlx->oy) * a_tan;
 	}
 	if (rad <= M_PI)
 	{
-		ry += (100 - ((int)ry % 100));
+		ry += (CUBESIZE - ((int)ry % CUBESIZE));
 		rx = (start_pos.y - ry) * a_tan + start_pos.x;
-		mlx->oy = 100;
+		mlx->oy = CUBESIZE;
 		mlx->ox = (-1 * mlx->oy) * a_tan;
 	}
 	return (ray_check_loop(rx, ry, mlx, dov));
@@ -77,16 +77,16 @@ t_vector2	ray_check_vertical_lines(t_vector2 start_pos, float angle,
 	rx = start_pos.x;
 	if (rad <= (M_PI / 2) || rad >= (3 * M_PI / 2))
 	{
-		rx += 100 - ((int)rx % 100);
+		rx += CUBESIZE - ((int)rx % CUBESIZE);
 		ry = (start_pos.x - rx) * n_tan + start_pos.y;
-		mlx->ox = 100;
+		mlx->ox = CUBESIZE;
 		mlx->oy = (-1 * mlx->ox) * n_tan;
 	}
 	if (rad > (M_PI / 2) && rad < (3 * M_PI / 2))
 	{
-		rx -= ((int)rx % 100) + 0.01;
+		rx -= ((int)rx % CUBESIZE) + 0.0001;
 		ry = (start_pos.x - rx) * n_tan + start_pos.y;
-		mlx->ox = -100;
+		mlx->ox = -CUBESIZE;
 		mlx->oy = (-1 * mlx->ox) * n_tan;
 	}
 	return (ray_check_loop(rx, ry, mlx, dov));
@@ -127,7 +127,7 @@ void	draw_ray(t_vector2 start_pos, t_ray *ray, t_mlx *mlx)
 	t_vector2	ray_end_pos_in_map;
 
 	diff = sub_vec2(ray->end_pos, ray->start_pos);
-	mul_vec = div_vec2(vec2(100, 100), mlx->cube_size_minimap);
+	mul_vec = div_vec2(vec2(CUBESIZE, CUBESIZE), mlx->cube_size_minimap);
 	ray_end_pos_in_map = div_vec2(diff, mul_vec);
 	ray_pos_in_map = add_vec2(start_pos, ray_end_pos_in_map);
 	clamp_vec2(&ray_pos_in_map, vec2(0, 0), mlx->minimap_size);

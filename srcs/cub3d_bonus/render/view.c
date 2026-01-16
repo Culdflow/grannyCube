@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 05:44:21 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/28 18:43:32 by dfeve            ###   ########.fr       */
+/*   Updated: 2026/01/16 19:08:52 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ float	find_x_for_img(t_ray *ray, t_img img)
 	if (ray->wall_hit_dir == NORTH || ray->wall_hit_dir == SOUTH
 		|| ray->wall_hit_dir == FOG_NORTH_SOUTH
 		|| ray->wall_hit_dir == DOOR_NORTH_SOUTH)
-		mul_vector = ft_fmodulf((float)ray->end_pos.x, 100) / 100;
+		mul_vector = ft_fmodulf((float)ray->end_pos.x, CUBESIZE) / CUBESIZE;
 	else
-		mul_vector = ft_fmodulf((float)ray->end_pos.y, 100) / 100;
+		mul_vector = ft_fmodulf((float)ray->end_pos.y, CUBESIZE) / CUBESIZE;
 	result = ((float)img.size.x) * mul_vector;
 	ft_fclampf(&result, 0, (float)img.size.x - 1);
 	return (result);
