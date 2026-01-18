@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 01:26:04 by mabdessm          #+#    #+#             */
-/*   Updated: 2026/01/18 03:35:04 by dfeve            ###   ########.fr       */
+/*   Updated: 2026/01/18 04:03:01 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ static void	free_data_path_texture(t_data *data)
 		free(data->path_to_the_west_texture);
 	if (data->path_to_the_east_texture)
 		free(data->path_to_the_east_texture);
-	
 }
 
 int	free_data(t_data *data)

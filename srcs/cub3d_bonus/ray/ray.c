@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 19:18:41 by dfeve             #+#    #+#             */
-/*   Updated: 2026/01/18 00:52:07 by dfeve            ###   ########.fr       */
+/*   Updated: 2026/01/18 04:13:16 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_vector2	ray_check_horizontal_lines(t_vector2 start_pos, float angle,
 	ry = start_pos.y;
 	if (rad > M_PI)
 	{
-		ry -= (int)ry % CUBESIZE + 0.001;
+		ry -= (int)ry % CUBESIZE + 0.01;
 		rx = (start_pos.y - ry) * a_tan + start_pos.x;
 		mlx->oy = -CUBESIZE;
 		mlx->ox = (-1 * mlx->oy) * a_tan;
