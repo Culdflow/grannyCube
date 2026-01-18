@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 01:26:04 by mabdessm          #+#    #+#             */
-/*   Updated: 2025/12/28 18:43:46 by dfeve            ###   ########.fr       */
+/*   Updated: 2026/01/18 03:34:51 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,12 @@ int	free_data(t_data *data)
 		ft_free_tab(data->map);
 		mlx_destroy_window(data->mlx->mlx, data->mlx->win);
 	}
+	if (data->player && data->player->collisions)
+		free(data->player->collisions);
+	if (data->player)
+		free(data->player);
+	if (data->textures)
+		free_textures(&data->textures, data->mlx);
 	free_mlx(data->mlx);
 	exit(0);
 	return (0);
@@ -79,6 +85,8 @@ int	free_data(t_data *data)
 int	start_game(t_data data, char *name)
 {
 	data.mlx = setup_mlx("cub3d", vec2(250, 200));
+	data.player = NULL;
+	data.textures = NULL;
 	if (!(init_data(&data, name)))
 	{
 		free(name);

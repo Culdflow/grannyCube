@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 18:14:01 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/28 18:43:32 by dfeve            ###   ########.fr       */
+/*   Updated: 2026/01/18 02:54:50 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ void	step_choose_texture_window(t_mlx *mlx, char *prompt, char *extension)
 	mlx->dir->extension = ft_strdup(extension);
 	mlx->dir->extension_prompt = ft_strjoin
 		("file extension must be ", extension);
-	mlx->dir->files = get_files_from_dir(".");
-	mlx->dir->cur_dir = ft_strdup(".");
+	mlx->dir->files = get_files_from_dir("./textures");
+	mlx->dir->cur_dir = ft_strdup("./textures");
 	mlx->dir->prompt = ft_strdup(prompt);
 }
 

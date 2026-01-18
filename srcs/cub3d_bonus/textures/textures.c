@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 17:11:23 by dfeve             #+#    #+#             */
-/*   Updated: 2026/01/07 20:19:53 by dfeve            ###   ########.fr       */
+/*   Updated: 2026/01/18 03:30:47 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_img	*create_img(char *path, t_mlx *mlx)
 	temp = mlx_xpm_file_to_image(mlx->mlx, path, &img->size.x, &img->size.y);
 	if (temp == NULL)
 	{
-		printf("img not valid\n");
+		ft_printf("img not valid\n");
 		free(img);
 		return (create_img("textures/error.xpm", mlx));
 	}
@@ -60,6 +60,10 @@ void	free_textures(t_textures **textures, t_mlx *mlx)
 	mlx_destroy_image(mlx->mlx, (*textures)->south_texture->img);
 	mlx_destroy_image(mlx->mlx, (*textures)->east_texture->img);
 	mlx_destroy_image(mlx->mlx, (*textures)->west_texture->img);
+	mlx_destroy_image(mlx->mlx, (*textures)->fog_texture->img);
+	mlx_destroy_image(mlx->mlx, (*textures)->door_texture->img);
+	free((*textures)->fog_texture);
+	free((*textures)->door_texture);
 	free((*textures)->north_texture);
 	free((*textures)->south_texture);
 	free((*textures)->east_texture);
