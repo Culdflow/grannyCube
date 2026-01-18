@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 19:18:41 by dfeve             #+#    #+#             */
-/*   Updated: 2026/01/16 19:07:55 by dfeve            ###   ########.fr       */
+/*   Updated: 2026/01/18 00:52:07 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ t_vector2	ray_check_loop(float rx, float ry, t_mlx *mlx, int dov)
 	int	grid_x;
 	int	grid_y;
 
-	while (is_out_of_bounds(div_vec2(vec2((int)rx, (int)ry), vec2(CUBESIZE, CUBESIZE)),
+	while (is_out_of_bounds(div_vec2(vec2((int)rx, (int)ry), vec2(CUBESIZE,
+					CUBESIZE)),
 			mlx->board_size) == FALSE)
 	{
 		grid_x = (int)(rx / CUBESIZE);
@@ -47,7 +48,7 @@ t_vector2	ray_check_horizontal_lines(t_vector2 start_pos, float angle,
 	ry = start_pos.y;
 	if (rad > M_PI)
 	{
-		ry -= (int)ry % CUBESIZE + 0.0001;
+		ry -= (int)ry % CUBESIZE + 0.001;
 		rx = (start_pos.y - ry) * a_tan + start_pos.x;
 		mlx->oy = -CUBESIZE;
 		mlx->ox = (-1 * mlx->oy) * a_tan;
@@ -84,7 +85,7 @@ t_vector2	ray_check_vertical_lines(t_vector2 start_pos, float angle,
 	}
 	if (rad > (M_PI / 2) && rad < (3 * M_PI / 2))
 	{
-		rx -= ((int)rx % CUBESIZE) + 0.0001;
+		rx -= ((int)rx % CUBESIZE) + 0.01;
 		ry = (start_pos.x - rx) * n_tan + start_pos.y;
 		mlx->ox = -CUBESIZE;
 		mlx->oy = (-1 * mlx->ox) * n_tan;

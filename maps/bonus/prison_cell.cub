@@ -1,0 +1,18 @@
+NO ./textures/stone_block.xpm
+EA ./textures/stone_block.xpm
+SO ./srcs/../textures/stone_block.xpm
+WE ./textures/stone_block.xpm
+F 53, 48, 50
+C 202, 180, 93
+
+           
+ 1111111111
+ 1000000101
+ 1000000101
+ 1000000101
+ 1000000101
+ 1N00000F01
+ 1000000101
+ 1000000101
+ 1000000101
+ 1111111111

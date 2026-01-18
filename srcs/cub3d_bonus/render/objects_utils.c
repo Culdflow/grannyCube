@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 16:58:13 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/28 18:43:32 by dfeve            ###   ########.fr       */
+/*   Updated: 2026/01/18 01:42:35 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	board_clicked(t_vector2 mouse_pos, t_vector2 board_size, char **board,
 	screen_size = vec2(1500, 900);
 	square_size = vec2(screen_size.x / board_size.x,
 			screen_size.y / board_size.y);
-	if (mouse_pos.x > 1500 || mouse_pos.x < 20
-		|| mouse_pos.y > 900 || mouse_pos.y < 20)
+	if (mouse_pos.x >= 1520 || mouse_pos.x < 20
+		|| mouse_pos.y >= 920 || mouse_pos.y < 20)
 		return ;
 	x_in_board = (mouse_pos.x - 20) / square_size.x;
 	y_in_board = (mouse_pos.y - 20) / square_size.y;
@@ -42,8 +42,8 @@ char	get_el_from_board(t_vector2 mouse_pos, t_vector2 board_size,
 	screen_size = vec2(1500, 900);
 	square_size = vec2(screen_size.x / board_size.x,
 			screen_size.y / board_size.y);
-	if (mouse_pos.x > 1500 || mouse_pos.x < 20
-		|| mouse_pos.y > 900 || mouse_pos.y < 20)
+	if (mouse_pos.x >= 1520 || mouse_pos.x < 20
+		|| mouse_pos.y >= 920 || mouse_pos.y < 20)
 		return ('\0');
 	x_in_board = (mouse_pos.x - 20) / square_size.x;
 	y_in_board = (mouse_pos.y - 20) / square_size.y;

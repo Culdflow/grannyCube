@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 15:29:39 by mabdessm          #+#    #+#             */
-/*   Updated: 2025/12/28 18:43:32 by dfeve            ###   ########.fr       */
+/*   Updated: 2026/01/18 00:35:12 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	map_not_closed(char **map)
 		while (map[i][j])
 		{
 			if (map[i][j] == '0' || map[i][j] == 'N' || map[i][j] == 'S'
-				|| map[i][j] == 'E' || map[i][j] == 'W')
+				|| map[i][j] == 'E' || map[i][j] == 'W' || map[i][j] == 'F')
 			{
 				if (map[i - 1][j] == ' ' || map[i + 1][j] == ' '
 					|| map[i][j - 1] == ' ' || map[i][j + 1] == ' ')

@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 20:28:56 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/28 19:14:13 by dfeve            ###   ########.fr       */
+/*   Updated: 2026/01/18 00:49:21 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ t_vector2	minimap_get_start_pos(t_data *data)
 
 	player_pos_in_map = div_vec2(data->mlx->minimap_size, vec2(2, 2));
 	cube_size_help = div_vec2(player_pos_in_map, data->mlx->cube_size_minimap);
-	result = vec2(data->player->x - (cube_size_help.x * 100),
-			data->player->y - (cube_size_help.y * 100));
+	result = vec2(data->player->x - (cube_size_help.x * CUBESIZE),
+			data->player->y - (cube_size_help.y * CUBESIZE));
 	cube_size_help.x = player_pos_in_map.x % data->mlx->cube_size_minimap.x;
 	cube_size_help.y = player_pos_in_map.y % data->mlx->cube_size_minimap.y;
 	if (cube_size_help.x != 0)
-		cube_size_help.x = 100
+		cube_size_help.x = CUBESIZE
 			/ (data->mlx->cube_size_minimap.x / cube_size_help.x);
 	if (cube_size_help.y != 0)
-		cube_size_help.y = 100
+		cube_size_help.y = CUBESIZE
 			/ (data->mlx->cube_size_minimap.y / cube_size_help.y);
 	result = sub_vec2(result, cube_size_help);
 	return (result);
@@ -37,19 +37,22 @@ t_vector2	minimap_get_start_pos(t_data *data)
 void	draw_pixel_minimap(t_vector2 map_pos, t_vector2 pos, t_data *data)
 {
 	if (map_pos.x <= 0 || map_pos.y <= 0
-		|| (map_pos.x / 100) >= data->mlx->board_size.x
-		|| (map_pos.y / 100) >= data->mlx->board_size.y)
+		|| (map_pos.x / CUBESIZE) >= data->mlx->board_size.x
+		|| (map_pos.y / CUBESIZE) >= data->mlx->board_size.y)
 		my_mlx_pixel_put(&data->mlx->imgs[0], pos.x, pos.y, 0x00FFFF);
-	else if (data->mlx->board && data->mlx->board[map_pos.y / 100]
-		&& data->mlx->board[map_pos.y / 100][map_pos.x / 100])
+	else if (data->mlx->board && data->mlx->board[map_pos.y / CUBESIZE]
+		&& data->mlx->board[map_pos.y / CUBESIZE][map_pos.x / CUBESIZE])
 	{
-		if (data->mlx->board[map_pos.y / 100][map_pos.x / 100] == '1')
+		if (data->mlx->board[map_pos.y / CUBESIZE][map_pos.x / CUBESIZE] == '1')
 			my_mlx_pixel_put(&data->mlx->imgs[0], pos.x, pos.y, 0x000000);
-		else if (data->mlx->board[map_pos.y / 100][map_pos.x / 100] == '0')
+		else if (data->mlx->board[map_pos.y / CUBESIZE][map_pos.x / CUBESIZE]
+			== '0')
 			my_mlx_pixel_put(&data->mlx->imgs[0], pos.x, pos.y, 0xFFFFFF);
-		else if (data->mlx->board[map_pos.y / 100][map_pos.x / 100] == ' ')
+		else if (data->mlx->board[map_pos.y / CUBESIZE][map_pos.x / CUBESIZE]
+			== ' ')
 			my_mlx_pixel_put(&data->mlx->imgs[0], pos.x, pos.y, 0x00FFFF);
-		else if (data->mlx->board[map_pos.y / 100][map_pos.x / 100] == 'G')
+		else if (data->mlx->board[map_pos.y / CUBESIZE][map_pos.x / CUBESIZE]
+			== 'G')
 			my_mlx_pixel_put(&data->mlx->imgs[0], pos.x, pos.y, 0xF05050);
 		else
 			my_mlx_pixel_put(&data->mlx->imgs[0], pos.x, pos.y, 0xF0F0F0);
@@ -76,10 +79,10 @@ void	draw_minimap(t_data *data)
 		{
 			draw_pixel_minimap(map_pos, pos, data);
 			pos.x++;
-			map_pos.x += 100 / data->mlx->cube_size_minimap.x;
+			map_pos.x += CUBESIZE / data->mlx->cube_size_minimap.x;
 		}
 		pos.y++;
-		map_pos.y += 100 / data->mlx->cube_size_minimap.y;
+		map_pos.y += CUBESIZE / data->mlx->cube_size_minimap.y;
 	}
 }
 

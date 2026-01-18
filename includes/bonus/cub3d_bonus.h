@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 05:34:38 by mabdessm          #+#    #+#             */
-/*   Updated: 2026/01/16 19:40:44 by dfeve            ###   ########.fr       */
+/*   Updated: 2026/01/17 22:53:47 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # include "animation.h"
 # include "entities.h"
 
-# define CUBESIZE 100
+# define CUBESIZE 1000
 # define FOG_TEXT "textures/fog_texture.xpm"
 
 typedef enum directions
@@ -204,6 +204,7 @@ t_vector2		find_player(char **map);
 void			look_player_mouse(t_player *player, int mouse_diff);
 t_vector2		is_player_colliding_secure(float new_x,
 					float new_y, t_data *data);
+int				is_player_colliding(float new_x, float new_y, t_data *data);
 
 //////////////////--MAIN--////////////////////////////
 int				init_data(t_data *data, char *file);

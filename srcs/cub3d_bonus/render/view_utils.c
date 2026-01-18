@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 14:48:43 by jpecquer          #+#    #+#             */
-/*   Updated: 2026/01/16 19:11:32 by dfeve            ###   ########.fr       */
+/*   Updated: 2026/01/17 22:52:13 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,6 @@ void	draw_lines(t_data *data, t_vector2 *line_start_pos, t_ray *cursor,
 
 	line_height = (CUBESIZE * screen_size.y) / cursor->length;
 	line_start_pos->y = (screen_size.y / 2) - (line_height / 2);
-	draw_3d_line(data, line_height, *line_start_pos, cursor);
-	line_start_pos->x++;
-	draw_3d_line(data, line_height, *line_start_pos, cursor);
-	line_start_pos->x++;
-	draw_3d_line(data, line_height, *line_start_pos, cursor);
-	line_start_pos->x++;
 	draw_3d_line(data, line_height, *line_start_pos, cursor);
 	line_start_pos->x++;
 }

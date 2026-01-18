@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 20:40:18 by jpecquer          #+#    #+#             */
-/*   Updated: 2025/12/28 18:43:32 by dfeve            ###   ########.fr       */
+/*   Updated: 2026/01/17 22:03:50 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	draw_textures(t_data *data)
 		return (0);
 	frame++;
 	frame = frame % 30;
-	data->player->speed = elapsed * 200;
+	data->player->speed = elapsed * 2000;
 	last = now;
 	del_images(data->mlx);
 	check_keys(data);

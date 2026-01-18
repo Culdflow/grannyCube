@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 03:05:49 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/28 18:43:32 by dfeve            ###   ########.fr       */
+/*   Updated: 2026/01/17 22:52:29 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ t_ray_list	*new_ray_list(int fov, int base_angle, t_vector2 start_pos,
 	angle = ft_fmodulf(angle, 360);
 	result->ray_list = new_ray(start_pos, angle, mlx);
 	result->fov = fov;
-	angle += 0.5;
 	cursor = result->ray_list;
 	while ((int)angle != (base_angle + (fov / 2)) % 360)
 	{
@@ -35,7 +34,7 @@ t_ray_list	*new_ray_list(int fov, int base_angle, t_vector2 start_pos,
 		angle = ft_fmodulf(angle, 360);
 		cursor->next_ray = new_ray(start_pos, angle, mlx);
 		cursor = cursor->next_ray;
-		angle += (((float)(fov) / (float)mlx->screen_size.x) * 4);
+		angle += (((float)(fov) / (float)mlx->screen_size.x));
 	}
 	return (result);
 }

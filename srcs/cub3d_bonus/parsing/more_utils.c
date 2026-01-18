@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 15:35:41 by mabdessm          #+#    #+#             */
-/*   Updated: 2026/01/16 16:20:33 by dfeve            ###   ########.fr       */
+/*   Updated: 2026/01/18 01:58:17 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,13 @@ char	**return_null_error(void)
 
 char	**return_check_file_errors(char	**map, t_data *data)
 {
-	if (no_map_errors(map, data))
+	int	result;
+
+	result = no_map_errors(map, data);
+	if (result && data->number_of_players == 1)
 		return (map);
+	else if (result == 1 && data->number_of_players < 1)
+		return_error("Not Enough Players In Map");
 	ft_free_tab(map);
 	return (NULL);
 }

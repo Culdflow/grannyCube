@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpecquer <jpecquer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 05:34:38 by mabdessm          #+#    #+#             */
-/*   Updated: 2026/01/12 15:26:30 by jpecquer         ###   ########.fr       */
+/*   Updated: 2026/01/17 23:51:08 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include "level_editor.h"
 # include "utils.h"
 
+# define CUBESIZE 1000
 # define FOG_TEXT "textures/fog_texture.xpm"
 
 typedef enum directions
@@ -200,6 +201,7 @@ t_vector2		find_player(char **map);
 void			look_player_mouse(t_player *player, int mouse_diff);
 t_vector2		is_player_colliding_secure(float new_x,
 					float new_y, t_data *data);
+int				is_player_colliding(float new_x, float new_y, t_data *data);
 
 //////////////////--MAIN--////////////////////////////
 int				init_data(t_data *data, char *file);

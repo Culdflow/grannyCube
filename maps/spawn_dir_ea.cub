@@ -1,0 +1,11 @@
+NO ./textures/north_texture.xpm
+EA ./textures/spawn_direction.xpm
+SO ./textures/south_texture.xpm
+WE ./textures/west_texture.xpm
+F 0, 0, 0
+C 0, 0, 0
+
+           
+ 11 
+1E01
+ 11 

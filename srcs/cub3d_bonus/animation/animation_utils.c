@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 17:59:09 by jpecquer          #+#    #+#             */
-/*   Updated: 2025/12/28 18:43:32 by dfeve            ###   ########.fr       */
+/*   Updated: 2026/01/18 01:46:01 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	switch_anim(t_animation_player *player, char *tag)
 
 	if (ft_strncmp(tag, player->current_anim->anim_tag, ft_strlen(tag)) == 0)
 		return ;
-	printf("looking for tag %s\n", tag);
 	anim = get_anim_with_tag(player->anim_list, tag);
 	if (anim)
 		player->current_anim = anim;

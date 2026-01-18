@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 23:23:41 by dfeve             #+#    #+#             */
-/*   Updated: 2026/01/07 17:39:21 by dfeve            ###   ########.fr       */
+/*   Updated: 2026/01/18 02:01:55 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	setup_data(t_data *data)
 
 	i = 0;
 	data->ray_list = NULL;
-	while (data->keys[i])
+	while (i < 65365)
 	{
 		data->keys[i] = FALSE;
 		i++;

@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 21:51:31 by jpecquer          #+#    #+#             */
-/*   Updated: 2026/01/16 19:40:50 by dfeve            ###   ########.fr       */
+/*   Updated: 2026/01/18 02:09:05 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ void	load_textures(t_data *data)
 	data->height = h;
 	data->width = w;
 	spawn_point = add_vec2(mul_vec2(find_player(data->mlx->board),
-				vec2(CUBESIZE, CUBESIZE)), vec2(CUBESIZE / 2 + 2, CUBESIZE / 2 - 1));
+				vec2(CUBESIZE, CUBESIZE)), vec2(CUBESIZE / 2 + 2,
+				CUBESIZE / 2 - 1));
 	data->player = new_player(spawn_point, angle, 5, 5);
 }
 
@@ -93,15 +94,19 @@ void	check_door(t_data *data)
 	int		dist;
 
 	dist = CUBESIZE;
+	new_x = 0;
+	new_y = 0;
 	rad = (data->player->angle * M_PI) / 180;
-	while (dist <= 200)
+	while (dist <= CUBESIZE * 2 && data->mlx->board)
 	{
 		new_x = dist * cos(rad);
 		new_y = dist * sin(rad);
 		new_x += data->player->x;
 		new_y += data->player->y;
-		if ((data->mlx->board[(int)new_y / CUBESIZE][(int)new_x / CUBESIZE] == 'O'
-			|| data->mlx->board[(int)new_y / CUBESIZE][(int)new_x / CUBESIZE] == 'F')
+		if ((data->mlx->board[(int)new_y / CUBESIZE][(int)new_x / CUBESIZE]
+			== 'O'
+			|| data->mlx->board[(int)new_y / CUBESIZE][(int)new_x / CUBESIZE]
+				== 'F')
 			&& data->mlx->is_interracting)
 		{
 			step_check_door(data, new_x, new_y);

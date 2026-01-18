@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 16:54:51 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/28 18:43:32 by dfeve            ###   ########.fr       */
+/*   Updated: 2026/01/18 00:37:45 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ t_animation	*get_anim_with_tag(t_animation *anim_list, char *tag)
 	cursor = anim_list;
 	while (cursor)
 	{
-		printf("looking at tag %s\n", cursor->anim_tag);
 		if (ft_strncmp(tag, cursor->anim_tag, ft_strlen(tag)) == 0)
 			return (cursor);
 		cursor = cursor->next;

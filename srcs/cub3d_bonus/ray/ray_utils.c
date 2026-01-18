@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/14 14:25:36 by dfeve             #+#    #+#             */
-/*   Updated: 2026/01/16 19:07:26 by dfeve            ###   ########.fr       */
+/*   Updated: 2026/01/18 00:52:18 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ t_ray	*new_ray(t_vector2 start_pos, float angle, t_mlx *mlx)
 		else
 			result->wall_hit_dir = FOG_EAST_WEST;
 	}
-	if (get_cell(result->end_pos.x / CUBESIZE, result->end_pos.y / CUBESIZE, mlx) == 'F')
+	if (get_cell(result->end_pos.x / CUBESIZE,
+			result->end_pos.y / CUBESIZE, mlx) == 'F')
 	{
 		if (result->wall_hit_dir == NORTH || result->wall_hit_dir == SOUTH)
 			result->wall_hit_dir = DOOR_NORTH_SOUTH;

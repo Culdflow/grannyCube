@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 22:54:31 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/28 18:43:32 by dfeve            ###   ########.fr       */
+/*   Updated: 2026/01/17 22:31:30 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,16 @@ t_player	*new_player(t_vector2 pos, int angle, int speed, int look_speed)
 	result->collisions = malloc(sizeof(t_player_collisions));
 	result->collisions->last_collision = NORTH;
 	return (result);
+}
+
+int	is_player_colliding(float new_x, float new_y, t_data *data)
+{
+	t_vector2	map_pos;
+
+	map_pos = vec2(new_x / CUBESIZE, new_y / CUBESIZE);
+	clamp_vec2(&map_pos, vec2(0, 0), data->mlx->board_size);
+	if (data->mlx->board[map_pos.y][map_pos.x] != '1'
+		&& data->mlx->board[map_pos.y][map_pos.x] != 'F')
+		return (FALSE);
+	return (TRUE);
 }
