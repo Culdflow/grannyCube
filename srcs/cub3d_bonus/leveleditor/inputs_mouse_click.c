@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 00:53:10 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/28 18:43:32 by dfeve            ###   ########.fr       */
+/*   Updated: 2026/01/19 21:00:32 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	_input_mouse_click_down_ex(int keycode, int x, int y, t_mlx *mlx)
 		new_image(mlx, mlx->screen_size, vec2(0, 0));
 		put_imgs(mlx);
 		draw_object_list(mlx, mlx->obj_list);
+		draw_sliders(mlx);
 	}
 	return (1);
 }
