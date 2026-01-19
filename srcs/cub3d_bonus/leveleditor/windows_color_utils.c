@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 19:16:41 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/28 18:43:32 by dfeve            ###   ########.fr       */
+/*   Updated: 2026/01/19 20:26:39 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,24 @@ char	*rgb_to_str(unsigned int r, unsigned int g, unsigned int b)
 	return (result);
 }
 
-void	draw_sliders(t_mlx *mlx, t_object **sliders)
+void	draw_sliders(t_mlx *mlx)
 {
-	char			*rgb;
+	char	*rgb;
 
-	rgb = rgb_to_str(sliders[0]->value, sliders[1]->value, sliders[2]->value);
-	draw_rectangle_no_fill(&mlx->imgs[0], vec2(9, 229), vec2(31, 251),
-		0xffffff);
-	draw_rectangle(&mlx->imgs[0], vec2(10, 230), vec2(30, 250),
-		rgb_to_hex(rgb));
+	rgb = rgb_to_str(get_object_from_tag(mlx->obj_list, "red_1")->value,
+			get_object_from_tag(mlx->obj_list, "green_1")->value,
+			get_object_from_tag(mlx->obj_list, "blue_1")->value);
+	draw_rectangle_no_fill(&mlx->imgs[0], vec2(499, 99),
+		vec2(1001, 501), 0xffffff);
+	draw_rectangle(&mlx->imgs[0], vec2(500, 100),
+		vec2(1000, 500), rgb_to_hex(rgb));
 	free(rgb);
-	rgb = rgb_to_str(sliders[3]->value, sliders[4]->value, sliders[5]->value);
-	draw_rectangle_no_fill(&mlx->imgs[0], vec2(489, 229), vec2(511, 251),
-		0xffffff);
-	draw_rectangle(&mlx->imgs[0], vec2(490, 230), vec2(510, 250),
-		rgb_to_hex(rgb));
+	rgb = rgb_to_str(get_object_from_tag(mlx->obj_list, "red_2")->value,
+			get_object_from_tag(mlx->obj_list, "green_2")->value,
+			get_object_from_tag(mlx->obj_list, "blue_2")->value);
+	draw_rectangle_no_fill(&mlx->imgs[0],
+		vec2(499, 599), vec2(1001, 1001), 0xffffff);
+	draw_rectangle(&mlx->imgs[0], vec2(500, 600),
+		vec2(1000, 1000), rgb_to_hex(rgb));
 	free(rgb);
 }

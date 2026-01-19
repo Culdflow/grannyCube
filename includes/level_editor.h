@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 20:07:34 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/28 19:16:01 by dfeve            ###   ########.fr       */
+/*   Updated: 2026/01/19 20:20:26 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,6 @@ int				fun_exit(t_mlx *mlx);
 t_vector2		map_size_window(void);
 t_mlx			*editor_window(t_vector2 board_size);
 char			**color_choose_window(void);
-void			draw_sliders(t_mlx *mlx, t_object **sliders);
 char			*rgb_to_str(unsigned int r, unsigned int g,
 					unsigned int b);
 

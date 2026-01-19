@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 00:53:10 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/28 18:43:32 by dfeve            ###   ########.fr       */
+/*   Updated: 2026/01/19 20:20:12 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,24 +58,7 @@ int	_input_mouse_ex(int x, int y, t_mlx *mlx)
 
 void	step_input_mouse(t_mlx *mlx)
 {
-	char	*rgb;
-
-	rgb = rgb_to_str(get_object_from_tag(mlx->obj_list, "red_1")->value,
-			get_object_from_tag(mlx->obj_list, "green_1")->value,
-			get_object_from_tag(mlx->obj_list, "blue_1")->value);
-	draw_rectangle_no_fill(&mlx->imgs[0], vec2(9, 229),
-		vec2(31, 251), 0xffffff);
-	draw_rectangle(&mlx->imgs[0], vec2(10, 230),
-		vec2(30, 250), rgb_to_hex(rgb));
-	free(rgb);
-	rgb = rgb_to_str(get_object_from_tag(mlx->obj_list, "red_2")->value,
-			get_object_from_tag(mlx->obj_list, "green_2")->value,
-			get_object_from_tag(mlx->obj_list, "blue_2")->value);
-	draw_rectangle_no_fill(&mlx->imgs[0],
-		vec2(489, 229), vec2(511, 251), 0xffffff);
-	draw_rectangle(&mlx->imgs[0], vec2(490, 230),
-		vec2(510, 250), rgb_to_hex(rgb));
-	free(rgb);
+	draw_sliders(mlx);
 	draw_object_list(mlx, mlx->obj_list);
 	put_imgs(mlx);
 	draw_object_list(mlx, mlx->obj_list);

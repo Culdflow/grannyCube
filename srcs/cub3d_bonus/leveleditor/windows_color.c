@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 00:50:21 by dfeve             #+#    #+#             */
-/*   Updated: 2025/12/28 18:43:32 by dfeve            ###   ########.fr       */
+/*   Updated: 2026/01/19 20:32:56 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,20 @@ t_object	**set_sliders( t_mlx *mlx )
 	t_object		**sliders;
 
 	sliders = calloc(6, sizeof(t_object *));
-	sliders[0] = new_slider(vec2(20, 100), 255, 0xFF0000, mlx);
-	sliders[1] = new_slider(vec2(20, 150), 255, 0x00FF00, mlx);
-	sliders[2] = new_slider(vec2(20, 200), 255, 0x0000FF, mlx);
-	sliders[3] = new_slider(vec2(500, 100), 255, 0xFF0000, mlx);
-	sliders[4] = new_slider(vec2(500, 150), 255, 0x00FF00, mlx);
-	sliders[5] = new_slider(vec2(500, 200), 255, 0x0000FF, mlx);
+	sliders[0] = new_slider(vec2(50, 200), 255, 0xFF0000, mlx);
+	sliders[1] = new_slider(vec2(50, 250), 255, 0x00FF00, mlx);
+	sliders[2] = new_slider(vec2(50, 300), 255, 0x0000FF, mlx);
+	sliders[3] = new_slider(vec2(50, 700), 255, 0xFF0000, mlx);
+	sliders[4] = new_slider(vec2(50, 750), 255, 0x00FF00, mlx);
+	sliders[5] = new_slider(vec2(50, 800), 255, 0x0000FF, mlx);
 	sliders[0]->tag = ft_strdup("red_1");
 	sliders[1]->tag = ft_strdup("green_1");
 	sliders[2]->tag = ft_strdup("blue_1");
 	sliders[3]->tag = ft_strdup("red_2");
 	sliders[4]->tag = ft_strdup("green_2");
 	sliders[5]->tag = ft_strdup("blue_2");
+	add_obj_to_list(&mlx->obj_list, create_obj(LABEL, vec2(500, 75), 0xFFFFFF, "FLOOR COLOR"));
+	add_obj_to_list(&mlx->obj_list, create_obj(LABEL, vec2(500, 575), 0xFFFFFF, "CEILING COLOR"));
 	add_obj_to_list(&mlx->obj_list, sliders[0]);
 	add_obj_to_list(&mlx->obj_list, sliders[1]);
 	add_obj_to_list(&mlx->obj_list, sliders[2]);
@@ -79,11 +81,12 @@ char	**color_choose_window( void )
 
 	mlx = setup_mlx("COLOR CHOOSE", vec2(0, 0));
 	result = NULL;
-	done_button = obj_set_on_click(create_obj(BUTTON, vec2(270, 500), 0xFFFFFF,
-				"DONE"), on_done_button_click, mlx);
+	done_button = obj_set_on_click(create_obj(BUTTON,
+				vec2(mlx->screen_size.x - 100, mlx->screen_size.y / 2),\
+				0xFFFFFF, "DONE"), on_done_button_click, mlx);
 	new_image(mlx, mlx->screen_size, vec2(0, 0));
 	sliders = set_sliders(mlx);
-	draw_sliders(mlx, sliders);
+	draw_sliders(mlx);
 	add_obj_to_list(&mlx->obj_list, done_button);
 	draw_object_list(mlx, mlx->obj_list);
 	put_imgs(mlx);
