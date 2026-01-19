@@ -6,14 +6,14 @@
 #    By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/04 14:55:29 by mabdessm          #+#    #+#              #
-#    Updated: 2026/01/18 04:06:17 by dfeve            ###   ########.fr        #
+#    Updated: 2026/01/19 21:03:28 by dfeve            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 BONUS_NAME = cub3D_bonus
 CC = cc
-FLAGS = -Wall -Werror -Wextra -g3 -O3 -fsanitize=address
+FLAGS = -Wall -Werror -Wextra -g3 -O3 #-fsanitize=address
 RM = rm -rf
 INCLUDES = -L./lib/libft -lft -L./lib/minilibx -lmlx -L/usr/lib -Iminilibx -lreadline -lXext -lX11 -lm -lz
 
