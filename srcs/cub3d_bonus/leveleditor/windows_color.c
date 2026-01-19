@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 00:50:21 by dfeve             #+#    #+#             */
-/*   Updated: 2026/01/19 20:32:56 by dfeve            ###   ########.fr       */
+/*   Updated: 2026/01/19 20:38:49 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ t_object	**set_sliders( t_mlx *mlx )
 	sliders[3]->tag = ft_strdup("red_2");
 	sliders[4]->tag = ft_strdup("green_2");
 	sliders[5]->tag = ft_strdup("blue_2");
-	add_obj_to_list(&mlx->obj_list, create_obj(LABEL, vec2(500, 75), 0xFFFFFF, "FLOOR COLOR"));
-	add_obj_to_list(&mlx->obj_list, create_obj(LABEL, vec2(500, 575), 0xFFFFFF, "CEILING COLOR"));
 	add_obj_to_list(&mlx->obj_list, sliders[0]);
 	add_obj_to_list(&mlx->obj_list, sliders[1]);
 	add_obj_to_list(&mlx->obj_list, sliders[2]);
@@ -65,6 +63,10 @@ char	**set_result(t_object **sliders)
 
 void	set_mlx_hook(t_mlx *mlx)
 {
+	add_obj_to_list(&mlx->obj_list, create_obj(LABEL, vec2(500, 75), 0xFFFFFF,
+			"FLOOR COLOR"));
+	add_obj_to_list(&mlx->obj_list, create_obj(LABEL, vec2(500, 575), 0xFFFFFF,
+			"CEILING COLOR"));
 	mlx_hook(mlx->win, ON_KEYDOWN, 1L << 0, _input, mlx);
 	mlx_hook(mlx->win, ON_DESTROY, 0, fun_exit, mlx->mlx);
 	mlx_hook(mlx->win, ON_MOUSEDOWN, 1L << 2, _input_mouse_click_down_ex, mlx);
@@ -82,16 +84,16 @@ char	**color_choose_window( void )
 	mlx = setup_mlx("COLOR CHOOSE", vec2(0, 0));
 	result = NULL;
 	done_button = obj_set_on_click(create_obj(BUTTON,
-				vec2(mlx->screen_size.x - 100, mlx->screen_size.y / 2),\
+				vec2(mlx->screen_size.x - 100, mlx->screen_size.y / 2),
 				0xFFFFFF, "DONE"), on_done_button_click, mlx);
 	new_image(mlx, mlx->screen_size, vec2(0, 0));
 	sliders = set_sliders(mlx);
 	draw_sliders(mlx);
 	add_obj_to_list(&mlx->obj_list, done_button);
+	set_mlx_hook(mlx);
 	draw_object_list(mlx, mlx->obj_list);
 	put_imgs(mlx);
 	draw_object_list(mlx, mlx->obj_list);
-	set_mlx_hook(mlx);
 	mlx_loop(mlx->mlx);
 	result = set_result(sliders);
 	free(sliders);
